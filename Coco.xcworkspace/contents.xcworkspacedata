@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:CocoDatasource/CocoDatasource.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:CocoNetwork/CocoNetwork.xcodeproj">
    </FileRef>
    <FileRef
