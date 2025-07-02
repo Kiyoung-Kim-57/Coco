@@ -15,10 +15,10 @@ public protocol CocoDataSource {
 public protocol CocoReadableDataSource: CocoDataSource {
     func readData(requestHandler: (Condition) -> (Condition)) async throws -> Item
     
-    func readData<T: Decodable>(
-        type: T.Type,
-        requestHandler: (Condition) -> (Condition)
-    ) async throws -> T
+//    func readData<T: Decodable>(
+//        type: T.Type,
+//        requestHandler: (Condition) -> (Condition)
+//    ) async throws -> T
 }
 
 public protocol CocoWritableDataSource: CocoDataSource {
