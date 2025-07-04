@@ -7,16 +7,26 @@
 
 import SwiftUI
 
-final class CocoStackRouter<P: Presentable>: StackRoutable {
+final class CocoFlowRouter<P: Presentable>: FlowRoutable {
+    static var typeKey: any Any.Type {
+        return Self.self
+    }
+    
+    static func createInstance() -> Any {
+        return CocoFlowRouter(pathType: P.self)
+    }
+    
     typealias presentType = P
     
     @Published var presentPath: Array<P>
+    
     init(pathType: P.Type) {
         self.presentPath = Array<P>()
     }
     
     func presentView(to destination: P) {
         presentPath.append(destination)
+        print("path: \(presentPath.description)")
     }
     
     func dismissView() {
@@ -24,7 +34,7 @@ final class CocoStackRouter<P: Presentable>: StackRoutable {
     }
 }
 
-protocol StackRoutable: Routable {
+protocol FlowRoutable: Routable {
     associatedtype presentType
     
     func presentView(to destination: presentType)
