@@ -7,4 +7,4 @@
 
 import SwiftUI
 
-protocol Routable: ObservableObject { }
+protocol Routable: ObservableObject, AutoRegisterable { }
