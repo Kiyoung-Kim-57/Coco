@@ -26,7 +26,6 @@ final class CocoFlowRouter<P: Presentable>: FlowRoutable {
     
     func presentView(to destination: P) {
         presentPath.append(destination)
-        print("path: \(presentPath.description)")
     }
     
     func dismissView() {
