@@ -10,9 +10,25 @@ import SwiftData
 
 @main
 struct CocoApp: App {
+    @StateObjectInjection private var appRouter: CocoAppRouter
+    
+    init() {
+        Self.registerDependency()
+    }
+    
     var body: some Scene {
         WindowGroup {
             MainView()
+                .environmentObject(appRouter)
         }
+    }
+}
+
+extension CocoApp {
+    static func registerDependency() {
+        DIContainer.shared.autoRegister([
+            CocoFlowRouter<MainPresent>.self,
+            CocoAppRouter.self
+        ])
     }
 }
