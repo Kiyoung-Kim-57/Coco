@@ -8,12 +8,31 @@
 import SwiftUI
 
 struct MainView: View {
-    @StateObject var mainRouter: CocoStackRouter = CocoStackRouter(pathType: MainPresent.self)
+    @EnvironmentObject var appRouter: CocoAppRouter
+    
     var body: some View {
-        Text("Hello")
+        
+        NavigationStack(path: $appRouter.mainFlowRouter.presentPath) {
+            VStack {
+                Button {
+                    appRouter.presentView(type: MainPresent.self, to: .detail)
+                } label: {
+                    Text("Let's Go to Detail")
+                }
+            }
+            .navigationDestination(for: MainPresent.self) { destination in
+                switch destination {
+                case .detail:
+                    Text("It's Detail")
+                case .main:
+                    Text("It's Main")
+                }
+            }
+        }
     }
 }
 
 #Preview {
     MainView()
+        .environmentObject(DIContainer.shared.resolve(CocoAppRouter.self))
 }
