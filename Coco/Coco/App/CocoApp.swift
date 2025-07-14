@@ -27,7 +27,7 @@ struct CocoApp: App {
 extension CocoApp {
     static func registerDependency() {
         DIContainer.shared.autoRegister([
-            CocoFlowRouter<MainPresent>.self,
+            CocoFlowRouter<HomePresent>.self,
             CocoAppRouter.self
         ])
     }
