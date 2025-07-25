@@ -9,7 +9,18 @@
 /* Begin PBXBuildFile section */
 		6F9C74B72E125A3A000878C6 /* CocoNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F9C74B62E125A3A000878C6 /* CocoNetwork.framework */; };
 		6F9C74B82E125A3A000878C6 /* CocoNetwork.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6F9C74B62E125A3A000878C6 /* CocoNetwork.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		6FF1324C2E33540100D14F35 /* CocoDatasource.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F9C74932E1255D6000878C6 /* CocoDatasource.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		6FF1324D2E33540100D14F35 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6F9C748A2E1255D6000878C6 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6F9C74922E1255D6000878C6;
+			remoteInfo = CocoDatasource;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		6F9C74B92E125A3A000878C6 /* Embed Frameworks */ = {
@@ -28,12 +39,18 @@
 /* Begin PBXFileReference section */
 		6F9C74932E1255D6000878C6 /* CocoDatasource.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CocoDatasource.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F9C74B62E125A3A000878C6 /* CocoNetwork.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CocoNetwork.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6FF132482E33540100D14F35 /* CocoDatasourceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CocoDatasourceTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		6F9C74952E1255D6000878C6 /* CocoDatasource */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = CocoDatasource;
+			sourceTree = "<group>";
+		};
+		6FF132492E33540100D14F35 /* CocoDatasourceTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = CocoDatasourceTests;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -47,6 +64,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		6FF132452E33540100D14F35 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6FF1324C2E33540100D14F35 /* CocoDatasource.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -54,6 +79,7 @@
 			isa = PBXGroup;
 			children = (
 				6F9C74952E1255D6000878C6 /* CocoDatasource */,
+				6FF132492E33540100D14F35 /* CocoDatasourceTests */,
 				6F9C74B52E125A3A000878C6 /* Frameworks */,
 				6F9C74942E1255D6000878C6 /* Products */,
 			);
@@ -63,6 +89,7 @@
 			isa = PBXGroup;
 			children = (
 				6F9C74932E1255D6000878C6 /* CocoDatasource.framework */,
+				6FF132482E33540100D14F35 /* CocoDatasourceTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -112,6 +139,29 @@
 			productReference = 6F9C74932E1255D6000878C6 /* CocoDatasource.framework */;
 			productType = "com.apple.product-type.framework";
 		};
+		6FF132472E33540100D14F35 /* CocoDatasourceTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6FF132512E33540100D14F35 /* Build configuration list for PBXNativeTarget "CocoDatasourceTests" */;
+			buildPhases = (
+				6FF132442E33540100D14F35 /* Sources */,
+				6FF132452E33540100D14F35 /* Frameworks */,
+				6FF132462E33540100D14F35 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6FF1324E2E33540100D14F35 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				6FF132492E33540100D14F35 /* CocoDatasourceTests */,
+			);
+			name = CocoDatasourceTests;
+			packageProductDependencies = (
+			);
+			productName = CocoDatasourceTests;
+			productReference = 6FF132482E33540100D14F35 /* CocoDatasourceTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -123,6 +173,9 @@
 				LastUpgradeCheck = 1630;
 				TargetAttributes = {
 					6F9C74922E1255D6000878C6 = {
+						CreatedOnToolsVersion = 16.3;
+					};
+					6FF132472E33540100D14F35 = {
 						CreatedOnToolsVersion = 16.3;
 					};
 				};
@@ -142,12 +195,20 @@
 			projectRoot = "";
 			targets = (
 				6F9C74922E1255D6000878C6 /* CocoDatasource */,
+				6FF132472E33540100D14F35 /* CocoDatasourceTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		6F9C74912E1255D6000878C6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6FF132462E33540100D14F35 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -164,7 +225,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		6FF132442E33540100D14F35 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		6FF1324E2E33540100D14F35 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6F9C74922E1255D6000878C6 /* CocoDatasource */;
+			targetProxy = 6FF1324D2E33540100D14F35 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		6F9C749A2E1255D6000878C6 /* Debug */ = {
@@ -362,6 +438,38 @@
 			};
 			name = Release;
 		};
+		6FF1324F2E33540100D14F35 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = S68RW89WQA;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kiyoung.CocoDatasourceTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		6FF132502E33540100D14F35 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = S68RW89WQA;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kiyoung.CocoDatasourceTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -379,6 +487,15 @@
 			buildConfigurations = (
 				6F9C749D2E1255D6000878C6 /* Debug */,
 				6F9C749E2E1255D6000878C6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6FF132512E33540100D14F35 /* Build configuration list for PBXNativeTarget "CocoDatasourceTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6FF1324F2E33540100D14F35 /* Debug */,
+				6FF132502E33540100D14F35 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
