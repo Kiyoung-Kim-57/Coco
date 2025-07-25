@@ -42,11 +42,13 @@ extension HttpRequest: Requestable {
         return request
     }
     
-    public mutating func changeQueryItemValue(_ name: String, _ value: String) {
-        guard let index = self.urlComponent.queryItems?.firstIndex(where: { $0.name == name })
-        else { return }
+    public func changeQueryItemValue(_ name: String, _ value: String) -> Self {
+        var request = self
+        guard let index = request.urlComponent.queryItems?.firstIndex(where: { $0.name == name })
+        else { return request }
         
-        self.urlComponent.queryItems?[index].value = value
+        request.urlComponent.queryItems?[index].value = value
+        return request
     }
     
     public func addBody(body: Data) -> Self {
