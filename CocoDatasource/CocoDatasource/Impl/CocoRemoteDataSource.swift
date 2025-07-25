@@ -12,11 +12,10 @@ public final class CocoRemoteDataSource: CocoReadableDataSource {
     public typealias Item = Data
     public typealias Condition = HttpRequest
     
-    private let networkManager: NetworkManagerImpl
+    private let networkManager: NetworkManager
     private var baseRequest = HttpRequest(scheme: .https, method: .GET)
-        .setURLPath(path: "")
     
-    public init(networkManager: NetworkManagerImpl) {
+    public init(networkManager: NetworkManager) {
         self.networkManager = networkManager
     }
     
