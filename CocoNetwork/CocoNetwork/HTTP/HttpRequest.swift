@@ -50,10 +50,13 @@ extension HttpRequest: Requestable {
     
     public func changeQueryItemValue(_ name: String, _ value: String) -> Self {
         var request = self
-        guard let index = request.urlComponent.queryItems?.firstIndex(where: { $0.name == name })
-        else { return request }
+        guard var items = request.urlComponent.queryItems,
+              let index = items.firstIndex(where: { $0.name == name }) else {
+            return request
+        }
         
-        request.urlComponent.queryItems?[index].value = value
+        items[index].value = value
+        request.urlComponent.queryItems = items
         return request
     }
     
