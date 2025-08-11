@@ -36,9 +36,22 @@ struct CocoDatasourceTests {
                 .setURLPath(path: "api.upbit.com/v1/market/all")
         }
         
-        print("Response: \(markets.description)")
+        print("Response Sample: \(markets[0])")
         
         #expect(markets.count > 0)
+    }
+    
+    @Test("Read Data Query Test")
+    func readDataUsedQuery() async throws {
+        let markets: CryptocurrencyMarkets = try await remoteDatasource.readData(type: CryptocurrencyMarkets.self) { request in
+            request
+                .setURLPath(path: "api.upbit.com/v1/market/all")
+                .addQueryItem("is_details", "true")
+        }
+        
+        print("Response: \(markets[0])")
+        
+        #expect(markets[0].marketEvent != nil)
     }
 }
 
