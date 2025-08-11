@@ -23,7 +23,7 @@ struct CocoDatasourceTests {
     func readData() async throws {
         let data = try await remoteDatasource.readData { request in
             request
-                .setURLPath(path: "api.upbit.com/v1/market/all")
+                .setURLPath(path: "/v1/market/all")
         }
         
         #expect(data.count > 0)
@@ -33,7 +33,7 @@ struct CocoDatasourceTests {
     func readDataDecoding() async throws {
         let markets: CryptocurrencyMarkets = try await remoteDatasource.readData(type: CryptocurrencyMarkets.self) { request in
             request
-                .setURLPath(path: "api.upbit.com/v1/market/all")
+                .setURLPath(path: "/v1/market/all")
         }
         
         print("Response Sample: \(markets[0])")
@@ -45,7 +45,7 @@ struct CocoDatasourceTests {
     func readDataUsedQuery() async throws {
         let markets: CryptocurrencyMarkets = try await remoteDatasource.readData(type: CryptocurrencyMarkets.self) { request in
             request
-                .setURLPath(path: "api.upbit.com/v1/market/all")
+                .setURLPath(path: "/v1/market/all")
                 .addQueryItem("is_details", "true")
         }
         

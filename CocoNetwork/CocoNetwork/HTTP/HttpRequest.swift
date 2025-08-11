@@ -27,6 +27,12 @@ extension HttpRequest: Requestable {
         return request
     }
     
+    public func setURLHost(host: String) -> Self {
+        var request = self
+        request.urlComponent.host = host
+        return request
+    }
+    
     public func setURLPath(path: String) -> Self {
         var request = self
         request.urlComponent.path = path
