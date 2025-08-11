@@ -8,6 +8,11 @@
 import SwiftUI
 import Combine
 
+protocol AppRoutable: Routable {
+    @MainActor func changeFlow(type: FlowType)
+    @MainActor func presentView<P: Presentable>(type: P.Type, to destination: P)
+}
+
 final class CocoAppRouter: AppRoutable {
     static var typeKey: any Any.Type {
         return Self.self
@@ -17,33 +22,44 @@ final class CocoAppRouter: AppRoutable {
         return CocoAppRouter()
     }
     
-    private var presentFlowType: any Presentable.Type = MainPresent.self
     private var cancellables: Set<AnyCancellable> = Set()
     
-    @Published var mainFlowRouter: CocoFlowRouter<MainPresent> = DIContainer.shared.resolve(CocoFlowRouter<MainPresent>.self)
+    @Published private var presentFlowType: FlowType = .home
+    @Published private var mainFlowRouter: CocoFlowRouter<HomePresent> = DIContainer.shared.resolve(CocoFlowRouter<HomePresent>.self)
     
     init() {
-        bindFlowRouter()
+        Task { @MainActor in
+            bindFlowRouter()
+        }
     }
     
+    @MainActor
+    func changeFlow(type: FlowType) {
+        presentFlowType = type
+    }
+    
+    @MainActor
     func presentView<P: Presentable>(type: P.Type, to destination: P) {
-        if type.self is MainPresent.Type {
-            guard let destination = destination as? MainPresent else { return }
+        if type.self is HomePresent.Type {
+            guard presentFlowType == FlowType(type: type),
+                let destination = destination as? HomePresent else { return }
             presentMainFlowView(to: destination)
         }
     }
     
-    private func presentMainFlowView(to destination: MainPresent) {
+    @MainActor
+    private func presentMainFlowView(to destination: HomePresent) {
         mainFlowRouter.presentView(to: destination)
     }
     
+    @MainActor
     private func bindFlowRouter() {
-        mainFlowRouter.objectWillChange
+        [mainFlowRouter.objectWillChange].forEach {
+            $0
             .sink { [weak self] _ in
                 self?.objectWillChange.send()
             }
             .store(in: &cancellables)
+        }
     }
 }
-
-protocol AppRoutable: Routable { }

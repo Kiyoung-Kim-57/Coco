@@ -27,6 +27,12 @@ extension HttpRequest: Requestable {
         return request
     }
     
+    public func setURLHost(host: String) -> Self {
+        var request = self
+        request.urlComponent.host = host
+        return request
+    }
+    
     public func setURLPath(path: String) -> Self {
         var request = self
         request.urlComponent.path = path
@@ -42,11 +48,16 @@ extension HttpRequest: Requestable {
         return request
     }
     
-    public mutating func changeQueryItemValue(_ name: String, _ value: String) {
-        guard let index = self.urlComponent.queryItems?.firstIndex(where: { $0.name == name })
-        else { return }
+    public func changeQueryItemValue(_ name: String, _ value: String) -> Self {
+        var request = self
+        guard var items = request.urlComponent.queryItems,
+              let index = items.firstIndex(where: { $0.name == name }) else {
+            return request
+        }
         
-        self.urlComponent.queryItems?[index].value = value
+        items[index].value = value
+        request.urlComponent.queryItems = items
+        return request
     }
     
     public func addBody(body: Data) -> Self {

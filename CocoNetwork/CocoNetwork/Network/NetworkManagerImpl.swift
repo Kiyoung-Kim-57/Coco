@@ -4,6 +4,8 @@ public final class NetworkManagerImpl: NetworkManager {
     let urlSession = URLSession.shared
     let decoder = JSONDecoder()
     
+    public init() { }
+    
     public func fetchData<T: Decodable>(request: HttpRequest, type: T.Type) async throws -> HttpResponse<T> {
         let (data, response) = try await urlSession.data(for: request.urlRequest)
         let statusCode: Int = (response as? HTTPURLResponse)?.statusCode ?? 0
