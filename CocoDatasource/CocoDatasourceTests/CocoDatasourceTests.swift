@@ -36,9 +36,10 @@ struct CocoDatasourceTests {
                 .setURLPath(path: "api.upbit.com/v1/market/all")
         }
         
-        print("Response Sample: \(markets[0])")
-        
         #expect(markets.count > 0)
+        if let first = markets.first {
+            print("Response Sample: \(first)")
+        }
     }
     
     @Test("Read Data Query Test")
