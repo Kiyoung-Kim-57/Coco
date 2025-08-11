@@ -50,9 +50,11 @@ struct CocoDatasourceTests {
                 .addQueryItem("is_details", "true")
         }
         
-        print("Response: \(markets[0])")
-        
-        #expect(markets[0].marketEvent != nil)
+        #expect(!markets.isEmpty)
+        if let first = markets.first {
+            print("Response: \(first)")
+            #expect(first.marketEvent != nil)
+        }
     }
 }
 
