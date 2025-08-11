@@ -9,10 +9,10 @@ import Foundation
 
 // MARK: - Main Market Data Structure
 public struct CryptocurrencyMarket: Codable {
-    let market: String
-    let koreanName: String
-    let englishName: String
-    let marketEvent: MarketEvent?
+    public let market: String
+    public let koreanName: String
+    public let englishName: String
+    public let marketEvent: MarketEvent?
     
     enum CodingKeys: String, CodingKey {
         case market
