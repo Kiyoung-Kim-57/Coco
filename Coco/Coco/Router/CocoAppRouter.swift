@@ -9,8 +9,8 @@ import SwiftUI
 import Combine
 
 protocol AppRoutable: Routable {
-    func changeFlow(type: FlowType)
-    func presentView<P: Presentable>(type: P.Type, to destination: P)
+    @MainActor func changeFlow(type: FlowType)
+    @MainActor func presentView<P: Presentable>(type: P.Type, to destination: P)
 }
 
 final class CocoAppRouter: AppRoutable {
@@ -24,17 +24,21 @@ final class CocoAppRouter: AppRoutable {
     
     private var cancellables: Set<AnyCancellable> = Set()
     
-    @Published var presentFlowType: FlowType = .home
-    @Published var mainFlowRouter: CocoFlowRouter<HomePresent> = DIContainer.shared.resolve(CocoFlowRouter<HomePresent>.self)
+    @Published private var presentFlowType: FlowType = .home
+    @Published private var mainFlowRouter: CocoFlowRouter<HomePresent> = DIContainer.shared.resolve(CocoFlowRouter<HomePresent>.self)
     
     init() {
-        bindFlowRouter()
+        Task { @MainActor in
+            bindFlowRouter()
+        }
     }
     
+    @MainActor
     func changeFlow(type: FlowType) {
         presentFlowType = type
     }
     
+    @MainActor
     func presentView<P: Presentable>(type: P.Type, to destination: P) {
         if type.self is HomePresent.Type {
             guard presentFlowType == FlowType(type: type),
@@ -43,10 +47,12 @@ final class CocoAppRouter: AppRoutable {
         }
     }
     
+    @MainActor
     private func presentMainFlowView(to destination: HomePresent) {
         mainFlowRouter.presentView(to: destination)
     }
     
+    @MainActor
     private func bindFlowRouter() {
         [mainFlowRouter.objectWillChange].forEach {
             $0
