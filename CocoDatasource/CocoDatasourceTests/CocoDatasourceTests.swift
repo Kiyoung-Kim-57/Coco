@@ -28,6 +28,18 @@ struct CocoDatasourceTests {
         
         #expect(data.count > 0)
     }
+    
+    @Test("Read Data Decoding Test")
+    func readDataDecoding() async throws {
+        let markets: CryptocurrencyMarkets = try await remoteDatasource.readData(type: CryptocurrencyMarkets.self) { request in
+            request
+                .setURLPath(path: "api.upbit.com/v1/market/all")
+        }
+        
+        print("Response: \(markets.description)")
+        
+        #expect(markets.count > 0)
+    }
 }
 
 enum TestErrors: Error {
