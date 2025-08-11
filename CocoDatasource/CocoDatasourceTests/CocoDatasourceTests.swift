@@ -21,18 +21,13 @@ struct CocoDatasourceTests {
     
     @Test("Read Data Test")
     func readData() async throws {
-        await #expect(throws: TestErrors.readDataFailed) {
-            let data = try await remoteDatasource.readData { request in
-                request
-                    .setURLPath(path: "")
-                    .addHeader(key: "", value: "")
-                    .addQueryItem("", "")
-                    .changeQueryItemValue("", "")
-
-            }
+        let data = try await remoteDatasource.readData { request in
+            request
+                .setURLPath(path: "api.upbit.com/v1/market/all")
         }
+        
+        #expect(data.count > 0)
     }
-
 }
 
 enum TestErrors: Error {
