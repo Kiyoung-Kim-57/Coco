@@ -36,9 +36,10 @@ struct CocoDatasourceTests {
                 .setURLPath(path: "/v1/market/all")
         }
         
-        print("Response Sample: \(markets[0])")
-        
         #expect(markets.count > 0)
+        if let first = markets.first {
+            print("Response Sample: \(first)")
+        }
     }
     
     @Test("Read Data Query Test")
@@ -49,9 +50,11 @@ struct CocoDatasourceTests {
                 .addQueryItem("is_details", "true")
         }
         
-        print("Response: \(markets[0])")
-        
-        #expect(markets[0].marketEvent != nil)
+        #expect(!markets.isEmpty)
+        if let first = markets.first {
+            print("Response: \(first)")
+            #expect(first.marketEvent != nil)
+        }
     }
 }
 
