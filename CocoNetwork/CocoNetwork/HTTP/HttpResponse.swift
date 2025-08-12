@@ -31,8 +31,8 @@ extension HttpResponse {
         
         var updatedSelf = self
         if self.statusCode == statusCode {
-            updatedSelf.isResponseHandled = true
             handler(updatedSelf)
+            updatedSelf.isResponseHandled = true
         }
         return updatedSelf
     }
@@ -48,8 +48,8 @@ extension HttpResponse {
         
         var updatedSelf = self
         if range.contains(statusCode) {
-            updatedSelf.isResponseHandled = true
             handler(updatedSelf)
+            updatedSelf.isResponseHandled = true
         }
         return updatedSelf
     }
@@ -65,8 +65,8 @@ extension HttpResponse {
         
         var updatedSelf = self
         if statusCodes.contains(statusCode) {
-            updatedSelf.isResponseHandled = true
             handler(updatedSelf)
+            updatedSelf.isResponseHandled = true
         }
         return updatedSelf
     }
