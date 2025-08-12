@@ -6,7 +6,7 @@ public final class NetworkManagerImpl: NetworkManager {
     
     public init() { }
     
-    public func fetchData<T: Decodable>(request: HttpRequest, type: T.Type) async throws -> HttpResponse<T> {
+    public func performRequest<T: Decodable>(request: HttpRequest, type: T.Type) async throws -> HttpResponse<T> {
         let (data, response) = try await urlSession.data(for: request.urlRequest)
         let statusCode: Int = (response as? HTTPURLResponse)?.statusCode ?? 0
         let dto: T = try data.toDTO(decoder: decoder)
@@ -15,7 +15,7 @@ public final class NetworkManagerImpl: NetworkManager {
         return httpResponse
     }
     
-    public func fetchData(request: HttpRequest) async throws -> HttpResponse<Data> {
+    public func performRequest(request: HttpRequest) async throws -> HttpResponse<Data> {
         let (data, response) = try await urlSession.data(for: request.urlRequest)
         let statusCode: Int = (response as? HTTPURLResponse)?.statusCode ?? 0
         let httpResponse = HttpResponse(statusCode: statusCode, response: data)
