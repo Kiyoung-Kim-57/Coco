@@ -1,7 +1,7 @@
 import Foundation
 
 public protocol Requestable {
-    var urlRequest: URLRequest { get }
+    func urlRequest() throws -> URLRequest
     
     func setURLHost(host: String) -> Self 
     func setURLPath(path: String) -> Self

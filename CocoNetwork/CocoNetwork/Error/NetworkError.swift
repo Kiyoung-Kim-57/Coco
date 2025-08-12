@@ -1,11 +1,10 @@
 import Foundation
 
 public enum NetworkError: Error {
-    case requestObjectError
-    
-    public var description: String {
-        switch self {
-        case .requestObjectError: "Failed to initialize HttpRequest"
-        }
-    }
+    case notFound
+    case unauthorized
+    case serverError(Int)
+    case networkError(Int)
+    case unknown(Int)
+    case invalidResponse
 }
