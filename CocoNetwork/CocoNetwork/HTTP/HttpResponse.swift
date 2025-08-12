@@ -110,7 +110,7 @@ extension HttpResponse {
         return onStatus(in: 300...399, handler: handler)
     }
     
-    /// 모든 에러 응답 처리 (300-599) - 다른 핸들러로 처리되지 않은 경우만
+    /// 모든 에러 응답 처리 (300-599)
     @discardableResult
     public func onAnyError(handler: @escaping (Self) -> Void) -> Self {
         return onStatus(in: 300...599, handler: handler)
