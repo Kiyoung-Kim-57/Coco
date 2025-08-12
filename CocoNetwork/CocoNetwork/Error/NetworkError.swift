@@ -5,4 +5,6 @@ public enum NetworkError: Error {
     case unauthorized
     case serverError(Int)
     case networkError(Int)
+    case unknown(Int)
+    case invalidResponse
 }
