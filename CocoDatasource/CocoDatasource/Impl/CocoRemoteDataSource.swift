@@ -50,15 +50,19 @@ public final class CocoRemoteDataSource: CocoReadableDataSource {
                 .onStatus(401) { _ in
                     // 인증 에러 처리
                     continuation.resume(throwing: NetworkError.unauthorized)
+                    return
                 }
                 .onStatus(404) { _ in
                     continuation.resume(throwing: NetworkError.notFound)
+                    return
                 }
                 .onServerError { response in
                     continuation.resume(throwing: NetworkError.serverError(response.statusCode))
+                    return
                 }
-                .onError { response in
+                .onAnyError { response in
                     continuation.resume(throwing: NetworkError.networkError(response.statusCode))
+                    return
                 }
         }
     }

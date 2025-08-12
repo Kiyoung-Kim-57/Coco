@@ -5,6 +5,16 @@ public struct HttpResponse<T: Decodable>: Responsable {
     
     public var statusCode: Int
     public var response: ResponseType
+    private var isResponseHandled: Bool = false
+    
+    /// HttpResponse 초기화 (내부 생성용)
+    /// - Parameters:
+    ///   - statusCode: HTTP 상태 코드
+    ///   - response: 응답 데이터
+    public init(statusCode: Int, response: ResponseType) {
+        self.statusCode = statusCode
+        self.response = response
+    }
 }
 
 // MARK: - Status Code Handling Extensions
@@ -17,10 +27,14 @@ extension HttpResponse {
     /// - Returns: 체이닝을 위한 self
     @discardableResult
     public func onStatus(_ statusCode: Int, handler: @escaping (Self) -> Void) -> Self {
+        guard !isResponseHandled else { return self }
+        
+        var updatedSelf = self
         if self.statusCode == statusCode {
-            handler(self)
+            updatedSelf.isResponseHandled = true
+            handler(updatedSelf)
         }
-        return self
+        return updatedSelf
     }
     
     /// 상태 코드 범위에 대한 핸들러 등록
@@ -30,10 +44,14 @@ extension HttpResponse {
     /// - Returns: 체이닝을 위한 self
     @discardableResult
     public func onStatus(in range: ClosedRange<Int>, handler: @escaping (Self) -> Void) -> Self {
+        guard !isResponseHandled else { return self }
+        
+        var updatedSelf = self
         if range.contains(statusCode) {
-            handler(self)
+            updatedSelf.isResponseHandled = true
+            handler(updatedSelf)
         }
-        return self
+        return updatedSelf
     }
     
     /// 여러 상태 코드에 대한 핸들러 등록
@@ -43,14 +61,18 @@ extension HttpResponse {
     /// - Returns: 체이닝을 위한 self
     @discardableResult
     public func onStatus(oneOf statusCodes: [Int], handler: @escaping (Self) -> Void) -> Self {
+        guard !isResponseHandled else { return self }
+        
+        var updatedSelf = self
         if statusCodes.contains(statusCode) {
-            handler(self)
+            updatedSelf.isResponseHandled = true
+            handler(updatedSelf)
         }
-        return self
+        return updatedSelf
     }
 }
 
-// MARK: - Convenience Methods
+// MARK: - Convenience Methods (Using Base onStatus Methods)
 extension HttpResponse {
     
     /// 성공 응답 처리 (200-299)
@@ -59,16 +81,21 @@ extension HttpResponse {
         return onStatus(in: 200...299, handler: handler)
     }
     
-    /// 에러 응답 처리 (400-599)
+    /// 인증 에러 처리 (401, 403)
     @discardableResult
-    public func onError(handler: @escaping (Self) -> Void) -> Self {
-        return onStatus(in: 400...599, handler: handler)
+    public func onAuthError(handler: @escaping (Self) -> Void) -> Self {
+        return onStatus(oneOf: [401, 403], handler: handler)
     }
     
-    /// 클라이언트 에러 처리 (400-499)
+    /// 기타 클라이언트 에러 처리 (400-499, 단 401, 403 제외)
     @discardableResult
     public func onClientError(handler: @escaping (Self) -> Void) -> Self {
-        return onStatus(in: 400...499, handler: handler)
+        guard !isResponseHandled else { return self }
+        
+        if (400...499).contains(statusCode) && ![401, 403].contains(statusCode) {
+            return onStatus(statusCode, handler: handler)
+        }
+        return self
     }
     
     /// 서버 에러 처리 (500-599)
@@ -77,15 +104,15 @@ extension HttpResponse {
         return onStatus(in: 500...599, handler: handler)
     }
     
-    /// 인증 에러 처리 (401, 403)
-    @discardableResult
-    public func onAuthError(handler: @escaping (Self) -> Void) -> Self {
-        return onStatus(oneOf: [401, 403], handler: handler)
-    }
-    
     /// 리다이렉션 처리 (300-399)
     @discardableResult
     public func onRedirection(handler: @escaping (Self) -> Void) -> Self {
         return onStatus(in: 300...399, handler: handler)
+    }
+    
+    /// 모든 에러 응답 처리 (300-599) - 다른 핸들러로 처리되지 않은 경우만
+    @discardableResult
+    public func onAnyError(handler: @escaping (Self) -> Void) -> Self {
+        return onStatus(in: 300...599, handler: handler)
     }
 }
