@@ -27,8 +27,11 @@ extension HttpRequest: Requestable {
     /// 최종 URLRequest 객체 생성
     /// 설정된 모든 파라미터들을 기반으로 URLRequest를 구성합니다.
     /// - Returns: 구성된 URLRequest 객체
-    public var urlRequest: URLRequest {
-        var request = URLRequest(url: urlComponent.url!)
+    public func urlRequest() throws -> URLRequest {
+        guard let url = urlComponent.url else {
+            throw URLError.invalidURL
+        }
+        var request = URLRequest(url: url)
         request.httpMethod = method.string
         request.allHTTPHeaderFields = httpHeaders
         request.httpBody = httpBody
