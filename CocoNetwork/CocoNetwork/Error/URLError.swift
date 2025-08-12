@@ -7,6 +7,6 @@
 
 import Foundation
 
-public enum URLError: Error {
+public enum URLBuildError: Error {
     case invalidURL
 }
