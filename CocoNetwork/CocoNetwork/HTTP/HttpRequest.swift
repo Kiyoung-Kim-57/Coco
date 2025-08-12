@@ -29,7 +29,7 @@ extension HttpRequest: Requestable {
     /// - Returns: 구성된 URLRequest 객체
     public func urlRequest() throws -> URLRequest {
         guard let url = urlComponent.url else {
-            throw URLError.invalidURL
+            throw URLBuildError.invalidURL
         }
         var request = URLRequest(url: url)
         request.httpMethod = method.string
