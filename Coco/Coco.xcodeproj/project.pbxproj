@@ -6,9 +6,58 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		6F9F7E7F2E4CDE0E00F9D9E4 /* CocoDesign.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F9F7E792E4CDE0E00F9D9E4 /* CocoDesign.framework */; };
+		6F9F7E802E4CDE0E00F9D9E4 /* CocoDesign.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6F9F7E792E4CDE0E00F9D9E4 /* CocoDesign.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		6F9F7E7D2E4CDE0E00F9D9E4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6F9C73A02E100FAC000878C6 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6F9F7E782E4CDE0E00F9D9E4;
+			remoteInfo = CocoDesign;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		6F9F7E842E4CDE0E00F9D9E4 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				6F9F7E802E4CDE0E00F9D9E4 /* CocoDesign.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		6F9C73A82E100FAC000878C6 /* Coco.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Coco.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6F9F7E792E4CDE0E00F9D9E4 /* CocoDesign.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CocoDesign.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		6F9F7E852E4CDE2B00F9D9E4 /* Exceptions for "CocoDesign" folder in "Coco" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Modifier/ButtonModifier.swift,
+				Modifier/TabItemModifier.swift,
+			);
+			target = 6F9C73A72E100FAC000878C6 /* Coco */;
+		};
+		6F9F7E862E4CDE2B00F9D9E4 /* Exceptions for "CocoDesign" folder in "CocoDesign" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Modifier/ButtonModifier.swift,
+				Modifier/TabItemModifier.swift,
+			);
+			target = 6F9F7E782E4CDE0E00F9D9E4 /* CocoDesign */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		6F9C73AA2E100FAC000878C6 /* Coco */ = {
@@ -16,10 +65,27 @@
 			path = Coco;
 			sourceTree = "<group>";
 		};
+		6F9F7E7A2E4CDE0E00F9D9E4 /* CocoDesign */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				6F9F7E852E4CDE2B00F9D9E4 /* Exceptions for "CocoDesign" folder in "Coco" target */,
+				6F9F7E862E4CDE2B00F9D9E4 /* Exceptions for "CocoDesign" folder in "CocoDesign" target */,
+			);
+			path = CocoDesign;
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		6F9C73A52E100FAC000878C6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6F9F7E7F2E4CDE0E00F9D9E4 /* CocoDesign.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6F9F7E762E4CDE0E00F9D9E4 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -33,6 +99,7 @@
 			isa = PBXGroup;
 			children = (
 				6F9C73AA2E100FAC000878C6 /* Coco */,
+				6F9F7E7A2E4CDE0E00F9D9E4 /* CocoDesign */,
 				6F9C73A92E100FAC000878C6 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -41,11 +108,22 @@
 			isa = PBXGroup;
 			children = (
 				6F9C73A82E100FAC000878C6 /* Coco.app */,
+				6F9F7E792E4CDE0E00F9D9E4 /* CocoDesign.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		6F9F7E742E4CDE0E00F9D9E4 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
 		6F9C73A72E100FAC000878C6 /* Coco */ = {
@@ -55,10 +133,12 @@
 				6F9C73A42E100FAC000878C6 /* Sources */,
 				6F9C73A52E100FAC000878C6 /* Frameworks */,
 				6F9C73A62E100FAC000878C6 /* Resources */,
+				6F9F7E842E4CDE0E00F9D9E4 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				6F9F7E7E2E4CDE0E00F9D9E4 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				6F9C73AA2E100FAC000878C6 /* Coco */,
@@ -70,6 +150,29 @@
 			productReference = 6F9C73A82E100FAC000878C6 /* Coco.app */;
 			productType = "com.apple.product-type.application";
 		};
+		6F9F7E782E4CDE0E00F9D9E4 /* CocoDesign */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6F9F7E812E4CDE0E00F9D9E4 /* Build configuration list for PBXNativeTarget "CocoDesign" */;
+			buildPhases = (
+				6F9F7E742E4CDE0E00F9D9E4 /* Headers */,
+				6F9F7E752E4CDE0E00F9D9E4 /* Sources */,
+				6F9F7E762E4CDE0E00F9D9E4 /* Frameworks */,
+				6F9F7E772E4CDE0E00F9D9E4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				6F9F7E7A2E4CDE0E00F9D9E4 /* CocoDesign */,
+			);
+			name = CocoDesign;
+			packageProductDependencies = (
+			);
+			productName = CocoDesign;
+			productReference = 6F9F7E792E4CDE0E00F9D9E4 /* CocoDesign.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -77,11 +180,14 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1630;
+				LastSwiftUpdateCheck = 1640;
 				LastUpgradeCheck = 1630;
 				TargetAttributes = {
 					6F9C73A72E100FAC000878C6 = {
 						CreatedOnToolsVersion = 16.3;
+					};
+					6F9F7E782E4CDE0E00F9D9E4 = {
+						CreatedOnToolsVersion = 16.4;
 					};
 				};
 			};
@@ -100,12 +206,20 @@
 			projectRoot = "";
 			targets = (
 				6F9C73A72E100FAC000878C6 /* Coco */,
+				6F9F7E782E4CDE0E00F9D9E4 /* CocoDesign */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		6F9C73A62E100FAC000878C6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6F9F7E772E4CDE0E00F9D9E4 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -122,7 +236,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		6F9F7E752E4CDE0E00F9D9E4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		6F9F7E7E2E4CDE0E00F9D9E4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6F9F7E782E4CDE0E00F9D9E4 /* CocoDesign */;
+			targetProxy = 6F9F7E7D2E4CDE0E00F9D9E4 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		6F9C73B32E100FAE000878C6 /* Debug */ = {
@@ -304,6 +433,78 @@
 			};
 			name = Release;
 		};
+		6F9F7E822E4CDE0E00F9D9E4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = S68RW89WQA;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu17 gnu++20";
+				PRODUCT_BUNDLE_IDENTIFIER = com.kiyoung.CocoDesign;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_INSTALL_MODULE = YES;
+				SWIFT_INSTALL_OBJC_HEADER = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		6F9F7E832E4CDE0E00F9D9E4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = S68RW89WQA;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu17 gnu++20";
+				PRODUCT_BUNDLE_IDENTIFIER = com.kiyoung.CocoDesign;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_INSTALL_MODULE = YES;
+				SWIFT_INSTALL_OBJC_HEADER = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -321,6 +522,15 @@
 			buildConfigurations = (
 				6F9C73B62E100FAE000878C6 /* Debug */,
 				6F9C73B72E100FAE000878C6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6F9F7E812E4CDE0E00F9D9E4 /* Build configuration list for PBXNativeTarget "CocoDesign" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6F9F7E822E4CDE0E00F9D9E4 /* Debug */,
+				6F9F7E832E4CDE0E00F9D9E4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
