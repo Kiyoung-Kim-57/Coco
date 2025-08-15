@@ -24,8 +24,8 @@ final class CocoAppRouter: AppRoutable {
     
     private var cancellables: Set<AnyCancellable> = Set()
     
-    @Published private var presentFlowType: FlowType = .home
-    @Published private var mainFlowRouter: CocoFlowRouter<HomePresent> = DIContainer.shared.resolve(CocoFlowRouter<HomePresent>.self)
+    @Published var presentFlowType: FlowType = .home
+    @Published var mainFlowRouter: CocoFlowRouter<HomePresent> = DIContainer.shared.resolve(CocoFlowRouter<HomePresent>.self)
     
     init() {
         Task { @MainActor in
