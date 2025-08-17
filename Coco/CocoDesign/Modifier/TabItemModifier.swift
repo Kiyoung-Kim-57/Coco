@@ -1,11 +1,11 @@
 import SwiftUI
 
-struct TabItemModifier: ViewModifier {
+public struct TabItemModifier: ViewModifier {
     let imageName: String
     let title: String
     let isSystemImage: Bool
     
-    func body(content: Content) -> some View {
+    public func body(content: Content) -> some View {
         content
             .tabItem {
                 if isSystemImage {
@@ -18,7 +18,7 @@ struct TabItemModifier: ViewModifier {
     }
 }
 
-extension View {
+public extension View {
     func tabItem(imageName: String, title: String, isSystemImage: Bool = false) -> some View {
         return modifier(TabItemModifier(imageName: imageName, title: title, isSystemImage: isSystemImage))
     }

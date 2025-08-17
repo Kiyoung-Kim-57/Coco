@@ -6,12 +6,12 @@
 //
 import SwiftUI
 
-struct ButtonModifier: ViewModifier {
+public struct ButtonModifier: ViewModifier {
     
     let action: () -> ()
     let isDisabled: Bool
     
-    func body(content: Content) -> some View {
+    public func body(content: Content) -> some View {
         Button {
             action()
         } label: {
@@ -21,7 +21,7 @@ struct ButtonModifier: ViewModifier {
     }
 }
 
-extension View {
+public extension View {
     func asButton(_ action: @escaping () -> (), disabled: Bool = false) -> some View {
         modifier(ButtonModifier(action: action, isDisabled: disabled))
     }
