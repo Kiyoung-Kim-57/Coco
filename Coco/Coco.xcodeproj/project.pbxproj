@@ -40,25 +40,6 @@
 		6F9F7E792E4CDE0E00F9D9E4 /* CocoDesign.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CocoDesign.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
-/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		6F9F7E852E4CDE2B00F9D9E4 /* Exceptions for "CocoDesign" folder in "Coco" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				Modifier/ButtonModifier.swift,
-				Modifier/TabItemModifier.swift,
-			);
-			target = 6F9C73A72E100FAC000878C6 /* Coco */;
-		};
-		6F9F7E862E4CDE2B00F9D9E4 /* Exceptions for "CocoDesign" folder in "CocoDesign" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				Modifier/ButtonModifier.swift,
-				Modifier/TabItemModifier.swift,
-			);
-			target = 6F9F7E782E4CDE0E00F9D9E4 /* CocoDesign */;
-		};
-/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
-
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		6F9C73AA2E100FAC000878C6 /* Coco */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
@@ -67,10 +48,6 @@
 		};
 		6F9F7E7A2E4CDE0E00F9D9E4 /* CocoDesign */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				6F9F7E852E4CDE2B00F9D9E4 /* Exceptions for "CocoDesign" folder in "Coco" target */,
-				6F9F7E862E4CDE2B00F9D9E4 /* Exceptions for "CocoDesign" folder in "CocoDesign" target */,
-			);
 			path = CocoDesign;
 			sourceTree = "<group>";
 		};
