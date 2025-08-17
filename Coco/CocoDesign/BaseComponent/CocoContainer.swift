@@ -25,8 +25,8 @@ public struct CocoContainer<Content: View>: View {
         backgroundColor: Color = .white,
         lineColor: Color = .clear ,
         cornerRadius: CGFloat = 8,
-        borderColor: Color = .clear,
-        borderWidth: CGFloat = 1,
+        borderColor: Color = .black,
+        borderWidth: CGFloat = 0,
         shadowType: ShadowType = .none,
         contentPadding: EdgeInsets = EdgeInsets(
             top: 10,
@@ -54,17 +54,27 @@ public struct CocoContainer<Content: View>: View {
             .background(
                 RoundedRectangle(cornerRadius: cornerRadius)
                     .fill(backgroundColor)
-                    .shadowType(shadowType)
             )
             .overlay(
                 RoundedRectangle(cornerRadius: cornerRadius)
                     .stroke(borderColor, lineWidth: borderWidth)
             )
+            .shadowType(shadowType)
     }
 }
 
 #Preview {
-    CocoContainer(shadowType: .floating) {
+    CocoContainer(
+        backgroundColor: .cyan,
+        borderWidth: 2,
+        shadowType: .elevated,
+        contentPadding: EdgeInsets(
+            top: 15,
+            leading: 15,
+            bottom: 15,
+            trailing: 15
+        )
+    ) {
         HStack {
             CocoLabel("Hello")
             CocoLabel("World")
