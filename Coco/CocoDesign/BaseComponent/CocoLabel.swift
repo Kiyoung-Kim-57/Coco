@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CocoLabel: View {
+public struct CocoLabel: View {
     private let text: String
     private let font: Font?
     private let textColor: Color
@@ -15,7 +15,7 @@ struct CocoLabel: View {
     private let textPadding: CGFloat = 10
     private let cornerRadius: CGFloat
     
-    init(
+    public init(
         _ text: String,
         font: Font? = nil,
         textColor: Color = .black,
@@ -30,7 +30,7 @@ struct CocoLabel: View {
         self.cornerRadius = cornerRadius
     }
     
-    var body: some View {
+    public var body: some View {
         Text(text)
             .font(font ?? .body)
             .padding(textPadding)
