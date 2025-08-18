@@ -15,20 +15,6 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "6F3E3F352E52FF28006F453B"
-               BuildableName = "CocoPresent.framework"
-               BlueprintName = "CocoPresent"
-               ReferencedContainer = "container:Coco.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
                BlueprintIdentifier = "6F9C73A72E100FAC000878C6"
                BuildableName = "Coco.app"
                BlueprintName = "Coco"
