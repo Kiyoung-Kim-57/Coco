@@ -8,6 +8,15 @@
       location = "group:CocoDatasource/CocoDatasource.xcodeproj">
    </FileRef>
    <FileRef
+      location = "group:CocoPresent/CocoPresent.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:CocoDesign/CocoDesign.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:CocoDIContainer/CocoDIContainer.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:Coco/Coco.xcodeproj">
    </FileRef>
 </Workspace>
