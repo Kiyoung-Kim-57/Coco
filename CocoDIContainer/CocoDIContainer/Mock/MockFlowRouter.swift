@@ -8,7 +8,7 @@
 import CocoPresent
 
 public final class MockFlowRouter: FlowRoutable {
-    public typealias presentType = String
+    public typealias PresentType = String
     
     public func presentView(to destination: String) {
         print("Present View To \(destination)")

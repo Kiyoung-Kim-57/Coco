@@ -8,7 +8,7 @@
 import SwiftUI
 
 public final class CocoFlowRouter<P: Presentable>: FlowRoutable {
-    public typealias presentType = P
+    public typealias PresentType = P
     
     @Published var presentPath: Array<P>
     
@@ -26,8 +26,8 @@ public final class CocoFlowRouter<P: Presentable>: FlowRoutable {
 }
 
 public protocol FlowRoutable: Routable {
-    associatedtype presentType
+    associatedtype PresentType
     
-    func presentView(to destination: presentType)
+    func presentView(to destination: PresentType)
     func dismissView()
 }
