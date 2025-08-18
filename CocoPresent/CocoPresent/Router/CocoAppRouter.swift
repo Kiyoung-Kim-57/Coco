@@ -8,38 +8,32 @@
 import SwiftUI
 import Combine
 
-protocol AppRoutable: Routable {
+public protocol AppRoutable: Routable {
     @MainActor func changeFlow(type: FlowType)
     @MainActor func presentView<P: Presentable>(type: P.Type, to destination: P)
 }
 
-final class CocoAppRouter: AppRoutable {
-    static var typeKey: any Any.Type {
-        return Self.self
-    }
-    
-    static func createInstance() -> Any {
-        return CocoAppRouter()
-    }
-    
+public final class CocoAppRouter: AppRoutable {
     private var cancellables: Set<AnyCancellable> = Set()
     
-    @Published private var presentFlowType: FlowType = .home
-    @Published private var mainFlowRouter: CocoFlowRouter<HomePresent> = DIContainer.shared.resolve(CocoFlowRouter<HomePresent>.self)
+    @Published var presentFlowType: FlowType = .home
+    @Published var mainFlowRouter: any FlowRoutable
     
-    init() {
+    public init(mainFlowRouter: any FlowRoutable) {
+        self.mainFlowRouter = mainFlowRouter
+        
         Task { @MainActor in
             bindFlowRouter()
         }
     }
     
     @MainActor
-    func changeFlow(type: FlowType) {
+    public func changeFlow(type: FlowType) {
         presentFlowType = type
     }
     
     @MainActor
-    func presentView<P: Presentable>(type: P.Type, to destination: P) {
+    public func presentView<P: Presentable>(type: P.Type, to destination: P) {
         if type.self is HomePresent.Type {
             guard presentFlowType == FlowType(type: type),
                 let destination = destination as? HomePresent else { return }
@@ -49,11 +43,15 @@ final class CocoAppRouter: AppRoutable {
     
     @MainActor
     private func presentMainFlowView(to destination: HomePresent) {
+        guard let mainFlowRouter = mainFlowRouter as? CocoFlowRouter<HomePresent> else { return }
+        
         mainFlowRouter.presentView(to: destination)
     }
     
     @MainActor
     private func bindFlowRouter() {
+        guard let mainFlowRouter = mainFlowRouter as? CocoFlowRouter<HomePresent> else { return }
+        
         [mainFlowRouter.objectWillChange].forEach {
             $0
             .sink { [weak self] _ in

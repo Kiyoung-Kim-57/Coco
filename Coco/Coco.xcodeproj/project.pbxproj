@@ -6,7 +6,43 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		6F3E3E2A2E52DD9D006F453B /* CocoDIContainer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F3E3E292E52DD9D006F453B /* CocoDIContainer.framework */; };
+		6F3E3E2B2E52DD9D006F453B /* CocoDIContainer.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6F3E3E292E52DD9D006F453B /* CocoDIContainer.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		6F3E3F652E534F68006F453B /* CocoPresent.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F3E3F642E534F68006F453B /* CocoPresent.framework */; };
+		6F3E3F662E534F68006F453B /* CocoPresent.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6F3E3F642E534F68006F453B /* CocoPresent.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		6F3E3F682E53500C006F453B /* CocoDatasource.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F3E3F672E53500C006F453B /* CocoDatasource.framework */; };
+		6F3E3F692E53500C006F453B /* CocoDatasource.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6F3E3F672E53500C006F453B /* CocoDatasource.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		6F3E3F6B2E535011006F453B /* CocoNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F3E3F6A2E535011006F453B /* CocoNetwork.framework */; };
+		6F3E3F6C2E535011006F453B /* CocoNetwork.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6F3E3F6A2E535011006F453B /* CocoNetwork.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		6F3E3F6E2E535017006F453B /* CocoDesign.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F3E3F6D2E535017006F453B /* CocoDesign.framework */; };
+		6F3E3F6F2E535017006F453B /* CocoDesign.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6F3E3F6D2E535017006F453B /* CocoDesign.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		6F9F7E842E4CDE0E00F9D9E4 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				6F3E3F692E53500C006F453B /* CocoDatasource.framework in Embed Frameworks */,
+				6F3E3F662E534F68006F453B /* CocoPresent.framework in Embed Frameworks */,
+				6F3E3E2B2E52DD9D006F453B /* CocoDIContainer.framework in Embed Frameworks */,
+				6F3E3F6F2E535017006F453B /* CocoDesign.framework in Embed Frameworks */,
+				6F3E3F6C2E535011006F453B /* CocoNetwork.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		6F3E3E292E52DD9D006F453B /* CocoDIContainer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CocoDIContainer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6F3E3F642E534F68006F453B /* CocoPresent.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CocoPresent.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6F3E3F672E53500C006F453B /* CocoDatasource.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CocoDatasource.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6F3E3F6A2E535011006F453B /* CocoNetwork.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CocoNetwork.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6F3E3F6D2E535017006F453B /* CocoDesign.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CocoDesign.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F9C73A82E100FAC000878C6 /* Coco.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Coco.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -23,16 +59,34 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6F3E3F682E53500C006F453B /* CocoDatasource.framework in Frameworks */,
+				6F3E3F652E534F68006F453B /* CocoPresent.framework in Frameworks */,
+				6F3E3E2A2E52DD9D006F453B /* CocoDIContainer.framework in Frameworks */,
+				6F3E3F6E2E535017006F453B /* CocoDesign.framework in Frameworks */,
+				6F3E3F6B2E535011006F453B /* CocoNetwork.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6F3E3E282E52DD9D006F453B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6F3E3F6D2E535017006F453B /* CocoDesign.framework */,
+				6F3E3F6A2E535011006F453B /* CocoNetwork.framework */,
+				6F3E3F672E53500C006F453B /* CocoDatasource.framework */,
+				6F3E3F642E534F68006F453B /* CocoPresent.framework */,
+				6F3E3E292E52DD9D006F453B /* CocoDIContainer.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		6F9C739F2E100FAC000878C6 = {
 			isa = PBXGroup;
 			children = (
 				6F9C73AA2E100FAC000878C6 /* Coco */,
+				6F3E3E282E52DD9D006F453B /* Frameworks */,
 				6F9C73A92E100FAC000878C6 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -55,6 +109,7 @@
 				6F9C73A42E100FAC000878C6 /* Sources */,
 				6F9C73A52E100FAC000878C6 /* Frameworks */,
 				6F9C73A62E100FAC000878C6 /* Resources */,
+				6F9F7E842E4CDE0E00F9D9E4 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -77,7 +132,7 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1630;
+				LastSwiftUpdateCheck = 1640;
 				LastUpgradeCheck = 1630;
 				TargetAttributes = {
 					6F9C73A72E100FAC000878C6 = {
@@ -178,7 +233,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -236,7 +291,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -269,9 +324,13 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.kiyoung.Coco;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -298,9 +357,13 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.kiyoung.Coco;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

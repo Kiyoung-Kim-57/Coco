@@ -6,49 +6,64 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		6F3E3F552E52FF68006F453B /* CocoDesign.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F3E3F542E52FF68006F453B /* CocoDesign.framework */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
-		6F9C73D22E101BDF000878C6 /* CocoNetwork.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CocoNetwork.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6F3E3F332E52FF28006F453B /* CocoPresent.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CocoPresent.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6F3E3F542E52FF68006F453B /* CocoDesign.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CocoDesign.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		6F9C73D42E101BDF000878C6 /* CocoNetwork */ = {
+		6F3E3F352E52FF28006F453B /* CocoPresent */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = CocoNetwork;
+			path = CocoPresent;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		6F9C73CF2E101BDF000878C6 /* Frameworks */ = {
+		6F3E3F302E52FF28006F453B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6F3E3F552E52FF68006F453B /* CocoDesign.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		6F9C73C82E101BDF000878C6 = {
+		6F3E3F292E52FF28006F453B = {
 			isa = PBXGroup;
 			children = (
-				6F9C73D42E101BDF000878C6 /* CocoNetwork */,
-				6F9C73D32E101BDF000878C6 /* Products */,
+				6F3E3F352E52FF28006F453B /* CocoPresent */,
+				6F3E3F532E52FF68006F453B /* Frameworks */,
+				6F3E3F342E52FF28006F453B /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		6F9C73D32E101BDF000878C6 /* Products */ = {
+		6F3E3F342E52FF28006F453B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				6F9C73D22E101BDF000878C6 /* CocoNetwork.framework */,
+				6F3E3F332E52FF28006F453B /* CocoPresent.framework */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		6F3E3F532E52FF68006F453B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6F3E3F542E52FF68006F453B /* CocoDesign.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		6F9C73CD2E101BDF000878C6 /* Headers */ = {
+		6F3E3F2E2E52FF28006F453B /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -58,65 +73,65 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		6F9C73D12E101BDF000878C6 /* CocoNetwork */ = {
+		6F3E3F322E52FF28006F453B /* CocoPresent */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6F9C73DB2E101BDF000878C6 /* Build configuration list for PBXNativeTarget "CocoNetwork" */;
+			buildConfigurationList = 6F3E3F3A2E52FF28006F453B /* Build configuration list for PBXNativeTarget "CocoPresent" */;
 			buildPhases = (
-				6F9C73CD2E101BDF000878C6 /* Headers */,
-				6F9C73CE2E101BDF000878C6 /* Sources */,
-				6F9C73CF2E101BDF000878C6 /* Frameworks */,
-				6F9C73D02E101BDF000878C6 /* Resources */,
+				6F3E3F2E2E52FF28006F453B /* Headers */,
+				6F3E3F2F2E52FF28006F453B /* Sources */,
+				6F3E3F302E52FF28006F453B /* Frameworks */,
+				6F3E3F312E52FF28006F453B /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				6F9C73D42E101BDF000878C6 /* CocoNetwork */,
+				6F3E3F352E52FF28006F453B /* CocoPresent */,
 			);
-			name = CocoNetwork;
+			name = CocoPresent;
 			packageProductDependencies = (
 			);
-			productName = CocoNetwork;
-			productReference = 6F9C73D22E101BDF000878C6 /* CocoNetwork.framework */;
+			productName = CocoPresent;
+			productReference = 6F3E3F332E52FF28006F453B /* CocoPresent.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		6F9C73C92E101BDF000878C6 /* Project object */ = {
+		6F3E3F2A2E52FF28006F453B /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1630;
-				LastUpgradeCheck = 1630;
+				LastSwiftUpdateCheck = 1640;
+				LastUpgradeCheck = 1640;
 				TargetAttributes = {
-					6F9C73D12E101BDF000878C6 = {
-						CreatedOnToolsVersion = 16.3;
+					6F3E3F322E52FF28006F453B = {
+						CreatedOnToolsVersion = 16.4;
 					};
 				};
 			};
-			buildConfigurationList = 6F9C73CC2E101BDF000878C6 /* Build configuration list for PBXProject "CocoNetwork" */;
+			buildConfigurationList = 6F3E3F2D2E52FF28006F453B /* Build configuration list for PBXProject "CocoPresent" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
 			);
-			mainGroup = 6F9C73C82E101BDF000878C6;
+			mainGroup = 6F3E3F292E52FF28006F453B;
 			minimizedProjectReferenceProxies = 1;
 			preferredProjectObjectVersion = 77;
-			productRefGroup = 6F9C73D32E101BDF000878C6 /* Products */;
+			productRefGroup = 6F3E3F342E52FF28006F453B /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				6F9C73D12E101BDF000878C6 /* CocoNetwork */,
+				6F3E3F322E52FF28006F453B /* CocoPresent */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		6F9C73D02E101BDF000878C6 /* Resources */ = {
+		6F3E3F312E52FF28006F453B /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -126,7 +141,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		6F9C73CE2E101BDF000878C6 /* Sources */ = {
+		6F3E3F2F2E52FF28006F453B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -136,7 +151,7 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		6F9C73D92E101BDF000878C6 /* Debug */ = {
+		6F3E3F382E52FF28006F453B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -203,7 +218,7 @@
 			};
 			name = Debug;
 		};
-		6F9C73DA2E101BDF000878C6 /* Release */ = {
+		6F3E3F392E52FF28006F453B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -263,7 +278,7 @@
 			};
 			name = Release;
 		};
-		6F9C73DC2E101BDF000878C6 /* Debug */ = {
+		6F3E3F3B2E52FF28006F453B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
@@ -286,7 +301,7 @@
 				MARKETING_VERSION = 1.0;
 				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
 				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu17 gnu++20";
-				PRODUCT_BUNDLE_IDENTIFIER = com.kiyoung.CocoNetwork;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kiyoung.CocoPresent;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -301,7 +316,7 @@
 			};
 			name = Debug;
 		};
-		6F9C73DD2E101BDF000878C6 /* Release */ = {
+		6F3E3F3C2E52FF28006F453B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
@@ -324,7 +339,7 @@
 				MARKETING_VERSION = 1.0;
 				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
 				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu17 gnu++20";
-				PRODUCT_BUNDLE_IDENTIFIER = com.kiyoung.CocoNetwork;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kiyoung.CocoPresent;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -342,25 +357,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		6F9C73CC2E101BDF000878C6 /* Build configuration list for PBXProject "CocoNetwork" */ = {
+		6F3E3F2D2E52FF28006F453B /* Build configuration list for PBXProject "CocoPresent" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				6F9C73D92E101BDF000878C6 /* Debug */,
-				6F9C73DA2E101BDF000878C6 /* Release */,
+				6F3E3F382E52FF28006F453B /* Debug */,
+				6F3E3F392E52FF28006F453B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6F9C73DB2E101BDF000878C6 /* Build configuration list for PBXNativeTarget "CocoNetwork" */ = {
+		6F3E3F3A2E52FF28006F453B /* Build configuration list for PBXNativeTarget "CocoPresent" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				6F9C73DC2E101BDF000878C6 /* Debug */,
-				6F9C73DD2E101BDF000878C6 /* Release */,
+				6F3E3F3B2E52FF28006F453B /* Debug */,
+				6F3E3F3C2E52FF28006F453B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 6F9C73C92E101BDF000878C6 /* Project object */;
+	rootObject = 6F3E3F2A2E52FF28006F453B /* Project object */;
 }

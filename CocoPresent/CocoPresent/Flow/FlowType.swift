@@ -5,10 +5,10 @@
 //  Created by 김기영 on 7/14/25.
 //
 
-enum FlowType {
+public enum FlowType {
     case home
     
-    init(type: any Presentable.Type) {
+    public init(type: any Presentable.Type) {
         switch type {
         case is HomePresent.Type:
             self = .home

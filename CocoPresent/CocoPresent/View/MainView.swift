@@ -6,14 +6,17 @@
 //
 
 import SwiftUI
+import CocoDesign
 
-struct MainView: View {
+public struct MainView: View {
     @EnvironmentObject var appRouter: CocoAppRouter
     
-    var body: some View {
+    public init() { }
+    
+    public var body: some View {
         TabView(selection: $appRouter.presentFlowType) {
             Text("Home")
-                .tabItem(imageName: "house.fill", title: "home", isSystemImage: true)
+                .tabItem(systemName: "house.fill", title: "home")
                 .tag(FlowType.home)
         }
     }
