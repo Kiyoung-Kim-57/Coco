@@ -1,6 +1,6 @@
 import Foundation
 
 public protocol NetworkManager {
-    func performRequest<T: Decodable>(request: Requestable, type: T.Type) async throws -> Responsable<T>
-    func performRequest(request: Requestable) async throws -> Responsable<Data>
+    func performRequest<T: Decodable>(request: HttpRequest, type: T.Type) async throws -> HttpResponse<T>
+    func performRequest(request: HttpRequest) async throws -> HttpResponse<Data>
 }
