@@ -62,22 +62,3 @@ public struct CocoContainer<Content: View>: View {
             .shadowType(shadowType)
     }
 }
-
-#Preview {
-    CocoContainer(
-        backgroundColor: .cyan,
-        borderWidth: 2,
-        shadowType: .elevated,
-        contentPadding: EdgeInsets(
-            top: 15,
-            leading: 15,
-            bottom: 15,
-            trailing: 15
-        )
-    ) {
-        HStack {
-            CocoLabel("Hello")
-            CocoLabel("World")
-        }
-    }
-}

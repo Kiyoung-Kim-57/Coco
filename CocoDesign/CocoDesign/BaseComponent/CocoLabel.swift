@@ -12,7 +12,7 @@ public struct CocoLabel: View {
     private let font: Font?
     private let textColor: Color
     private let backgroundColor: Color
-    private let textPadding: CGFloat = 10
+    private let textPadding: CGFloat
     private let cornerRadius: CGFloat
     
     public init(
@@ -27,6 +27,7 @@ public struct CocoLabel: View {
         self.font = font
         self.textColor = textColor
         self.backgroundColor = backgroundColor
+        self.textPadding = textPadding
         self.cornerRadius = cornerRadius
     }
     

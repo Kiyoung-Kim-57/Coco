@@ -19,7 +19,11 @@ public struct TabItemModifier: ViewModifier {
 }
 
 public extension View {
-    func tabItem(imageName: String, title: String, isSystemImage: Bool = false) -> some View {
-        return modifier(TabItemModifier(imageName: imageName, title: title, isSystemImage: isSystemImage))
+    func tabItem(imageName: String, title: String) -> some View {
+        return modifier(TabItemModifier(imageName: imageName, title: title, isSystemImage: false))
+    }
+    
+    func tabItem(systemName: String, title: String) -> some View {
+        return modifier(TabItemModifier(imageName: systemName, title: title, isSystemImage: true))
     }
 }
