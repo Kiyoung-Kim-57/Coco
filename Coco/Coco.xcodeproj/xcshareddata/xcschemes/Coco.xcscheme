@@ -15,7 +15,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "6F3E3E302E52E37D006F453B"
+               BlueprintIdentifier = "6F3E3F352E52FF28006F453B"
                BuildableName = "CocoPresent.framework"
                BlueprintName = "CocoPresent"
                ReferencedContainer = "container:Coco.xcodeproj">
