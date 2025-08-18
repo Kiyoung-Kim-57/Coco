@@ -8,22 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		6F3E3F552E52FF68006F453B /* CocoDesign.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F3E3F542E52FF68006F453B /* CocoDesign.framework */; };
-		6F3E3F562E52FF68006F453B /* CocoDesign.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6F3E3F542E52FF68006F453B /* CocoDesign.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		6F3E3F572E52FF68006F453B /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				6F3E3F562E52FF68006F453B /* CocoDesign.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		6F3E3F332E52FF28006F453B /* CocoPresent.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CocoPresent.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -96,7 +81,6 @@
 				6F3E3F2F2E52FF28006F453B /* Sources */,
 				6F3E3F302E52FF28006F453B /* Frameworks */,
 				6F3E3F312E52FF28006F453B /* Resources */,
-				6F3E3F572E52FF68006F453B /* Embed Frameworks */,
 			);
 			buildRules = (
 			);

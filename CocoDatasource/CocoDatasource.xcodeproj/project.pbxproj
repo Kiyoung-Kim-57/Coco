@@ -8,9 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		6F9C74B72E125A3A000878C6 /* CocoNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F9C74B62E125A3A000878C6 /* CocoNetwork.framework */; };
-		6F9C74B82E125A3A000878C6 /* CocoNetwork.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6F9C74B62E125A3A000878C6 /* CocoNetwork.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6FF1324C2E33540100D14F35 /* CocoDatasource.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F9C74932E1255D6000878C6 /* CocoDatasource.framework */; };
-		6FF132532E3359A700D14F35 /* CocoNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FF132522E3359A700D14F35 /* CocoNetwork.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -23,25 +21,10 @@
 		};
 /* End PBXContainerItemProxy section */
 
-/* Begin PBXCopyFilesBuildPhase section */
-		6F9C74B92E125A3A000878C6 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				6F9C74B82E125A3A000878C6 /* CocoNetwork.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
 		6F9C74932E1255D6000878C6 /* CocoDatasource.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CocoDatasource.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F9C74B62E125A3A000878C6 /* CocoNetwork.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CocoNetwork.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6FF132482E33540100D14F35 /* CocoDatasourceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CocoDatasourceTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		6FF132522E3359A700D14F35 /* CocoNetwork.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CocoNetwork.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -91,7 +74,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				6FF1324C2E33540100D14F35 /* CocoDatasource.framework in Frameworks */,
-				6FF132532E3359A700D14F35 /* CocoNetwork.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -120,7 +102,6 @@
 		6F9C74B52E125A3A000878C6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				6FF132522E3359A700D14F35 /* CocoNetwork.framework */,
 				6F9C74B62E125A3A000878C6 /* CocoNetwork.framework */,
 			);
 			name = Frameworks;
@@ -147,7 +128,6 @@
 				6F9C748F2E1255D6000878C6 /* Sources */,
 				6F9C74902E1255D6000878C6 /* Frameworks */,
 				6F9C74912E1255D6000878C6 /* Resources */,
-				6F9C74B92E125A3A000878C6 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
