@@ -7,28 +7,20 @@
 
 import SwiftUI
 import SwiftData
+import CocoDIContainer
 
 @main
 struct CocoApp: App {
-    @StateObjectInjection private var appRouter: CocoAppRouter
+    @StateObject private var appRouter = DIContainer.resolveAppRouter()
     
     init() {
-        Self.registerDependency()
+        DIContainer.registerObjects()
     }
     
     var body: some Scene {
         WindowGroup {
-            MainView()
+            DIContainer.resolveMainView()
                 .environmentObject(appRouter)
         }
-    }
-}
-
-extension CocoApp {
-    static func registerDependency() {
-        DIContainer.shared.autoRegister([
-            CocoFlowRouter<HomePresent>.self,
-            CocoAppRouter.self
-        ])
     }
 }
