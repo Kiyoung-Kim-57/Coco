@@ -8,8 +8,6 @@
 import SwiftUI
 
 public struct CocoContainer<Content: View>: View {
-    private let width: CGFloat
-    private let height: CGFloat
     private let backgroundColor: Color
     private let lineColor: Color
     private let cornerRadius: CGFloat
@@ -20,8 +18,6 @@ public struct CocoContainer<Content: View>: View {
     private let content: Content
     
     public init(
-        width: CGFloat = 0,
-        height: CGFloat = 0,
         backgroundColor: Color = .white,
         lineColor: Color = .clear ,
         cornerRadius: CGFloat = 8,
@@ -36,8 +32,6 @@ public struct CocoContainer<Content: View>: View {
         ),
         @ViewBuilder content: () -> Content
     ) {
-        self.width = width
-        self.height = height
         self.backgroundColor = backgroundColor
         self.lineColor = lineColor
         self.cornerRadius = cornerRadius
