@@ -8,6 +8,7 @@
 import SwiftUI
 
 public struct CocoContainer<Content: View>: View {
+    private let contentSize: CGSize?
     private let backgroundColor: Color
     private let lineColor: Color
     private let cornerRadius: CGFloat
@@ -18,6 +19,7 @@ public struct CocoContainer<Content: View>: View {
     private let content: Content
     
     public init(
+        contentSize: CGSize? = nil,
         backgroundColor: Color = .white,
         lineColor: Color = .clear ,
         cornerRadius: CGFloat = 8,
@@ -32,6 +34,7 @@ public struct CocoContainer<Content: View>: View {
         ),
         @ViewBuilder content: () -> Content
     ) {
+        self.contentSize = contentSize
         self.backgroundColor = backgroundColor
         self.lineColor = lineColor
         self.cornerRadius = cornerRadius
@@ -43,16 +46,31 @@ public struct CocoContainer<Content: View>: View {
     }
     
     public var body: some View {
-        content
-            .padding(contentPadding)
-            .background(
-                RoundedRectangle(cornerRadius: cornerRadius)
-                    .fill(backgroundColor)
-            )
-            .overlay(
-                RoundedRectangle(cornerRadius: cornerRadius)
-                    .stroke(borderColor, lineWidth: borderWidth)
-            )
-            .shadowType(shadowType)
+        if let contentSize = contentSize {
+            content
+                .frame(width: contentSize.width, height: contentSize.height)
+                .padding(contentPadding)
+                .background(
+                    RoundedRectangle(cornerRadius: cornerRadius)
+                        .fill(backgroundColor)
+                        .shadowType(shadowType)
+                )
+                .overlay(
+                    RoundedRectangle(cornerRadius: cornerRadius)
+                        .stroke(borderColor, lineWidth: borderWidth)
+                )
+        } else {
+            content
+                .padding(contentPadding)
+                .background(
+                    RoundedRectangle(cornerRadius: cornerRadius)
+                        .fill(backgroundColor)
+                        .shadowType(shadowType)
+                )
+                .overlay(
+                    RoundedRectangle(cornerRadius: cornerRadius)
+                        .stroke(borderColor, lineWidth: borderWidth)
+                )
+        }
     }
 }
