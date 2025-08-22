@@ -17,6 +17,8 @@
 		6F3E3F6C2E535011006F453B /* CocoNetwork.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6F3E3F6A2E535011006F453B /* CocoNetwork.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6F3E3F6E2E535017006F453B /* CocoDesign.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F3E3F6D2E535017006F453B /* CocoDesign.framework */; };
 		6F3E3F6F2E535017006F453B /* CocoDesign.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6F3E3F6D2E535017006F453B /* CocoDesign.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		6F3E409F2E58CB1E006F453B /* CocoDomain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F3E409E2E58CB1E006F453B /* CocoDomain.framework */; };
+		6F3E40A02E58CB1E006F453B /* CocoDomain.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6F3E409E2E58CB1E006F453B /* CocoDomain.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -30,6 +32,7 @@
 				6F3E3F662E534F68006F453B /* CocoPresent.framework in Embed Frameworks */,
 				6F3E3E2B2E52DD9D006F453B /* CocoDIContainer.framework in Embed Frameworks */,
 				6F3E3F6F2E535017006F453B /* CocoDesign.framework in Embed Frameworks */,
+				6F3E40A02E58CB1E006F453B /* CocoDomain.framework in Embed Frameworks */,
 				6F3E3F6C2E535011006F453B /* CocoNetwork.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -43,6 +46,7 @@
 		6F3E3F672E53500C006F453B /* CocoDatasource.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CocoDatasource.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F3E3F6A2E535011006F453B /* CocoNetwork.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CocoNetwork.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F3E3F6D2E535017006F453B /* CocoDesign.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CocoDesign.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6F3E409E2E58CB1E006F453B /* CocoDomain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CocoDomain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F9C73A82E100FAC000878C6 /* Coco.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Coco.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -63,6 +67,7 @@
 				6F3E3F652E534F68006F453B /* CocoPresent.framework in Frameworks */,
 				6F3E3E2A2E52DD9D006F453B /* CocoDIContainer.framework in Frameworks */,
 				6F3E3F6E2E535017006F453B /* CocoDesign.framework in Frameworks */,
+				6F3E409F2E58CB1E006F453B /* CocoDomain.framework in Frameworks */,
 				6F3E3F6B2E535011006F453B /* CocoNetwork.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -73,6 +78,7 @@
 		6F3E3E282E52DD9D006F453B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6F3E409E2E58CB1E006F453B /* CocoDomain.framework */,
 				6F3E3F6D2E535017006F453B /* CocoDesign.framework */,
 				6F3E3F6A2E535011006F453B /* CocoNetwork.framework */,
 				6F3E3F672E53500C006F453B /* CocoDatasource.framework */,
