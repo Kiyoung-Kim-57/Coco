@@ -8,7 +8,7 @@
 import Foundation
 
 // MARK: - Main Market Data Structure
-public struct CryptocurrencyMarket: Codable {
+public struct CryptoCurrencyMarketDTO: Codable {
     public let market: String
     public let koreanName: String
     public let englishName: String
@@ -23,4 +23,4 @@ public struct CryptocurrencyMarket: Codable {
 }
 
 // MARK: - Typealias for convenience
-public typealias CryptocurrencyMarkets = [CryptocurrencyMarket]
+public typealias CryptocurrencyMarkets = [CryptoCurrencyMarketDTO]

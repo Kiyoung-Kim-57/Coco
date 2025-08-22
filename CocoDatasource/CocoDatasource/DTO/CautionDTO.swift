@@ -6,7 +6,7 @@
 //
 
 // MARK: - Caution Structure
-public struct Caution: Codable {
+public struct CautionDTO: Codable {
     let priceFluctuations: Bool
     let tradingVolumeSoaring: Bool
     let depositAmountSoaring: Bool
