@@ -9,9 +9,8 @@ import Combine
 import Foundation
 import CocoNetwork
 
-public final class CocoRemoteDataSource: CocoReadableDataSource {
-    public typealias Item = Data
-    public typealias Condition = HttpRequest
+public final class CocoRemoteDataSourceImpl: CocoRemoteDataSource {
+    public typealias DecodeType = CryptoCurrencyMarketDTO
     
     private let networkManager: NetworkManager
     private let baseHost: String = "api.upbit.com" // 추후 config파일로 따로 관리 예정
@@ -50,19 +49,15 @@ public final class CocoRemoteDataSource: CocoReadableDataSource {
                 .onStatus(401) { _ in
                     // 인증 에러 처리
                     continuation.resume(throwing: NetworkError.unauthorized)
-                    return
                 }
                 .onStatus(404) { _ in
                     continuation.resume(throwing: NetworkError.notFound)
-                    return
                 }
                 .onServerError { response in
                     continuation.resume(throwing: NetworkError.serverError(response.statusCode))
-                    return
                 }
                 .onAnyError { response in
                     continuation.resume(throwing: NetworkError.networkError(response.statusCode))
-                    return
                 }
         }
     }
