@@ -38,9 +38,10 @@
 				DTO/CryptoCurrencyMarketDTO.swift,
 				DTO/MarketEvent.swift,
 				Impl/CocoCoreDataDataSource.swift,
-				Impl/CocoRemoteDataSource.swift,
+				Impl/CocoRemoteDataSourceImpl.swift,
 				Impl/CocoUserDefaultsDataSource.swift,
-				Interface/CocoDataSource.swift,
+				Interface/DataSource/CocoDataSource.swift,
+				Interface/DataSource/CocoRemoteDataSource.swift,
 			);
 			target = 6FF132472E33540100D14F35 /* CocoDatasourceTests */;
 		};
