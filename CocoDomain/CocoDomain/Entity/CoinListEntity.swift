@@ -13,6 +13,12 @@ public struct CoinListEntity: Codable {
     public let koreanName: String
     public let englishName: String
     
+    public init(market: String, koreanName: String, englishName: String) {
+        self.market = market
+        self.koreanName = koreanName
+        self.englishName = englishName
+    }
+    
     enum CodingKeys: String, CodingKey {
         case market
         case koreanName = "korean_name"
