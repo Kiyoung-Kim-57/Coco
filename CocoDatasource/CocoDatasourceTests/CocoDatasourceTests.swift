@@ -12,11 +12,11 @@ import CocoDatasource
 @Suite("Remote Datasource Test")
 struct CocoDatasourceTests {
     private var networkManager: NetworkManager
-    private var remoteDatasource: CocoRemoteDataSource
+    private var remoteDatasource: any CocoRemoteDataSource
     
     init() {
         self.networkManager = NetworkManagerImpl()
-        self.remoteDatasource = CocoRemoteDataSource(networkManager: self.networkManager)
+        self.remoteDatasource = CocoRemoteDataSourceImpl(networkManager: self.networkManager)
     }
     
     @Test("Read Data Test")
