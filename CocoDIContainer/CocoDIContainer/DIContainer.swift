@@ -5,6 +5,9 @@
 //  Created by 김기영 on 7/2/25.
 //
 import SwiftUI
+import CocoDomain
+import CocoDatasource
+import CocoNetwork
 import CocoPresent
 
 public final class DIContainer {
@@ -92,13 +95,30 @@ public final class DIContainer {
 
 // Register
 extension DIContainer {
+    // Network Manager
+    static func registerNetworkManager() {
+        DIContainer.shared.register(NetworkManagerImpl())
+    }
+    // DataSource
+    static func registerCocoRemoteDataSource() {
+        let networkManager = DIContainer.shared.resolve(NetworkManagerImpl.self)
+        DIContainer.shared.register(CocoRemoteDataSourceImpl(networkManager: networkManager))
+    }
+    
+    // Repository
+    static func registerCoinListRepository() {
+        let dataSource = DIContainer.shared.resolve(CocoRemoteDataSourceImpl.self)
+        DIContainer.shared.register(CoinListRepositoryImpl(remoteDataSource: dataSource))
+    }
+    // UseCase
+    static func registerFetchCoinListUseCase() {
+        let repository = DIContainer.shared.resolve(CoinListRepositoryImpl.self)
+        DIContainer.shared.register(FetchCoinListUseCaseImpl(coinListRepository: repository))
+    }
+    
     // MainFlowRouter
     static func registerMainFlowRouter() {
         DIContainer.shared.register(CocoFlowRouter(pathType: HomePresent.self))
-    }
-    
-    static func registerFlowRoutableMock() {
-        DIContainer.shared.registerMock((any FlowRoutable).self, instance: MockFlowRouter())
     }
     
     // AppRouter
@@ -113,10 +133,6 @@ extension DIContainer {
         }
     }
     
-    static func registerAppRoutableMock() {
-        DIContainer.shared.registerMock((any AppRoutable).self, instance: MockAppRouter())
-    }
-    
     // MainView
     static func registerMainView() {
         DIContainer.shared.register(MainView())
@@ -126,7 +142,10 @@ extension DIContainer {
         registerMainFlowRouter()
         registerAppRouter()
         registerMainView()
-        
+        registerNetworkManager()
+        registerCocoRemoteDataSource()
+        registerCoinListRepository()
+        registerFetchCoinListUseCase()
         // Mock Register
 //        registerFlowRoutableMock()
 //        registerAppRoutableMock()
@@ -141,5 +160,31 @@ public extension DIContainer {
     
     static func resolveMainView() -> MainView {
         return DIContainer.shared.resolve(MainView.self)
+    }
+    
+    static func resolveFetchCoinListUseCase() -> FetchCoinListUseCaseImpl {
+        return DIContainer.shared.resolve(FetchCoinListUseCaseImpl.self)
+    }
+}
+
+// Mock
+public extension DIContainer {
+    static func registerFlowRoutableMock() {
+        DIContainer.shared.registerMock((any FlowRoutable).self, instance: MockFlowRouter())
+    }
+    
+    static func registerAppRoutableMock() {
+        DIContainer.shared.registerMock((any AppRoutable).self, instance: MockAppRouter())
+    }
+    
+    static func registerNetworkManagerMock() {
+        DIContainer.shared.registerMock((any NetworkManager).self, instance: MockNetworkManager())
+    }
+    
+    static func registerMockObjects() {
+        // Mock Register
+        registerFlowRoutableMock()
+        registerAppRoutableMock()
+        registerNetworkManagerMock()
     }
 }
