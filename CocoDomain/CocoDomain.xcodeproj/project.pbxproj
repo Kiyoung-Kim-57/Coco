@@ -6,14 +6,36 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		6FC1ADE62E59AAD2008F0FB9 /* CocoDomain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F3E40942E58CAEC006F453B /* CocoDomain.framework */; platformFilter = ios; };
+		6FC1ADEE2E59AD69008F0FB9 /* CocoDIContainer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FC1ADED2E59AD69008F0FB9 /* CocoDIContainer.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		6FC1ADE72E59AAD2008F0FB9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6F3E408B2E58CAEC006F453B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6F3E40932E58CAEC006F453B;
+			remoteInfo = CocoDomain;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		6F3E40942E58CAEC006F453B /* CocoDomain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CocoDomain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6FC1ADE22E59AAD2008F0FB9 /* CocoDomainTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CocoDomainTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6FC1ADED2E59AD69008F0FB9 /* CocoDIContainer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CocoDIContainer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		6F3E40962E58CAEC006F453B /* CocoDomain */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = CocoDomain;
+			sourceTree = "<group>";
+		};
+		6FC1ADE32E59AAD2008F0FB9 /* CocoDomainTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = CocoDomainTests;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -26,6 +48,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		6FC1ADDF2E59AAD2008F0FB9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6FC1ADE62E59AAD2008F0FB9 /* CocoDomain.framework in Frameworks */,
+				6FC1ADEE2E59AD69008F0FB9 /* CocoDIContainer.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -33,6 +64,8 @@
 			isa = PBXGroup;
 			children = (
 				6F3E40962E58CAEC006F453B /* CocoDomain */,
+				6FC1ADE32E59AAD2008F0FB9 /* CocoDomainTests */,
+				6FC1ADEC2E59AD69008F0FB9 /* Frameworks */,
 				6F3E40952E58CAEC006F453B /* Products */,
 			);
 			sourceTree = "<group>";
@@ -41,8 +74,17 @@
 			isa = PBXGroup;
 			children = (
 				6F3E40942E58CAEC006F453B /* CocoDomain.framework */,
+				6FC1ADE22E59AAD2008F0FB9 /* CocoDomainTests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		6FC1ADEC2E59AD69008F0FB9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6FC1ADED2E59AD69008F0FB9 /* CocoDIContainer.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -81,6 +123,29 @@
 			productReference = 6F3E40942E58CAEC006F453B /* CocoDomain.framework */;
 			productType = "com.apple.product-type.framework";
 		};
+		6FC1ADE12E59AAD2008F0FB9 /* CocoDomainTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6FC1ADE92E59AAD2008F0FB9 /* Build configuration list for PBXNativeTarget "CocoDomainTests" */;
+			buildPhases = (
+				6FC1ADDE2E59AAD2008F0FB9 /* Sources */,
+				6FC1ADDF2E59AAD2008F0FB9 /* Frameworks */,
+				6FC1ADE02E59AAD2008F0FB9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6FC1ADE82E59AAD2008F0FB9 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				6FC1ADE32E59AAD2008F0FB9 /* CocoDomainTests */,
+			);
+			name = CocoDomainTests;
+			packageProductDependencies = (
+			);
+			productName = CocoDomainTests;
+			productReference = 6FC1ADE22E59AAD2008F0FB9 /* CocoDomainTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -94,6 +159,9 @@
 					6F3E40932E58CAEC006F453B = {
 						CreatedOnToolsVersion = 16.4;
 						LastSwiftMigration = 1640;
+					};
+					6FC1ADE12E59AAD2008F0FB9 = {
+						CreatedOnToolsVersion = 16.4;
 					};
 				};
 			};
@@ -112,12 +180,20 @@
 			projectRoot = "";
 			targets = (
 				6F3E40932E58CAEC006F453B /* CocoDomain */,
+				6FC1ADE12E59AAD2008F0FB9 /* CocoDomainTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		6F3E40922E58CAEC006F453B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6FC1ADE02E59AAD2008F0FB9 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -134,7 +210,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		6FC1ADDE2E59AAD2008F0FB9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		6FC1ADE82E59AAD2008F0FB9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			platformFilter = ios;
+			target = 6F3E40932E58CAEC006F453B /* CocoDomain */;
+			targetProxy = 6FC1ADE72E59AAD2008F0FB9 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		6F3E40992E58CAEC006F453B /* Debug */ = {
@@ -345,6 +437,48 @@
 			};
 			name = Release;
 		};
+		6FC1ADEA2E59AAD2008F0FB9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = S68RW89WQA;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kiyoung.CocoDomainTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		6FC1ADEB2E59AAD2008F0FB9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = S68RW89WQA;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kiyoung.CocoDomainTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -362,6 +496,15 @@
 			buildConfigurations = (
 				6F3E409C2E58CAEC006F453B /* Debug */,
 				6F3E409D2E58CAEC006F453B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6FC1ADE92E59AAD2008F0FB9 /* Build configuration list for PBXNativeTarget "CocoDomainTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6FC1ADEA2E59AAD2008F0FB9 /* Debug */,
+				6FC1ADEB2E59AAD2008F0FB9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
