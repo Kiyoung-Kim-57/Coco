@@ -13,10 +13,11 @@ public final class CocoRemoteDataSourceImpl: CocoRemoteDataSource {
     public typealias DecodeType = CryptoCurrencyMarketDTO
     
     private let networkManager: NetworkManager
-    private let baseHost: String = "api.upbit.com" // 추후 config파일로 따로 관리 예정
+    private let baseHost: String
     
-    public init(networkManager: NetworkManager) {
+    public init(networkManager: NetworkManager, baseHost: String) {
         self.networkManager = networkManager
+        self.baseHost = baseHost
     }
     
     public func readData(
