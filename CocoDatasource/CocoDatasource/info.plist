@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CoinGeckoApiKey</key>
+	<string>$(COIN_GECKO_API_KEY)</string>
+	<key>UpbitHost</key>
+	<string>$(UPBIT_HOST)</string>
+	<key>GeckoHost</key>
+	<string>$(GECKO_HOST)</string>
+</dict>
+</plist>
