@@ -102,7 +102,7 @@ extension DIContainer {
     // DataSource
     static func registerCocoRemoteDataSource() {
         let networkManager = DIContainer.shared.resolve(NetworkManagerImpl.self)
-        DIContainer.shared.register(CocoRemoteDataSourceImpl(networkManager: networkManager))
+        DIContainer.shared.register(CocoRemoteDataSourceImpl(networkManager: networkManager, baseHost: DataSourceBundle.upbitHost()))
     }
     
     // Repository
