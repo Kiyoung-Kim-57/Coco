@@ -57,6 +57,7 @@ public struct CocoContainer<Content: View>: View {
                 )
                 .overlay(
                     RoundedRectangle(cornerRadius: cornerRadius)
+                        .inset(by: borderWidth / 2)
                         .stroke(borderColor, lineWidth: borderWidth)
                 )
         } else {
@@ -69,6 +70,7 @@ public struct CocoContainer<Content: View>: View {
                 )
                 .overlay(
                     RoundedRectangle(cornerRadius: cornerRadius)
+                        .inset(by: borderWidth / 2)
                         .stroke(borderColor, lineWidth: borderWidth)
                 )
         }
