@@ -7,7 +7,7 @@
 
 import Foundation
 
-// MARK: - Main Market Data Structure
+// MARK: - Main Market Data Structure, Upbit
 public struct CoinGeneralInfoDTO: Codable {
     public let market: String
     public let koreanName: String
