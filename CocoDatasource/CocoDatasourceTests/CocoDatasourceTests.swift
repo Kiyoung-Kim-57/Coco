@@ -70,15 +70,12 @@ struct CocoDatasourceTests {
     
     @Test("Gecko Read Data Test")
     func geckoReadData() async throws {
-        let data = try await coinGeckoRemoteDatasource.readData { request in
+        let data = try await coinGeckoRemoteDatasource.readData(type:TrendingSearchListDTO.self ) { request in
             request
-                .setURLPath(path: "/api/v3/search")
-                .addQueryItem("query", "ethereum")
+                .setURLPath(path: Gecko.trendingPath())
         }
-        
-        let dict = try JSONSerialization.jsonObject(with: data, options: []) as! [String: Any]
-        print(dict.description)
-        #expect(data.count > 0)
+        #expect(data.coins.count > 0)
+        print(data.coins[0])
     }
 }
 
