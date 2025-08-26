@@ -6,7 +6,8 @@
 //
 import Foundation
 
-public protocol CoinListRepository {
+public protocol CoinSearchRepository {
     func fetchCoinList() async throws -> CoinListEntities
     func fetchCoinThumbnail() async throws -> URL
+    func fetchTrendingCoinList() async throws -> TrendingCoinListEntities
 }
