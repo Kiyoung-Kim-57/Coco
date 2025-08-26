@@ -35,7 +35,8 @@
 			membershipExceptions = (
 				DataError.swift,
 				DTO/CautionDTO.swift,
-				DTO/CryptoCurrencyMarketDTO.swift,
+				DTO/CoinGeneralInfoDTO.swift,
+				DTO/CoinPriceDTO.swift,
 				DTO/MarketEvent.swift,
 				Impl/CocoCoreDataDataSource.swift,
 				Impl/CocoRemoteDataSourceImpl.swift,
