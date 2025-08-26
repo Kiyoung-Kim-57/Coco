@@ -8,7 +8,7 @@
 import Foundation
 import CocoDomain
 
-public extension CryptoCurrencyMarketDTO {
+public extension CoinGeneralInfoDTO {
     func toCoinListEntity() -> CoinListEntity {
         CoinListEntity(
             market: self.market,

@@ -18,8 +18,16 @@ struct CocoDatasourceTests {
     
     init() {
         self.networkManager = NetworkManagerImpl()
-        self.upbitRemoteDatasource = CocoRemoteDataSourceImpl(networkManager: self.networkManager, baseHost: DataSourceBundle.upbitHost())
-        self.coinGeckoRemoteDatasource = CocoRemoteDataSourceImpl(networkManager: self.networkManager, baseHost: DataSourceBundle.geckoHost())
+        
+        self.upbitRemoteDatasource = CocoRemoteDataSourceImpl(
+            networkManager: self.networkManager,
+            baseHost: DataSourceBundle.upbitHost()
+        )
+        
+        self.coinGeckoRemoteDatasource = CocoRemoteDataSourceImpl(
+            networkManager: self.networkManager,
+            baseHost: DataSourceBundle.geckoHost()
+        )
     }
     
     @Test("Upbit Read Data Test")
@@ -34,7 +42,7 @@ struct CocoDatasourceTests {
     
     @Test("Upbit Read Data Decoding Test")
     func readDataDecoding() async throws {
-        let markets: CryptocurrencyMarkets = try await upbitRemoteDatasource.readData(type: CryptocurrencyMarkets.self) { request in
+        let markets: CoinGeneralInfoDTOs = try await upbitRemoteDatasource.readData(type: CoinGeneralInfoDTOs.self) { request in
             request
                 .setURLPath(path: "/v1/market/all")
         }
@@ -47,7 +55,7 @@ struct CocoDatasourceTests {
     
     @Test("Upbit Read Data Query Test")
     func readDataUsedQuery() async throws {
-        let markets: CryptocurrencyMarkets = try await upbitRemoteDatasource.readData(type: CryptocurrencyMarkets.self) { request in
+        let markets: CoinGeneralInfoDTOs = try await upbitRemoteDatasource.readData(type: CoinGeneralInfoDTOs.self) { request in
             request
                 .setURLPath(path: "/v1/market/all")
                 .addQueryItem("is_details", "true")

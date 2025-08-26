@@ -10,7 +10,7 @@ import Foundation
 import CocoNetwork
 
 public final class CocoRemoteDataSourceImpl: CocoRemoteDataSource {
-    public typealias DecodeType = CryptoCurrencyMarketDTO
+    public typealias DecodeType = CoinGeneralInfoDTO
     
     private let networkManager: NetworkManager
     private let baseHost: String

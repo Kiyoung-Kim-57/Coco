@@ -17,7 +17,7 @@ public final class CoinListRepositoryImpl: CoinListRepository {
     }
     
     public func fetchCoinList() async throws -> CoinListEntities {
-        let response = try await remoteDataSource.readData(type: CryptocurrencyMarkets.self) { request in
+        let response = try await remoteDataSource.readData(type: CoinGeneralInfoDTOs.self) { request in
             request
                 .setURLPath(path: "/v1/market/all")
         }
