@@ -2,13 +2,13 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:CocoDomain/CocoDomain.xcodeproj">
-   </FileRef>
-   <FileRef
       location = "group:CocoNetwork/CocoNetwork.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:CocoDatasource/CocoDatasource.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:CocoDomain/CocoDomain.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:CocoPresent/CocoPresent.xcodeproj">
