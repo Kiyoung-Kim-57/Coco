@@ -10,9 +10,9 @@ public final class FetchCoinListUseCaseImpl: FetchCoinListUseCase {
         try await coinListRepository.fetchCoinList()
     }
     
-    private let coinListRepository: CoinListRepository
+    private let coinListRepository: CoinSearchRepository
     
-    public init(coinListRepository: CoinListRepository) {
+    public init(coinListRepository: CoinSearchRepository) {
         self.coinListRepository = coinListRepository
     }
 }
