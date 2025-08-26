@@ -34,10 +34,11 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				DataError.swift,
-				DTO/CautionDTO.swift,
-				DTO/CoinGeneralInfoDTO.swift,
-				DTO/CoinPriceDTO.swift,
-				DTO/MarketEvent.swift,
+				DTO/CoinGecko/CoinPriceDTO.swift,
+				DTO/CoinGecko/TrendingSearchListDTO.swift,
+				DTO/Upbit/CautionDTO.swift,
+				DTO/Upbit/CoinGeneralInfoDTO.swift,
+				DTO/Upbit/MarketEvent.swift,
 				Impl/CocoCoreDataDataSource.swift,
 				Impl/CocoRemoteDataSourceImpl.swift,
 				Impl/CocoUserDefaultsDataSource.swift,
