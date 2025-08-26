@@ -20,7 +20,7 @@ public struct CocoLabel: View {
         font: Font? = nil,
         textColor: Color = .black,
         backgroundColor: Color = .clear,
-        textPadding: CGFloat = 10,
+        textPadding: CGFloat = 0,
         cornerRadius: CGFloat = 0
     ) {
         self.text = text
