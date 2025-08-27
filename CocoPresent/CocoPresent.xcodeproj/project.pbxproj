@@ -10,6 +10,7 @@
 		6F3E3F552E52FF68006F453B /* CocoDesign.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F3E3F542E52FF68006F453B /* CocoDesign.framework */; };
 		6FC1B1F42E5D8A9C008F0FB9 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 6FC1B1F32E5D8A9C008F0FB9 /* ComposableArchitecture */; };
 		6FC1B3F82E5DF74F008F0FB9 /* CocoDomain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FC1B3F72E5DF74F008F0FB9 /* CocoDomain.framework */; };
+		6FC1B4002E5ED6DC008F0FB9 /* CocoDIContainer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FC1B3E92E5DE70A008F0FB9 /* CocoDIContainer.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +34,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6FC1B1F42E5D8A9C008F0FB9 /* ComposableArchitecture in Frameworks */,
+				6FC1B4002E5ED6DC008F0FB9 /* CocoDIContainer.framework in Frameworks */,
 				6FC1B3F82E5DF74F008F0FB9 /* CocoDomain.framework in Frameworks */,
 				6F3E3F552E52FF68006F453B /* CocoDesign.framework in Frameworks */,
 			);

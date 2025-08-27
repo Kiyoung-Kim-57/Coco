@@ -8,7 +8,6 @@ import SwiftUI
 import CocoDomain
 import CocoDatasource
 import CocoNetwork
-import CocoPresent
 
 public final class DIContainer {
     public static let shared = DIContainer()
@@ -140,26 +139,7 @@ extension DIContainer {
         DIContainer.shared.register(FetchTrendingSearchUseCaseImpl(coinSearchRepository: repository))
     }
     
-    // MainFlowRouter
-    static func registerMainFlowRouter() {
-        DIContainer.shared.register(CocoFlowRouter(pathType: HomePresent.self))
-    }
-    
-    // AppRouter
-    static func registerAppRouter(with mode: InjectionMode = .production) {
-        switch mode {
-        case .production:
-            @Injection var mainFlowRouter: CocoFlowRouter<HomePresent>
-            DIContainer.shared.register(CocoAppRouter(mainFlowRouter: mainFlowRouter))
-        case .mock:
-            @Injection(.mock) var mockFlowRouter: any FlowRoutable
-            DIContainer.shared.register(CocoAppRouter(mainFlowRouter: mockFlowRouter))
-        }
-    }
-    
     public static func registerObjects() {
-        registerMainFlowRouter()
-        registerAppRouter()
         registerNetworkManager()
         registerUpbitRemoteDataSource()
         registerGeckoRemoteDataSource()
@@ -174,10 +154,6 @@ extension DIContainer {
 
 // Resolve
 public extension DIContainer {
-    static func resolveAppRouter() -> CocoAppRouter {
-        return DIContainer.shared.resolve(CocoAppRouter.self)
-    }
-    
     static func resolveFetchCoinListUseCase() -> FetchCoinListUseCaseImpl {
         return DIContainer.shared.resolve(FetchCoinListUseCaseImpl.self)
     }
@@ -189,22 +165,12 @@ public extension DIContainer {
 
 // Mock
 public extension DIContainer {
-    static func registerFlowRoutableMock() {
-        DIContainer.shared.registerMock((any FlowRoutable).self, instance: MockFlowRouter())
-    }
-    
-    static func registerAppRoutableMock() {
-        DIContainer.shared.registerMock((any AppRoutable).self, instance: MockAppRouter())
-    }
-    
     static func registerNetworkManagerMock() {
         DIContainer.shared.registerMock((any NetworkManager).self, instance: MockNetworkManager())
     }
     
     static func registerMockObjects() {
         // Mock Register
-        registerFlowRoutableMock()
-        registerAppRoutableMock()
         registerNetworkManagerMock()
     }
 }
