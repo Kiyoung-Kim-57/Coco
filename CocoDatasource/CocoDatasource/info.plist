@@ -2,11 +2,30 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>CoinGeckoApiKey</key>
-	<string>$(COIN_GECKO_API_KEY)</string>
-	<key>UpbitHost</key>
-	<string>$(UPBIT_HOST)</string>
-	<key>GeckoHost</key>
-	<string>$(GECKO_HOST)</string>
+    <!-- 📌 프레임워크 동작에 필요한 필수 메타데이터 -->
+    <key>CFBundleIdentifier</key>
+    <string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+    
+    <key>CFBundleName</key>
+    <string>$(PRODUCT_NAME)</string>
+    
+    <key>CFBundleExecutable</key>
+    <string>$(EXECUTABLE_NAME)</string>
+    
+    <key>CFBundlePackageType</key>
+    <string>FMWK</string>
+    
+    <key>CFBundleVersion</key>
+    <string>1.0</string>
+    
+    <!-- 📌 네가 원하는 사용자 정의 Config 값 -->
+    <key>CoinGeckoApiKey</key>
+    <string>$(COIN_GECKO_API_KEY)</string>
+    
+    <key>UpbitHost</key>
+    <string>$(UPBIT_HOST)</string>
+    
+    <key>GeckoHost</key>
+    <string>$(GECKO_HOST)</string>
 </dict>
 </plist>

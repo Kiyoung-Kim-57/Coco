@@ -47,12 +47,20 @@
 			);
 			target = 6FF132472E33540100D14F35 /* CocoDatasourceTests */;
 		};
+		6FC1B40E2E5EEDD0008F0FB9 /* Exceptions for "CocoDatasource" folder in "CocoDatasource" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 6F9C74922E1255D6000878C6 /* CocoDatasource */;
+		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		6F9C74952E1255D6000878C6 /* CocoDatasource */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
+				6FC1B40E2E5EEDD0008F0FB9 /* Exceptions for "CocoDatasource" folder in "CocoDatasource" target */,
 				6F9F7C5F2E49C4BE00F9D9E4 /* Exceptions for "CocoDatasource" folder in "CocoDatasourceTests" target */,
 			);
 			path = CocoDatasource;
@@ -396,7 +404,7 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_MODULE_VERIFIER = YES;
-				GENERATE_INFOPLIST_FILE = YES;
+				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = "$(SRCROOT)/CocoDatasource/Info.plist";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -435,7 +443,7 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_MODULE_VERIFIER = YES;
-				GENERATE_INFOPLIST_FILE = YES;
+				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = "$(SRCROOT)/CocoDatasource/Info.plist";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
