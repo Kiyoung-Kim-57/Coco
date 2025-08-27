@@ -8,10 +8,12 @@
 import SwiftUI
 import SwiftData
 import CocoDIContainer
+import CocoPresent
+import ComposableArchitecture
 
 @main
 struct CocoApp: App {
-    @StateObject private var appRouter = DIContainer.resolveAppRouter()
+    @StateObject private var appRouter = AppRouterFactory.makeAppRouter()
     
     init() {
         DIContainer.registerObjects()
@@ -19,7 +21,9 @@ struct CocoApp: App {
     
     var body: some Scene {
         WindowGroup {
-            DIContainer.resolveMainView()
+            MainView(store: Store(initialState: MainFeature.State()) {
+                MainFeature()
+            })
                 .environmentObject(appRouter)
         }
     }
