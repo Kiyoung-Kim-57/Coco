@@ -35,7 +35,7 @@ public struct MainView: View {
                     )
                 )
                 .tabItem(systemName: "chart.line.uptrend.xyaxis", title: "Trending")
-                .tag(FlowType.test)
+                .tag(FlowType.trend)
             }
         }
     }
