@@ -7,17 +7,37 @@
 
 import SwiftUI
 import CocoDesign
+import ComposableArchitecture
 
 public struct MainView: View {
     @EnvironmentObject var appRouter: CocoAppRouter
-    
-    public init() { }
+    public let store: StoreOf<MainFeature>
+    public init(store: StoreOf<MainFeature>) {
+        self.store = store
+    }
     
     public var body: some View {
-        TabView(selection: $appRouter.presentFlowType) {
-            Text("Home")
-                .tabItem(systemName: "house.fill", title: "home")
-                .tag(FlowType.home)
+        WithViewStore(self.store, observe: { $0 }) { viewStore in
+            TabView(
+                selection: viewStore.binding(
+                    get: \.selectedTab,
+                    send: { tab in MainFeature.Action.tabSelected(tab)}
+                )
+            ) {
+                Text("Home")
+                    .tabItem(systemName: "house.fill", title: "Home")
+                    .tag(FlowType.home)
+                
+                TrendingCoinListView(
+                    store: store.scope(
+                        state: \.trendingSearchState,
+                        action: \.trendingSearchAction
+                    )
+                )
+                .tabItem(systemName: "chart.line.uptrend.xyaxis", title: "Trending")
+                .tag(FlowType.test)
+            }
         }
     }
 }
+
