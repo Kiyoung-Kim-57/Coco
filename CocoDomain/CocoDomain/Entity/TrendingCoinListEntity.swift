@@ -5,7 +5,7 @@
 //  Created by 김기영 on 8/26/25.
 //
 
-public struct TrendingCoinListEntity: Comparable {
+public struct TrendingCoinListEntity: Comparable, Hashable {
     public let code: String
     public let name: String
     public let price: Double
