@@ -47,17 +47,21 @@ public final class CocoRemoteDataSourceImpl: CocoRemoteDataSource {
                 .onSuccess { response in
                     continuation.resume(returning: response.response)
                 }
-                .onStatus(401) { _ in
+                .onStatus(401) { response in
                     // 인증 에러 처리
+                    print("Error: \(response.statusCode)")
                     continuation.resume(throwing: NetworkError.unauthorized)
                 }
-                .onStatus(404) { _ in
+                .onStatus(404) { response in
+                    print("Error: \(response.statusCode)")
                     continuation.resume(throwing: NetworkError.notFound)
                 }
                 .onServerError { response in
+                    print("Error: \(response.statusCode)")
                     continuation.resume(throwing: NetworkError.serverError(response.statusCode))
                 }
                 .onAnyError { response in
+                    print("Error: \(response.statusCode)")
                     continuation.resume(throwing: NetworkError.networkError(response.statusCode))
                 }
         }
