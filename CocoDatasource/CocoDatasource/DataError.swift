@@ -9,4 +9,5 @@ import Foundation
 
 enum DataError: Error {
     case notFound
+    case dataCountMismatch
 }
