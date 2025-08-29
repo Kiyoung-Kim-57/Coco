@@ -3,6 +3,7 @@ import Foundation
 public final class NetworkManagerImpl: NetworkManager {
     let urlSession = URLSession.shared
     let decoder = JSONDecoder()
+    public static let shared = NetworkManagerImpl()
     
     public init() { }
     
@@ -22,6 +23,19 @@ public final class NetworkManagerImpl: NetworkManager {
     
     public func performRequest(request: HttpRequest) async throws -> HttpResponse<Data> {
         let (data, response) = try await urlSession.data(for: request.urlRequest())
+        
+        guard let response = response as? HTTPURLResponse else {
+            throw NetworkError.invalidResponse
+        }
+        
+        let statusCode: Int = response.statusCode
+        let httpResponse = HttpResponse(statusCode: statusCode, response: data)
+        
+        return httpResponse
+    }
+    
+    public func data(url: URL) async throws -> HttpResponse<Data> {
+        let (data, response) = try await urlSession.data(from: url)
         
         guard let response = response as? HTTPURLResponse else {
             throw NetworkError.invalidResponse
