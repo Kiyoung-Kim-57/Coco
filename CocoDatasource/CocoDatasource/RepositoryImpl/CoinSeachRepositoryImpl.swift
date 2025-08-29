@@ -36,7 +36,31 @@ public final class CoinSeachRepositoryImpl: CoinSearchRepository {
             request
                 .setURLPath(path: Gecko.trendingPath())
         }
+        let coinList = Array(response.coins[0..<10])
+        let svgURLList = coinList.map { $0.item.data.sparkline }
+        let svgDataList = try await fetchSVGData(urls: svgURLList)
         
-        return response.toEntity()
+        return try DTOMapper.TrendCoin.map(
+            coinList: coinList,
+            sparkLine: svgDataList
+        )
+    }
+    
+    private func fetchSVGData(urls: [String]) async throws -> [Data] {
+        var result: [Data] = []
+        
+        
+        for string in urls {
+            guard let url = URL(string: string) else { continue }
+            
+            do {
+                let response = try await NetworkManagerImpl.shared.data(url: url)
+                result.append(response.response)
+            } catch {
+                continue
+            }
+        }
+        
+        return result
     }
 }
