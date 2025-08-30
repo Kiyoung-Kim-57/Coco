@@ -7,6 +7,7 @@
 
 import SwiftUI
 import CocoDesign
+import CocoDomain
 
 public struct TrendingCoinListCell: View {
     let code: String
@@ -16,13 +17,26 @@ public struct TrendingCoinListCell: View {
     let thumbUrl: String?
     let sparklineUrl: String?
     
+    public init(_ entity: TrendingCoinListEntity) {
+        self.code = entity.code
+        self.name = entity.name
+        self.price = entity.price
+        self.changeRate = entity.changeRate
+        self.thumbUrl = entity.thumbUrl
+        self.sparklineUrl = entity.sparklineUrl
+    }
+    
     public var body: some View {
-        HStack {
-            coinThumbnail()
-            coinLabel()
-            Spacer()
-            priceLabel()
-        }
+//        GeometryReader { geo in
+            HStack {
+                coinThumbnail()
+                coinLabel()
+                Spacer()
+                sparkLine()
+                Spacer()
+                priceLabel()
+            }
+//        }
     }
     
     private func coinLabel() -> some View {
@@ -41,6 +55,21 @@ public struct TrendingCoinListCell: View {
     }
     
     @ViewBuilder
+    private func sparkLine() -> some View {
+        if let sparklineUrl {
+            AsyncImage(url: URL(string: sparklineUrl)) { image in
+                image
+                    .resizable()
+                    .background(Color.gray)
+            } placeholder: {
+                ProgressView()
+            }
+        } else {
+            CocoThumbnailImage("chart.xyaxis.line")
+        }
+    }
+    
+    @ViewBuilder
     private func coinThumbnail() -> some View {
         if let thumbUrl {
             AsyncImage(url: URL(string: thumbUrl)) { image in
@@ -50,17 +79,29 @@ public struct TrendingCoinListCell: View {
                     .frame(width: 44, height: 44)
                     .clipShape(Circle())
             } placeholder: {
-                CocoThumbnailImage("person.fill")
+                ProgressView()
+                    .frame(width: 44, height: 44)
+                    .clipShape(Circle())
             }
         } else {
-            CocoThumbnailImage("person.fill")
+            CocoThumbnailImage("bitcoinsign.circle")
         }
     }
 }
 
-//#Preview {
-//    TrendingCoinListCell(code: "ETH", name: "Ethereum", price: 1235)
-//}
+fileprivate let dummyData: TrendingCoinListEntity = TrendingCoinListEntity(
+    code: "KYCoin",
+    name: "Kiyoung",
+    price: 1235,
+    changeRate: 52.3,
+    thumbUrl: "https://assets.coingecko.com/coins/images/28470/standard/MTLOGO.png?1696527464",
+    rank: 0,
+    sparklineUrl: "https://www.coingecko.com/coins/28470/sparkline.svg"
+)
+
+#Preview {
+    TrendingCoinListCell(dummyData)
+}
 
 //public let code: String
 //public let name: String

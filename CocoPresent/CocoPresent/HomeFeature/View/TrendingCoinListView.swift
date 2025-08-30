@@ -36,14 +36,7 @@ public struct TrendingCoinListView: View {
     private func coinListScrollView(_ coins: [TrendingCoinListEntity]) -> some View {
         ScrollView {
             ForEach(coins, id: \.name) { item in
-                TrendingCoinListCell(
-                    code: item.code,
-                    name: item.name,
-                    price: item.price,
-                    changeRate: item.changeRate,
-                    thumbUrl: item.thumbUrl,
-                    sparklineUrl: item.sparklineUrl
-                )
+                TrendingCoinListCell(item)
             }
         }
     }
