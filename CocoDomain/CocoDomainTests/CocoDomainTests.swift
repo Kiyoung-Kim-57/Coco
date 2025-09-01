@@ -11,10 +11,10 @@ import CocoDomain
 
 @Suite("Domain UseCase Test")
 struct CocoDomainTests {
-    private let fetchUseCase: any FetchCoinListUseCase
+    private let fetchUseCase: any FetchTrendingSearchUseCase
     init() {
         DIContainer.registerObjects()
-        self.fetchUseCase = DIContainer.resolveFetchCoinListUseCase()
+        self.fetchUseCase = DIContainer.resolveFetchTrendingSearchUseCase()
     }
     
     @Test("Fetch Coin List Test")
