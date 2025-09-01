@@ -15,7 +15,7 @@ public struct TrendingCoinListCell: View {
     let price: Double
     let changeRate: Double
     let thumbUrl: String?
-    let sparkLine: Data?
+    let sparkLine: Data
     
     public init(_ entity: TrendingCoinListEntity) {
         self.code = entity.code
@@ -27,19 +27,24 @@ public struct TrendingCoinListCell: View {
     }
     
     public var body: some View {
+        GeometryReader { geo in
             HStack {
                 coinThumbnail()
+                    .padding(.trailing, 5)
                 coinLabel()
                 Spacer()
                 sparkLineView()
+                    .frame(width: geo.size.width * 0.3, height: 50)
                 Spacer()
                 priceInfoLabel()
             }
+        }
     }
     
     private func coinLabel() -> some View {
         VStack(alignment: .leading) {
-            CocoLabel(code)
+            CocoLabel(code,
+                      font: Font.system(size: 20, weight: .bold))
             CocoLabel(
                 name,
                 font: Font.system(size: SecondaryFont.size),
@@ -56,7 +61,8 @@ public struct TrendingCoinListCell: View {
     }
     
     private func priceLabel() -> some View {
-        return CocoLabel("₩" + formatPrice())
+        return CocoLabel("₩" + formatPrice(),
+                         font: Font.system(size: 16, weight: .bold))
     }
     
     private func formatPrice() -> String {
@@ -64,7 +70,7 @@ public struct TrendingCoinListCell: View {
     }
     
     private func rateLabel() -> some View {
-        let textColor = changeRate > 0 ? Color.red : Color.blue
+        let textColor = changeRate > 0 ? Color.green : Color.red
         
         return CocoLabel(
             formatRate() + "%",
@@ -79,11 +85,7 @@ public struct TrendingCoinListCell: View {
     
     @ViewBuilder
     private func sparkLineView() -> some View {
-        if let sparkLine {
-            SVGProvider.svgImageView(data: sparkLine)
-        } else {
-            Image(systemName: "chart.xyaxis.line")
-        }
+        SVGProvider.svgImageView(data: sparkLine)
     }
     
     @ViewBuilder
@@ -92,13 +94,10 @@ public struct TrendingCoinListCell: View {
             AsyncImage(url: URL(string: thumbUrl)) { image in
                 image
                     .resizable()
-                    .background(Color.gray)
-                    .frame(width: 44, height: 44)
-                    .clipShape(Circle())
+                    .thumb()
             } placeholder: {
                 ProgressView()
-                    .frame(width: 44, height: 44)
-                    .clipShape(Circle())
+                    .thumb()
             }
         } else {
             CocoThumbnailImage("bitcoinsign.circle")

@@ -34,10 +34,24 @@ public struct TrendingCoinListView: View {
     
     private func coinListScrollView(_ coins: [TrendingCoinListEntity]) -> some View {
         ScrollView {
-            ForEach(coins, id: \.name) { item in
-                TrendingCoinListCell(item)
-                    .padding(.horizontal, 10)
+            Section {
+                ForEach(coins, id: \.name) { item in
+                    TrendingCoinListCell(item)
+                        .padding(.horizontal, 12)
+                        .padding(.vertical, 5)
+                        .frame(maxWidth: .infinity, minHeight: 50)
+                }
+            } header: {
+                trendListHeaderView()
             }
+        }
+    }
+    
+    private func trendListHeaderView() -> some View {
+        HStack {
+            CocoLabel("Trending Coins", font: Font.system(size: 20, weight: .heavy))
+                .padding(12)
+            Spacer()
         }
     }
 }
