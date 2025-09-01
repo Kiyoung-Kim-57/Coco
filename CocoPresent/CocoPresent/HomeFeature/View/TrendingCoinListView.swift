@@ -14,20 +14,19 @@ public struct TrendingCoinListView: View {
     let store: StoreOf<TrendingSearchFeature>
     
     public init(store: StoreOf<TrendingSearchFeature>) {
-        print("View Init")
         self.store = store
     }
     
     public var body: some View {
         WithViewStore(self.store, observe: { $0 }) { viewStore in
             ZStack {
-                coinListScrollView(viewStore.coinList)
-                    .onAppear {
-                        viewStore.send(.onAppear)
-                    }
+                if viewStore.isLoading {
+                    ProgressView()
+                } else {
+                    coinListScrollView(viewStore.coinList)
+                }
             }
             .onAppear {
-                print("On Appear")
                 viewStore.send(.onAppear)
             }
         }
