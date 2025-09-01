@@ -36,8 +36,10 @@ public final class CoinSeachRepositoryImpl: CoinSearchRepository {
             request
                 .setURLPath(path: Gecko.trendingPath())
         }
+        
         let coinList = Array(response.coins[0..<10])
         let sparkLine = try await fetchSVGData(urls: coinList.map { $0.item.data.sparkline })
+        
         return try await combineCoinWithSparkLine(coinList: coinList, sparkLine: sparkLine)
     }
     

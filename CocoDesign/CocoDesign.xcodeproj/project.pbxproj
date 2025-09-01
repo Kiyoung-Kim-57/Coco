@@ -7,8 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6F2FAB502E616A8900BAF9FD /* SVGKit in Frameworks */ = {isa = PBXBuildFile; productRef = 6F2FAB4F2E616A8900BAF9FD /* SVGKit */; };
-		6F2FAB522E616A8900BAF9FD /* SVGKitSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 6F2FAB512E616A8900BAF9FD /* SVGKitSwift */; };
+		6F2FAB642E653A1700BAF9FD /* SVGView in Frameworks */ = {isa = PBXBuildFile; productRef = 6F2FAB632E653A1700BAF9FD /* SVGView */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,8 +27,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6F2FAB522E616A8900BAF9FD /* SVGKitSwift in Frameworks */,
-				6F2FAB502E616A8900BAF9FD /* SVGKit in Frameworks */,
+				6F2FAB642E653A1700BAF9FD /* SVGView in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,8 +81,7 @@
 			);
 			name = CocoDesign;
 			packageProductDependencies = (
-				6F2FAB4F2E616A8900BAF9FD /* SVGKit */,
-				6F2FAB512E616A8900BAF9FD /* SVGKitSwift */,
+				6F2FAB632E653A1700BAF9FD /* SVGView */,
 			);
 			productName = CocoDesign;
 			productReference = 6F3E3EF22E52FCF3006F453B /* CocoDesign.framework */;
@@ -115,7 +112,7 @@
 			mainGroup = 6F3E3EE82E52FCF3006F453B;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
-				6F2FAB4E2E616A8900BAF9FD /* XCRemoteSwiftPackageReference "SVGKit" */,
+				6F2FAB622E653A1700BAF9FD /* XCRemoteSwiftPackageReference "SVGView" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 6F3E3EF32E52FCF3006F453B /* Products */;
@@ -375,26 +372,21 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		6F2FAB4E2E616A8900BAF9FD /* XCRemoteSwiftPackageReference "SVGKit" */ = {
+		6F2FAB622E653A1700BAF9FD /* XCRemoteSwiftPackageReference "SVGView" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/SVGKit/SVGKit.git";
+			repositoryURL = "https://github.com/exyte/SVGView.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 3.0.0;
+				minimumVersion = 1.0.6;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		6F2FAB4F2E616A8900BAF9FD /* SVGKit */ = {
+		6F2FAB632E653A1700BAF9FD /* SVGView */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 6F2FAB4E2E616A8900BAF9FD /* XCRemoteSwiftPackageReference "SVGKit" */;
-			productName = SVGKit;
-		};
-		6F2FAB512E616A8900BAF9FD /* SVGKitSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 6F2FAB4E2E616A8900BAF9FD /* XCRemoteSwiftPackageReference "SVGKit" */;
-			productName = SVGKitSwift;
+			package = 6F2FAB622E653A1700BAF9FD /* XCRemoteSwiftPackageReference "SVGView" */;
+			productName = SVGView;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

@@ -5,10 +5,11 @@
 //  Created by 김기영 on 8/29/25.
 //
 
-import SVGKit
+import SwiftUI
+import SVGView
 
 public enum SVGProvider {
-    public static func makeUIImage(_ data: Data) -> UIImage? {
-        return SVGKImage(data: data).uiImage
+    public static func svgImageView(data: Data) -> some View {
+        return SVGView(data: data)
     }
 }
