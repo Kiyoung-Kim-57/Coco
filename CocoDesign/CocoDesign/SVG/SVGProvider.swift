@@ -12,4 +12,8 @@ public enum SVGProvider {
     public static func svgImageView(data: Data) -> some View {
         return SVGView(data: data)
     }
+    
+    public static func svgImageView(url: URL) -> some View {
+        return SVGView(contentsOf: url)
+    }
 }
