@@ -38,6 +38,7 @@ public struct CocoLabel: View {
             .foregroundStyle(textColor)
             .background(backgroundColor)
             .clipShape(RoundedRectangle(cornerRadius: cornerRadius))
+            .minimumScaleFactor(0.5)
     }
 }
 
