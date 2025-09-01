@@ -37,6 +37,7 @@ public struct TrendingCoinListView: View {
         ScrollView {
             ForEach(coins, id: \.name) { item in
                 TrendingCoinListCell(item)
+                    .padding(.horizontal, 10)
             }
         }
     }
