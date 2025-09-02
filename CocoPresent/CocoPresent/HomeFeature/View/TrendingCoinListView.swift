@@ -24,7 +24,6 @@ public struct TrendingCoinListView: View {
                     ProgressView()
                 } else {
                     topTenCoinListContainer(viewStore)
-                        .frame(height: 450)
                 }
             }
             .onAppear {
@@ -36,7 +35,10 @@ public struct TrendingCoinListView: View {
     private func topTenCoinListContainer(
         _ viewStore: ViewStore<TrendingSearchFeature.State, TrendingSearchFeature.Action>
     ) -> some View {
-        CocoContainer(shadowType: .strong) {
+        CocoContainer(
+            height: 450,
+            shadowType: .elevated
+        ) {
             VStack(spacing: 0) {
                 trendListHeaderView()
                 coinListScrollView(viewStore.coinList)
@@ -55,7 +57,7 @@ public struct TrendingCoinListView: View {
                         .frame(maxWidth: .infinity, minHeight: 50)
                 }
             }
-            .padding(.bottom, 12)
+            .padding(.vertical, 12)
         }
         .scrollIndicators(.hidden)
         .fadeOverlay()
