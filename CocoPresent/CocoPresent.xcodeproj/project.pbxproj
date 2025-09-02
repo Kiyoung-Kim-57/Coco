@@ -8,11 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		6F3E3F552E52FF68006F453B /* CocoDesign.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F3E3F542E52FF68006F453B /* CocoDesign.framework */; };
+		6FC1B1F42E5D8A9C008F0FB9 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 6FC1B1F32E5D8A9C008F0FB9 /* ComposableArchitecture */; };
+		6FC1B3F82E5DF74F008F0FB9 /* CocoDomain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FC1B3F72E5DF74F008F0FB9 /* CocoDomain.framework */; };
+		6FC1B4002E5ED6DC008F0FB9 /* CocoDIContainer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FC1B3E92E5DE70A008F0FB9 /* CocoDIContainer.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		6F3E3F332E52FF28006F453B /* CocoPresent.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CocoPresent.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F3E3F542E52FF68006F453B /* CocoDesign.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CocoDesign.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6FC1B3E92E5DE70A008F0FB9 /* CocoDIContainer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CocoDIContainer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6FC1B3F72E5DF74F008F0FB9 /* CocoDomain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CocoDomain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -28,6 +33,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6FC1B1F42E5D8A9C008F0FB9 /* ComposableArchitecture in Frameworks */,
+				6FC1B4002E5ED6DC008F0FB9 /* CocoDIContainer.framework in Frameworks */,
+				6FC1B3F82E5DF74F008F0FB9 /* CocoDomain.framework in Frameworks */,
 				6F3E3F552E52FF68006F453B /* CocoDesign.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -55,6 +63,8 @@
 		6F3E3F532E52FF68006F453B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6FC1B3F72E5DF74F008F0FB9 /* CocoDomain.framework */,
+				6FC1B3E92E5DE70A008F0FB9 /* CocoDIContainer.framework */,
 				6F3E3F542E52FF68006F453B /* CocoDesign.framework */,
 			);
 			name = Frameworks;
@@ -91,6 +101,7 @@
 			);
 			name = CocoPresent;
 			packageProductDependencies = (
+				6FC1B1F32E5D8A9C008F0FB9 /* ComposableArchitecture */,
 			);
 			productName = CocoPresent;
 			productReference = 6F3E3F332E52FF28006F453B /* CocoPresent.framework */;
@@ -120,6 +131,9 @@
 			);
 			mainGroup = 6F3E3F292E52FF28006F453B;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				6FC1B1F22E5D8A9C008F0FB9 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 6F3E3F342E52FF28006F453B /* Products */;
 			projectDirPath = "";
@@ -376,6 +390,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		6FC1B1F22E5D8A9C008F0FB9 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-composable-architecture";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.22.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		6FC1B1F32E5D8A9C008F0FB9 /* ComposableArchitecture */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6FC1B1F22E5D8A9C008F0FB9 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
+			productName = ComposableArchitecture;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 6F3E3F2A2E52FF28006F453B /* Project object */;
 }

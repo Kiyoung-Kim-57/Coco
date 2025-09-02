@@ -9,6 +9,6 @@
 // MARK: - Market Event Structure
 public struct MarketEvent: Codable {
     let warning: Bool
-    let caution: Caution
+    let caution: CautionDTO
 }
 

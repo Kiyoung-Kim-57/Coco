@@ -5,30 +5,44 @@
 //  Created by 김기영 on 7/2/25.
 //
 import SwiftUI
-import CocoPresent
+import CocoDomain
+import CocoDatasource
+import CocoNetwork
 
 public final class DIContainer {
     public static let shared = DIContainer()
     
     private init() { }
     
-    private var storage: [ObjectIdentifier: Any] = [:]
-    private var mockStorage: [ObjectIdentifier: Any] = [:]
-    
+    private var storage: [String: Any] = [:]
+    private var mockStorage: [String: Any] = [:]
     public func register<T>(_ type: T.Type, instance: T) {
-        let key = ObjectIdentifier(type)
+        let key = "\(ObjectIdentifier(type))"
         storage[key] = instance
     }
     
     public func register<T>(_ instance: T) {
-        let key = ObjectIdentifier(type(of: instance))
+        let key = "\(ObjectIdentifier(type(of: instance)))"
+        storage[key] = instance
+    }
+    
+    public func register<T>(_ instance: T, name: String) {
+        let key = "\(ObjectIdentifier(type(of: instance)))" + name
         storage[key] = instance
     }
     
     public func resolve<T>(_ type: T.Type) -> T {
-        let key = ObjectIdentifier(type)
+        let key = "\(ObjectIdentifier(type))"
         guard let instance = storage[key] as? T else {
             fatalError("❌ No registered instance for type: \(type)")
+        }
+        return instance
+    }
+    
+    public func resolve<T>(_ type: T.Type, name: String) -> T {
+        let key = "\(ObjectIdentifier(type))" + name
+        guard let instance = storage[key] as? T else {
+            fatalError("❌ No instance for type: \(type), name: \(name)")
         }
         return instance
     }
@@ -36,18 +50,18 @@ public final class DIContainer {
     // MARK: - Mock Registration
     
     public func registerMock<T>(_ type: T.Type, instance: T) {
-        let key = ObjectIdentifier(type)
+        let key = "\(ObjectIdentifier(type))"
         mockStorage[key] = instance
     }
     
     public func registerMock<T>(_ instance: T) {
-        let key = ObjectIdentifier(type(of: instance))
+        let key = "\(ObjectIdentifier(type(of: instance)))"
         mockStorage[key] = instance
     }
     // MARK: - Resolution Methods
     
     public func resolve<T>(_ type: T.Type, mode: InjectionMode = .production) -> T {
-        let key = ObjectIdentifier(type)
+        let key = "\(ObjectIdentifier(type))"
         
         switch mode {
         case .production:
@@ -57,7 +71,7 @@ public final class DIContainer {
         }
     }
     
-    private func resolveProduction<T>(key: ObjectIdentifier, type: T.Type) -> T {
+    private func resolveProduction<T>(key: String, type: T.Type) -> T {
         if let instance = storage[key] as? T {
             return instance
         }
@@ -65,7 +79,7 @@ public final class DIContainer {
         fatalError("❌ No registered production instance or factory for type: \(type)")
     }
     
-    private func resolveMock<T>(key: ObjectIdentifier, type: T.Type) -> T {
+    private func resolveMock<T>(key: String, type: T.Type) -> T {
         // 1. Mock 인스턴스 확인
         if let instance = mockStorage[key] as? T {
             return instance
@@ -76,7 +90,7 @@ public final class DIContainer {
     
     // MARK: - Cleanup Methods
     public func unregister<T>(_ type: T.Type) {
-        let key = ObjectIdentifier(type)
+        let key = "\(ObjectIdentifier(type))"
         storage.removeValue(forKey: key)
     }
     
@@ -92,41 +106,46 @@ public final class DIContainer {
 
 // Register
 extension DIContainer {
-    // MainFlowRouter
-    static func registerMainFlowRouter() {
-        DIContainer.shared.register(CocoFlowRouter(pathType: HomePresent.self))
+    // Network Manager
+    static func registerNetworkManager() {
+        DIContainer.shared.register(NetworkManagerImpl())
+    }
+    // DataSource
+    static func registerUpbitRemoteDataSource() {
+        let networkManager = DIContainer.shared.resolve(NetworkManagerImpl.self)
+        DIContainer.shared.register(CocoRemoteDataSourceImpl(networkManager: networkManager, baseHost: DataSourceBundle.upbitHost()), name: "Upbit")
     }
     
-    static func registerFlowRoutableMock() {
-        DIContainer.shared.registerMock((any FlowRoutable).self, instance: MockFlowRouter())
+    static func registerGeckoRemoteDataSource() {
+        let networkManager = DIContainer.shared.resolve(NetworkManagerImpl.self)
+        DIContainer.shared.register(CocoRemoteDataSourceImpl(networkManager: networkManager, baseHost: DataSourceBundle.geckoHost()), name: "Gecko")
     }
     
-    // AppRouter
-    static func registerAppRouter(with mode: InjectionMode = .production) {
-        switch mode {
-        case .production:
-            @Injection var mainFlowRouter: CocoFlowRouter<HomePresent>
-            DIContainer.shared.register(CocoAppRouter(mainFlowRouter: mainFlowRouter))
-        case .mock:
-            @Injection(.mock) var mockFlowRouter: any FlowRoutable
-            DIContainer.shared.register(CocoAppRouter(mainFlowRouter: mockFlowRouter))
-        }
+    // Repository
+    static func registerCoinListRepository() {
+        let upbit = DIContainer.shared.resolve(CocoRemoteDataSourceImpl.self, name: "Upbit")
+        let gecko = DIContainer.shared.resolve(CocoRemoteDataSourceImpl.self, name: "Gecko")
+        
+        DIContainer.shared.register(CoinSeachRepositoryImpl(upbitRemoteDataSource: upbit, geckRemoteDataSource: gecko))
+    }
+    // UseCase
+    static func registerFetchCoinListUseCase() {
+        let repository = DIContainer.shared.resolve(CoinSeachRepositoryImpl.self)
+        DIContainer.shared.register(FetchCoinListUseCaseImpl(coinListRepository: repository))
     }
     
-    static func registerAppRoutableMock() {
-        DIContainer.shared.registerMock((any AppRoutable).self, instance: MockAppRouter())
-    }
-    
-    // MainView
-    static func registerMainView() {
-        DIContainer.shared.register(MainView())
+    static func registerFetchTrendingSearchUseCase() {
+        let repository = DIContainer.shared.resolve(CoinSeachRepositoryImpl.self)
+        DIContainer.shared.register(FetchTrendingSearchUseCaseImpl(coinSearchRepository: repository))
     }
     
     public static func registerObjects() {
-        registerMainFlowRouter()
-        registerAppRouter()
-        registerMainView()
-        
+        registerNetworkManager()
+        registerUpbitRemoteDataSource()
+        registerGeckoRemoteDataSource()
+        registerCoinListRepository()
+        registerFetchCoinListUseCase()
+        registerFetchTrendingSearchUseCase()
         // Mock Register
 //        registerFlowRoutableMock()
 //        registerAppRoutableMock()
@@ -135,11 +154,23 @@ extension DIContainer {
 
 // Resolve
 public extension DIContainer {
-    static func resolveAppRouter() -> CocoAppRouter {
-        return DIContainer.shared.resolve(CocoAppRouter.self)
+    static func resolveFetchCoinListUseCase() -> FetchCoinListUseCaseImpl {
+        return DIContainer.shared.resolve(FetchCoinListUseCaseImpl.self)
     }
     
-    static func resolveMainView() -> MainView {
-        return DIContainer.shared.resolve(MainView.self)
+    static func resolveFetchTrendingSearchUseCase() -> FetchTrendingSearchUseCaseImpl {
+        return DIContainer.shared.resolve(FetchTrendingSearchUseCaseImpl.self)
+    }
+}
+
+// Mock
+public extension DIContainer {
+    static func registerNetworkManagerMock() {
+        DIContainer.shared.registerMock((any NetworkManager).self, instance: MockNetworkManager())
+    }
+    
+    static func registerMockObjects() {
+        // Mock Register
+        registerNetworkManagerMock()
     }
 }

@@ -9,15 +9,15 @@ import Combine
 import Foundation
 import CocoNetwork
 
-public final class CocoRemoteDataSource: CocoReadableDataSource {
-    public typealias Item = Data
-    public typealias Condition = HttpRequest
+public final class CocoRemoteDataSourceImpl: CocoRemoteDataSource {
+    public typealias DecodeType = CoinGeneralInfoDTO
     
     private let networkManager: NetworkManager
-    private let baseHost: String = "api.upbit.com" // 추후 config파일로 따로 관리 예정
+    private let baseHost: String
     
-    public init(networkManager: NetworkManager) {
+    public init(networkManager: NetworkManager, baseHost: String) {
         self.networkManager = networkManager
+        self.baseHost = baseHost
     }
     
     public func readData(
@@ -47,22 +47,22 @@ public final class CocoRemoteDataSource: CocoReadableDataSource {
                 .onSuccess { response in
                     continuation.resume(returning: response.response)
                 }
-                .onStatus(401) { _ in
+                .onStatus(401) { response in
                     // 인증 에러 처리
+                    print("Error: \(response.statusCode)")
                     continuation.resume(throwing: NetworkError.unauthorized)
-                    return
                 }
-                .onStatus(404) { _ in
+                .onStatus(404) { response in
+                    print("Error: \(response.statusCode)")
                     continuation.resume(throwing: NetworkError.notFound)
-                    return
                 }
                 .onServerError { response in
+                    print("Error: \(response.statusCode)")
                     continuation.resume(throwing: NetworkError.serverError(response.statusCode))
-                    return
                 }
                 .onAnyError { response in
+                    print("Error: \(response.statusCode)")
                     continuation.resume(throwing: NetworkError.networkError(response.statusCode))
-                    return
                 }
         }
     }

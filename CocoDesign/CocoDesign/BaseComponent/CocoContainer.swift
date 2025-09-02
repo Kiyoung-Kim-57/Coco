@@ -8,8 +8,7 @@
 import SwiftUI
 
 public struct CocoContainer<Content: View>: View {
-    private let width: CGFloat
-    private let height: CGFloat
+    private let contentSize: CGSize?
     private let backgroundColor: Color
     private let lineColor: Color
     private let cornerRadius: CGFloat
@@ -20,8 +19,7 @@ public struct CocoContainer<Content: View>: View {
     private let content: Content
     
     public init(
-        width: CGFloat = 0,
-        height: CGFloat = 0,
+        contentSize: CGSize? = nil,
         backgroundColor: Color = .white,
         lineColor: Color = .clear ,
         cornerRadius: CGFloat = 8,
@@ -29,15 +27,14 @@ public struct CocoContainer<Content: View>: View {
         borderWidth: CGFloat = 0,
         shadowType: ShadowType = .none,
         contentPadding: EdgeInsets = EdgeInsets(
-            top: 10,
-            leading: 10,
-            bottom: 10,
-            trailing: 10
+            top: 0,
+            leading: 0,
+            bottom: 0,
+            trailing: 0
         ),
         @ViewBuilder content: () -> Content
     ) {
-        self.width = width
-        self.height = height
+        self.contentSize = contentSize
         self.backgroundColor = backgroundColor
         self.lineColor = lineColor
         self.cornerRadius = cornerRadius
@@ -49,16 +46,35 @@ public struct CocoContainer<Content: View>: View {
     }
     
     public var body: some View {
-        content
-            .padding(contentPadding)
-            .background(
-                RoundedRectangle(cornerRadius: cornerRadius)
-                    .fill(backgroundColor)
-            )
-            .overlay(
-                RoundedRectangle(cornerRadius: cornerRadius)
-                    .stroke(borderColor, lineWidth: borderWidth)
-            )
-            .shadowType(shadowType)
+        if let contentSize = contentSize {
+            content
+                .padding(contentPadding)
+                .clipShape(RoundedRectangle(cornerRadius: cornerRadius))
+                .background(
+                    RoundedRectangle(cornerRadius: cornerRadius)
+                        .fill(backgroundColor)
+                        .shadowType(shadowType)
+                )
+                .overlay(
+                    RoundedRectangle(cornerRadius: cornerRadius)
+                        .inset(by: borderWidth / 2)
+                        .stroke(borderColor, lineWidth: borderWidth)
+                )
+                .frame(width: contentSize.width, height: contentSize.height)
+        } else {
+            content
+                .padding(contentPadding)
+                .clipShape(RoundedRectangle(cornerRadius: cornerRadius))
+                .background(
+                    RoundedRectangle(cornerRadius: cornerRadius)
+                        .fill(backgroundColor)
+                        .shadowType(shadowType)
+                )
+                .overlay(
+                    RoundedRectangle(cornerRadius: cornerRadius)
+                        .inset(by: borderWidth / 2)
+                        .stroke(borderColor, lineWidth: borderWidth)
+                )
+        }
     }
 }
