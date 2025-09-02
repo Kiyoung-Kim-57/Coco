@@ -11,6 +11,7 @@ public struct FadeModifier: ViewModifier {
     
     let topFade: Bool
     let bottomFade: Bool
+    let color: Color
     
     public func body(content: Content) -> some View {
         content
@@ -18,7 +19,7 @@ public struct FadeModifier: ViewModifier {
                 VStack {
                     if topFade {
                         LinearGradient(
-                            gradient: Gradient(colors: [.white.opacity(0.8), .white.opacity(0)]),
+                            gradient: Gradient(colors: [color, .clear]),
                             startPoint: .top,
                             endPoint: .bottom
                         )
@@ -31,7 +32,7 @@ public struct FadeModifier: ViewModifier {
                     Spacer()
                     if bottomFade {
                         LinearGradient(
-                            gradient: Gradient(colors: [.white.opacity(0), .white.opacity(0.8)]),
+                            gradient: Gradient(colors: [.clear, color]),
                             startPoint: .top,
                             endPoint: .bottom
                         )
@@ -44,7 +45,7 @@ public struct FadeModifier: ViewModifier {
 }
 
 public extension View {
-    func fadeOverlay(topFade: Bool = true, bottomFade: Bool = true) -> some View {
-        modifier(FadeModifier(topFade: topFade, bottomFade: bottomFade))
+    func fadeOverlay(topFade: Bool = true, bottomFade: Bool = true, color: Color = .white) -> some View {
+        modifier(FadeModifier(topFade: topFade, bottomFade: bottomFade, color: color))
     }
 }
