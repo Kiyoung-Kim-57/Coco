@@ -27,10 +27,10 @@ public struct CocoContainer<Content: View>: View {
         borderWidth: CGFloat = 0,
         shadowType: ShadowType = .none,
         contentPadding: EdgeInsets = EdgeInsets(
-            top: 10,
-            leading: 10,
-            bottom: 10,
-            trailing: 10
+            top: 0,
+            leading: 0,
+            bottom: 0,
+            trailing: 0
         ),
         @ViewBuilder content: () -> Content
     ) {
@@ -48,8 +48,8 @@ public struct CocoContainer<Content: View>: View {
     public var body: some View {
         if let contentSize = contentSize {
             content
-                .frame(width: contentSize.width, height: contentSize.height)
                 .padding(contentPadding)
+                .clipShape(RoundedRectangle(cornerRadius: cornerRadius))
                 .background(
                     RoundedRectangle(cornerRadius: cornerRadius)
                         .fill(backgroundColor)
@@ -60,9 +60,11 @@ public struct CocoContainer<Content: View>: View {
                         .inset(by: borderWidth / 2)
                         .stroke(borderColor, lineWidth: borderWidth)
                 )
+                .frame(width: contentSize.width, height: contentSize.height)
         } else {
             content
                 .padding(contentPadding)
+                .clipShape(RoundedRectangle(cornerRadius: cornerRadius))
                 .background(
                     RoundedRectangle(cornerRadius: cornerRadius)
                         .fill(backgroundColor)
