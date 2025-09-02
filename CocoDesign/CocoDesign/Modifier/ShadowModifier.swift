@@ -7,7 +7,7 @@
 import SwiftUI
 
 // MARK: - Custom Shadow Modifier
-public struct ShadowTypeModifier: ViewModifier {
+public struct ShadowModifier: ViewModifier {
     let shadowType: ShadowType
     
     public func body(content: Content) -> some View {
@@ -23,7 +23,7 @@ public struct ShadowTypeModifier: ViewModifier {
 
 // MARK: - View Extension
 public extension View {
-    func shadowType(_ type: ShadowType) -> some View {
-        self.modifier(ShadowTypeModifier(shadowType: type))
+    func shadow(_ type: ShadowType) -> some View {
+        self.modifier(ShadowModifier(shadowType: type))
     }
 }

@@ -24,7 +24,7 @@ public struct StyleModifier: ViewModifier {
                 Circle()
                     .stroke(Color.gray.opacity(0.2), lineWidth: 1)
             }
-            .shadowType(.soft)
+            .shadow(.soft)
     }
 }
 
