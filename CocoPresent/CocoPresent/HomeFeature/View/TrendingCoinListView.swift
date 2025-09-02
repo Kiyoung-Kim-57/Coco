@@ -23,7 +23,8 @@ public struct TrendingCoinListView: View {
                 if viewStore.isLoading {
                     ProgressView()
                 } else {
-                    coinListScrollView(viewStore.coinList)
+                    topTenCoinListContainer(viewStore)
+                        .frame(height: 450)
                 }
             }
             .onAppear {
@@ -32,19 +33,32 @@ public struct TrendingCoinListView: View {
         }
     }
     
+    private func topTenCoinListContainer(
+        _ viewStore: ViewStore<TrendingSearchFeature.State, TrendingSearchFeature.Action>
+    ) -> some View {
+        CocoContainer(shadowType: .strong) {
+            VStack(spacing: 0) {
+                trendListHeaderView()
+                coinListScrollView(viewStore.coinList)
+                    .padding(.horizontal, 8)
+            }
+        }
+        .padding(.horizontal, 10)
+    }
+    
     private func coinListScrollView(_ coins: [TrendingCoinListEntity]) -> some View {
         ScrollView {
             Section {
                 ForEach(coins, id: \.name) { item in
                     TrendingCoinListCell(item)
-                        .padding(.horizontal, 12)
-                        .padding(.vertical, 5)
+                        .padding(.vertical, 4)
                         .frame(maxWidth: .infinity, minHeight: 50)
                 }
-            } header: {
-                trendListHeaderView()
             }
+            .padding(.bottom, 12)
         }
+        .scrollIndicators(.hidden)
+        .fadeOverlay()
     }
     
     private func trendListHeaderView() -> some View {
@@ -53,5 +67,16 @@ public struct TrendingCoinListView: View {
                 .padding(12)
             Spacer()
         }
+    }
+}
+
+extension TrendingCoinListView {
+    enum Constants {
+        static let contentPadding = EdgeInsets(
+            top: 0,
+            leading: 10,
+            bottom: 10,
+            trailing: 0
+        )
     }
 }
