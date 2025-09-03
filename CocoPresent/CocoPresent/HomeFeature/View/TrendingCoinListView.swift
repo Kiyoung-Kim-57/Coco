@@ -35,17 +35,11 @@ public struct TrendingCoinListView: View {
     private func topTenCoinListContainer(
         _ viewStore: ViewStore<TrendingSearchFeature.State, TrendingSearchFeature.Action>
     ) -> some View {
-        CocoContainer(
-            height: 450,
-            shadowType: .elevated
-        ) {
-            VStack(spacing: 0) {
-                trendListHeaderView()
-                coinListScrollView(viewStore.coinList)
-                    .padding(.horizontal, 8)
-            }
+        VStack(spacing: 0) {
+            trendListHeaderView()
+            coinListScrollView(viewStore.coinList)
+                .padding(.horizontal, 8)
         }
-        .padding(.horizontal, 10)
     }
     
     private func coinListScrollView(_ coins: [TrendingCoinListEntity]) -> some View {
