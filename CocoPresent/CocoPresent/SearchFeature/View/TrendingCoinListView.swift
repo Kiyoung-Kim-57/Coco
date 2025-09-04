@@ -36,7 +36,7 @@ public struct TrendingCoinListView: View {
         _ viewStore: ViewStore<TrendingSearchFeature.State, TrendingSearchFeature.Action>
     ) -> some View {
         VStack(spacing: 0) {
-            trendListHeaderView()
+            trendListHeaderView(viewStore)
             coinListScrollView(viewStore.coinList)
                 .padding(.horizontal, 8)
         }
@@ -57,11 +57,22 @@ public struct TrendingCoinListView: View {
         .fadeOverlay()
     }
     
-    private func trendListHeaderView() -> some View {
-        HStack {
-            CocoLabel("Trending Coins", font: Font.system(size: 20, weight: .heavy))
-                .padding(12)
+    private func trendListHeaderView(
+        _ viewStore: ViewStore<TrendingSearchFeature.State, TrendingSearchFeature.Action>
+    ) -> some View {
+        HStack(alignment: .bottom) {
+            CocoLabel(
+                "Trending Coins",
+                font: HeaderFont.titleFont
+            )
+            .padding(12)
             Spacer()
+            CocoLabel(
+                viewStore.searchDate + " 기준",
+                font: HeaderFont.dateFont,
+                textColor: HeaderFont.dateColor
+            )
+            .padding(12)
         }
     }
 }
@@ -74,5 +85,11 @@ extension TrendingCoinListView {
             bottom: 10,
             trailing: 0
         )
+    }
+    
+    enum HeaderFont {
+        static let titleFont = Font.system(size: 20, weight: .heavy)
+        static let dateFont = Font.system(size: 14)
+        static let dateColor = CocoColor.resource(.gray70)
     }
 }
