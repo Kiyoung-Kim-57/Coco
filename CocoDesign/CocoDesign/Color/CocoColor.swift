@@ -8,7 +8,7 @@
 import SwiftUI
 
 public enum CocoColor {
-    static func resource(_ color: Colors) -> Color {
+    public static func resource(_ color: Colors) -> Color {
         switch color {
         case .gray10: return Color(.gray10)
         case .gray20: return Color(.gray20)
