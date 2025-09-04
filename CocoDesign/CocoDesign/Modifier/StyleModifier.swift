@@ -18,7 +18,7 @@ public struct StyleModifier: ViewModifier {
     public func body(content: Content) -> some View {
         content
             .scaledToFit()
-            .frame(width: 44, height: 44)
+            .frame(width: 42, height: 42)
             .clipShape(Circle())
             .overlay {
                 Circle()
