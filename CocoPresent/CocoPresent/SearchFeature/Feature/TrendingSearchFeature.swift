@@ -30,7 +30,7 @@ public struct TrendingSearchFeature: Reducer {
         Reduce { state, action in
             switch action {
             case .onAppear:
-                guard !state.isLoading else { return .none }
+                guard !state.isLoading && state.coinList.isEmpty else { return .none }
                 
                 state.isLoading = true
                 return .run { send in

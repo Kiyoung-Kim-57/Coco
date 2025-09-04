@@ -1,0 +1,55 @@
+//
+//  SearchListFeature.swift
+//  CocoPresent
+//
+//  Created by 김기영 on 9/4/25.
+//
+
+import SwiftUI
+import ComposableArchitecture
+
+public struct SearchListFeature: Reducer {
+    public init() { }
+    
+    public struct State: Equatable {
+        var searchResults: [String] = []
+        
+        // TODO: Search Result Detail State
+    }
+    
+    @CasePathable
+    public enum Action {
+        case searchResultFetched([String])
+        case searchCanceled
+        // TODO: Search Result Detail Action
+    }
+    
+    public var body: some ReducerOf<Self> {
+        Reduce { state, action in
+            switch action {
+            case .searchResultFetched(let results):
+                state.searchResults = results
+                return .none
+            case .searchCanceled:
+                state.searchResults = []
+                return .none
+            }
+        }
+    }
+}
+
+extension SearchListFeature {
+    static var dummyData: [String] = [
+        "Bit",
+        "Cocoa",
+        "Swift",
+        "UIKit",
+        "AppKit",
+        "iOS",
+        "macOS",
+        "tvOS",
+        "watchOS",
+        "Objective-C",
+        "Reactive",
+    ]
+}
