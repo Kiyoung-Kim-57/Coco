@@ -13,8 +13,6 @@ import ComposableArchitecture
 
 @main
 struct CocoApp: App {
-    @StateObject private var appRouter = AppRouterFactory.makeAppRouter()
-    
     init() {
         DIContainer.registerObjects()
     }
@@ -24,7 +22,6 @@ struct CocoApp: App {
             MainView(store: Store(initialState: MainFeature.State()) {
                 MainFeature()
             })
-                .environmentObject(appRouter)
         }
     }
 }
