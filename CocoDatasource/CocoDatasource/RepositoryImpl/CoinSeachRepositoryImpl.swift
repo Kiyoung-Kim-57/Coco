@@ -61,7 +61,7 @@ public final class CoinSeachRepositoryImpl: CoinSearchRepository {
     }
     
     private func combineCoinWithSparkLine(coinList: [CoinSearchResult], sparkLine: [Data]) async throws -> TrendingCoinListEntities {
-        return try DTOMapper.TrendCoin.map(
+        return try DTOMapper.TrendingCoin.map(
             coinList: coinList,
             sparkLine: sparkLine
         )
