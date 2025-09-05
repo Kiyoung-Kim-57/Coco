@@ -9,20 +9,20 @@
 import Foundation
 
 // 최상위 응답 DTO
-struct CoinSearchResponseDTO: Codable {
-    let coins: [CoinDTO]
+public struct CoinSearchResponseDTO: Codable {
+    public let coins: [CoinDTO]
 }
 
 // Coin 개별 DTO
-struct CoinDTO: Codable, Identifiable {
-    let id: String
-    let name: String
-    let apiSymbol: String
-    let symbol: String
-    let marketCapRank: Int?
-    let thumb: String
+public struct CoinDTO: Codable, Identifiable {
+    public let id: String
+    public let name: String
+    public let apiSymbol: String
+    public let symbol: String
+    public let marketCapRank: Int?
+    public let thumb: String
 
-    enum CodingKeys: String, CodingKey {
+    public enum CodingKeys: String, CodingKey {
         case id
         case name
         case apiSymbol = "api_symbol"

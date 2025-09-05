@@ -43,6 +43,15 @@ public final class CoinSeachRepositoryImpl: CoinSearchRepository {
         return try await combineCoinWithSparkLine(coinList: coinList, sparkLine: sparkLine)
     }
     
+    public func fetchSearchResults() async throws -> CoinListEntities {
+        let response = try await geckoRemoteDataSource.readData(type: CoinSearchResponseDTO.self) { request in
+            request
+                .setURLPath(path: Gecko.searchPath())
+        }
+        
+        
+    }
+    
     private func fetchSVGData(urls: [String]) async throws -> [Data] {
         var result: [Data] = []
         
@@ -60,7 +69,7 @@ public final class CoinSeachRepositoryImpl: CoinSearchRepository {
         return result
     }
     
-    private func combineCoinWithSparkLine(coinList: [CoinSearchResult], sparkLine: [Data]) async throws -> TrendingCoinListEntities {
+    private func combineCoinWithSparkLine(coinList: [TrendingCoinSearchResult], sparkLine: [Data]) async throws -> TrendingCoinListEntities {
         return try DTOMapper.TrendingCoin.map(
             coinList: coinList,
             sparkLine: sparkLine
