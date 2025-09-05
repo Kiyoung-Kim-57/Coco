@@ -37,8 +37,14 @@ public enum DTOMapper {
     
     // Coin Search
     public enum CoinSearchList {
-        public static func map(response: CoinSearchResponseDTO) throws -> CoinListEntities {
-            return []
+        public static func map(response: CoinSearchResponseDTO) -> CoinSearchListEntities {
+            return response.coins.map { item in
+                CoinSearchListEntity(
+                    id: item.id,
+                    name: item.name,
+                    symbol: item.symbol
+                )
+            }
         }
     }
 }
