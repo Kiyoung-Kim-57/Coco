@@ -48,7 +48,7 @@ public struct TrendingCoinListView: View {
                 ForEach(coins, id: \.name) { item in
                     TrendingCoinListCell(item)
                         .padding(.vertical, 4)
-                        .frame(maxWidth: .infinity, minHeight: 50)
+                        .frame(maxWidth: .infinity, minHeight: Constants.cellMinHeight)
                 }
             }
             .padding(.vertical, 12)
@@ -85,6 +85,8 @@ extension TrendingCoinListView {
             bottom: 10,
             trailing: 0
         )
+        
+        static let cellMinHeight: CGFloat = 50
     }
     
     enum HeaderFont {
