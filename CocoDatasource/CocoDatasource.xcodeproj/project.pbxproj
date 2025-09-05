@@ -35,6 +35,7 @@
 			membershipExceptions = (
 				DataError.swift,
 				DTO/CoinGecko/CoinPriceDTO.swift,
+				DTO/CoinGecko/CoinSearchResponseDTO.swift,
 				DTO/CoinGecko/TrendingSearchListDTO.swift,
 				DTO/Upbit/CautionDTO.swift,
 				DTO/Upbit/CoinGeneralInfoDTO.swift,
@@ -47,20 +48,12 @@
 			);
 			target = 6FF132472E33540100D14F35 /* CocoDatasourceTests */;
 		};
-		6FC1B40E2E5EEDD0008F0FB9 /* Exceptions for "CocoDatasource" folder in "CocoDatasource" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				Info.plist,
-			);
-			target = 6F9C74922E1255D6000878C6 /* CocoDatasource */;
-		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		6F9C74952E1255D6000878C6 /* CocoDatasource */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				6FC1B40E2E5EEDD0008F0FB9 /* Exceptions for "CocoDatasource" folder in "CocoDatasource" target */,
 				6F9F7C5F2E49C4BE00F9D9E4 /* Exceptions for "CocoDatasource" folder in "CocoDatasourceTests" target */,
 			);
 			path = CocoDatasource;
