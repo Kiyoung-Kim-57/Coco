@@ -139,6 +139,11 @@ extension DIContainer {
         DIContainer.shared.register(FetchTrendingSearchUseCaseImpl(coinSearchRepository: repository))
     }
     
+    static func registerFetchCoinSearchListUseCase() {
+        let repository = DIContainer.shared.resolve(CoinSeachRepositoryImpl.self)
+        DIContainer.shared.register(FetchCoinSearchListUseCaseImpl(coinSearchRepository: repository))
+    }
+    
     public static func registerObjects() {
         registerNetworkManager()
         registerUpbitRemoteDataSource()
@@ -146,6 +151,7 @@ extension DIContainer {
         registerCoinListRepository()
         registerFetchCoinListUseCase()
         registerFetchTrendingSearchUseCase()
+        registerFetchCoinSearchListUseCase()
         // Mock Register
 //        registerFlowRoutableMock()
 //        registerAppRoutableMock()
@@ -160,6 +166,10 @@ public extension DIContainer {
     
     static func resolveFetchTrendingSearchUseCase() -> FetchTrendingSearchUseCaseImpl {
         return DIContainer.shared.resolve(FetchTrendingSearchUseCaseImpl.self)
+    }
+    
+    static func resolveFetchCoinSearchListUseCase() -> FetchCoinSearchListUseCase {
+        return DIContainer.shared.resolve(FetchCoinSearchListUseCaseImpl.self)
     }
 }
 
