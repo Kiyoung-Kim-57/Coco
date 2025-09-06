@@ -8,7 +8,7 @@ import Dependencies
 import CocoDomain
 
 public extension DependencyValues {
-    var fetchTrendingSearchUseCase: FetchTrendingSearchUseCaseImpl {
+    var fetchTrendingSearchUseCase: FetchTrendingSearchUseCase {
         get { self[FetchTrendingSearchUseCaseKey.self] }
         set { self[FetchTrendingSearchUseCaseKey.self] = newValue }
     }

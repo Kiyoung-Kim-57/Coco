@@ -6,7 +6,7 @@
 //
 
 public enum Upbit {
-    public static func marketPath() -> String {
-        return "/v1/market/all"
-    }
+    public static func marketPath() -> String { "/v1/market/all" }
+    
+    public static func identifier() -> String { "Upbit" }
 }

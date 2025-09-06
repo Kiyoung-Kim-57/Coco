@@ -7,6 +7,4 @@
 import Foundation
 import CocoNetwork
 
-public protocol CocoRemoteDataSource: CocoReadableDataSource where Item == Data, Condition == HttpRequest {
-    associatedtype DecodeType: Decodable
-}
+public protocol CocoRemoteDataSource: CocoReadableDataSource where Item == Data, Condition == HttpRequest { }

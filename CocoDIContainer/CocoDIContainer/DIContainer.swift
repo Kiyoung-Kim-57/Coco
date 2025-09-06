@@ -31,6 +31,11 @@ public final class DIContainer {
         storage[key] = instance
     }
     
+    public func register<T>(_ type: T.Type, _ instance: T, name: String) {
+        let key = "\(ObjectIdentifier(type))" + name
+        storage[key] = instance
+    }
+    
     public func resolve<T>(_ type: T.Type) -> T {
         let key = "\(ObjectIdentifier(type))"
         guard let instance = storage[key] as? T else {
@@ -108,40 +113,44 @@ public final class DIContainer {
 extension DIContainer {
     // Network Manager
     static func registerNetworkManager() {
-        DIContainer.shared.register(NetworkManagerImpl())
+//        DIContainer.shared.register(NetworkManagerImpl())
+        DIContainer.shared.register(NetworkManager.self, instance: NetworkManagerImpl())
     }
     // DataSource
     static func registerUpbitRemoteDataSource() {
-        let networkManager = DIContainer.shared.resolve(NetworkManagerImpl.self)
-        DIContainer.shared.register(CocoRemoteDataSourceImpl(networkManager: networkManager, baseHost: DataSourceBundle.upbitHost()), name: "Upbit")
+        let networkManager = DIContainer.shared.resolve(NetworkManager.self)
+//        DIContainer.shared.register(CocoRemoteDataSourceImpl(networkManager: networkManager, baseHost: DataSourceBundle.upbitHost()), name: "Upbit")
+        DIContainer.shared.register((any CocoRemoteDataSource).self, CocoRemoteDataSourceImpl(networkManager: networkManager, baseHost: DataSourceBundle.upbitHost()), name: Upbit.identifier())
     }
     
     static func registerGeckoRemoteDataSource() {
-        let networkManager = DIContainer.shared.resolve(NetworkManagerImpl.self)
-        DIContainer.shared.register(CocoRemoteDataSourceImpl(networkManager: networkManager, baseHost: DataSourceBundle.geckoHost()), name: "Gecko")
+        let networkManager = DIContainer.shared.resolve(NetworkManager.self)
+//        DIContainer.shared.register(CocoRemoteDataSourceImpl(networkManager: networkManager, baseHost: DataSourceBundle.geckoHost()), name: "Gecko")
+        DIContainer.shared.register((any CocoRemoteDataSource).self, CocoRemoteDataSourceImpl(networkManager: networkManager, baseHost: DataSourceBundle.geckoHost()), name: Gecko.identifier())
     }
     
     // Repository
     static func registerCoinListRepository() {
-        let upbit = DIContainer.shared.resolve(CocoRemoteDataSourceImpl.self, name: "Upbit")
-        let gecko = DIContainer.shared.resolve(CocoRemoteDataSourceImpl.self, name: "Gecko")
+        let upbit = DIContainer.shared.resolve((any CocoRemoteDataSource).self, name: Upbit.identifier())
+        let gecko = DIContainer.shared.resolve((any CocoRemoteDataSource).self, name: Gecko.identifier())
         
-        DIContainer.shared.register(CoinSeachRepositoryImpl(upbitRemoteDataSource: upbit, geckRemoteDataSource: gecko))
+        DIContainer.shared.register(CoinSearchRepository.self, instance: CoinSearchRepositoryImpl(upbitRemoteDataSource: upbit, geckRemoteDataSource: gecko))
     }
+    
     // UseCase
     static func registerFetchCoinListUseCase() {
-        let repository = DIContainer.shared.resolve(CoinSeachRepositoryImpl.self)
-        DIContainer.shared.register(FetchCoinListUseCaseImpl(coinListRepository: repository))
+        let repository = DIContainer.shared.resolve(CoinSearchRepository.self)
+        DIContainer.shared.register(FetchCoinListUseCase.self, instance: FetchCoinListUseCaseImpl(coinListRepository: repository))
     }
     
     static func registerFetchTrendingSearchUseCase() {
-        let repository = DIContainer.shared.resolve(CoinSeachRepositoryImpl.self)
-        DIContainer.shared.register(FetchTrendingSearchUseCaseImpl(coinSearchRepository: repository))
+        let repository = DIContainer.shared.resolve(CoinSearchRepository.self)
+        DIContainer.shared.register(FetchTrendingSearchUseCase.self, instance: FetchTrendingSearchUseCaseImpl(coinSearchRepository: repository))
     }
     
     static func registerFetchCoinSearchListUseCase() {
-        let repository = DIContainer.shared.resolve(CoinSeachRepositoryImpl.self)
-        DIContainer.shared.register(FetchCoinSearchListUseCaseImpl(coinSearchRepository: repository))
+        let repository = DIContainer.shared.resolve(CoinSearchRepository.self)
+        DIContainer.shared.register(FetchCoinSearchListUseCase.self, instance: FetchCoinSearchListUseCaseImpl(coinSearchRepository: repository))
     }
     
     public static func registerObjects() {
@@ -160,16 +169,16 @@ extension DIContainer {
 
 // Resolve
 public extension DIContainer {
-    static func resolveFetchCoinListUseCase() -> FetchCoinListUseCaseImpl {
-        return DIContainer.shared.resolve(FetchCoinListUseCaseImpl.self)
+    static func resolveFetchCoinListUseCase() -> FetchCoinListUseCase {
+        return DIContainer.shared.resolve(FetchCoinListUseCase.self)
     }
     
-    static func resolveFetchTrendingSearchUseCase() -> FetchTrendingSearchUseCaseImpl {
-        return DIContainer.shared.resolve(FetchTrendingSearchUseCaseImpl.self)
+    static func resolveFetchTrendingSearchUseCase() -> FetchTrendingSearchUseCase {
+        return DIContainer.shared.resolve(FetchTrendingSearchUseCase.self)
     }
     
     static func resolveFetchCoinSearchListUseCase() -> FetchCoinSearchListUseCase {
-        return DIContainer.shared.resolve(FetchCoinSearchListUseCaseImpl.self)
+        return DIContainer.shared.resolve(FetchCoinSearchListUseCase.self)
     }
 }
 

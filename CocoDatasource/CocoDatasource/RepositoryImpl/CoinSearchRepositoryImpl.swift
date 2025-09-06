@@ -9,7 +9,7 @@ import Foundation
 import CocoDomain
 import CocoNetwork
 
-public final class CoinSeachRepositoryImpl: CoinSearchRepository {
+public final class CoinSearchRepositoryImpl: CoinSearchRepository {
     private let upbitRemoteDataSource: any CocoRemoteDataSource
     private let geckoRemoteDataSource: any CocoRemoteDataSource
     

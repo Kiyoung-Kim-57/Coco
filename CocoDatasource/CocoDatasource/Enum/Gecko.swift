@@ -6,11 +6,9 @@
 //
 
 public enum Gecko {
-    public static func searchPath() -> String {
-        return "/api/v3/search"
-    }
+    public static func searchPath() -> String { "/api/v3/search" }
     
-    public static func trendingPath() -> String {
-        return "/api/v3/search/trending"
-    }
+    public static func trendingPath() -> String { "/api/v3/search/trending" }
+    
+    public static func identifier() -> String { "Gecko" }
 }
