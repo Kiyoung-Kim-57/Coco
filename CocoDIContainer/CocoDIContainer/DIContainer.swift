@@ -161,9 +161,6 @@ extension DIContainer {
         registerFetchCoinListUseCase()
         registerFetchTrendingSearchUseCase()
         registerFetchCoinSearchListUseCase()
-        // Mock Register
-//        registerFlowRoutableMock()
-//        registerAppRoutableMock()
     }
 }
 
@@ -188,8 +185,13 @@ public extension DIContainer {
         DIContainer.shared.registerMock((any NetworkManager).self, instance: MockNetworkManager())
     }
     
+    static func registerCoinSearchRepositoryMock() {
+        DIContainer.shared.registerMock(CoinSearchRepository.self, instance: MockRepository())
+    }
+    
     static func registerMockObjects() {
         // Mock Register
         registerNetworkManagerMock()
+        registerCoinSearchRepositoryMock()
     }
 }
