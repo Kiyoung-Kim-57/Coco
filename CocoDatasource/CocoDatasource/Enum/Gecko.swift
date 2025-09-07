@@ -6,6 +6,8 @@
 //
 
 public enum Gecko {
+    public static func host() -> String { "api.coingecko.com" }
+    
     public static func searchPath() -> String { "/api/v3/search" }
     
     public static func trendingPath() -> String { "/api/v3/search/trending" }

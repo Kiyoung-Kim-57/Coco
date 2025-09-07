@@ -6,6 +6,8 @@
 //
 
 public enum Upbit {
+    public static func host() -> String { "api.upbit.com" }
+    
     public static func marketPath() -> String { "/v1/market/all" }
     
     public static func identifier() -> String { "Upbit" }
