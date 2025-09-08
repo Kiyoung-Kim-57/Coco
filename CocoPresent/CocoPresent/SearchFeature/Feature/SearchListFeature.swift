@@ -13,7 +13,7 @@ public struct SearchListFeature: Reducer {
     
     public struct State: Equatable {
         var searchResults: [String] = []
-        
+        var isSearching: Bool = false
         // TODO: Search Result Detail State
     }
     
@@ -28,9 +28,11 @@ public struct SearchListFeature: Reducer {
         Reduce { state, action in
             switch action {
             case .searchResultFetched(let results):
+                state.isSearching = true
                 state.searchResults = results
                 return .none
             case .searchCanceled:
+                state.isSearching = false
                 state.searchResults = []
                 return .none
             }

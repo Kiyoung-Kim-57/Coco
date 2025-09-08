@@ -12,3 +12,7 @@ import Dependencies
 public enum FetchTrendingSearchUseCaseKey: DependencyKey {
     public static let liveValue = DIContainer.resolveFetchTrendingSearchUseCase()
 }
+
+public enum FetchCoinSearchListUseCaseKey: DependencyKey {
+    public static let liveValue = DIContainer.resolveFetchCoinSearchListUseCase()
+}

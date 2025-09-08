@@ -21,12 +21,12 @@ struct CocoDatasourceTests {
         
         self.upbitRemoteDatasource = CocoRemoteDataSourceImpl(
             networkManager: self.networkManager,
-            baseHost: DataSourceBundle.upbitHost()
+            baseHost: Upbit.host()
         )
         
         self.coinGeckoRemoteDatasource = CocoRemoteDataSourceImpl(
             networkManager: self.networkManager,
-            baseHost: DataSourceBundle.geckoHost()
+            baseHost: Gecko.host()
         )
     }
     

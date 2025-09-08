@@ -11,6 +11,8 @@ import ComposableArchitecture
 public struct CoinSearchFeature: Reducer {
     public init() {}
     
+    @Dependency(\.fetchCoinSearchListUseCase) var fetchCoinSearchListUseCase
+    
     public struct State: Equatable {
         var searchText: String = ""
         
@@ -28,6 +30,10 @@ public struct CoinSearchFeature: Reducer {
         case trendingSearch(TrendingSearchFeature.Action)
     }
     
+    private enum ID: Hashable {
+        case debounce
+    }
+    
     public var body: some ReducerOf<Self> {
         Reduce { state, action in
             switch action {
@@ -37,18 +43,24 @@ public struct CoinSearchFeature: Reducer {
                 return .none
             case .searchTextChanged(let text):
                 guard state.searchText != text else { return .none }
+                
                 state.searchText = text
                 return .run { send in
                     // TODO: Search Task Needed
                     if text.isEmpty {
                         await send(.searchList(.searchCanceled))
                     } else {
-                        await send(.searchList(.searchResultFetched(SearchListFeature.dummyData)))
+                        do {
+                            let searchResults = try await fetchCoinSearchListUseCase.execute(text)
+                            await send(.searchList(.searchResultFetched(searchResults.map { $0.name })))
+                        } catch {
+                            print("Error Occured: \(error)")
+                        }
                     }
                 }
+                .debounce(id: ID.debounce, for: .seconds(0.3), scheduler: DispatchQueue.main)
             }
         }
-        
         // MARK: Scope
         Scope(state: \.searchListState, action: \.searchList) {
             SearchListFeature()
