@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct CoinSearchListEntity {
+public struct CoinSearchListEntity: Equatable, Hashable {
     public let id: String
     public let name: String
     public let symbol: String

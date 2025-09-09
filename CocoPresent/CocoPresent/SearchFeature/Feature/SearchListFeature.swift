@@ -6,20 +6,21 @@
 //
 
 import SwiftUI
+import CocoDomain
 import ComposableArchitecture
 
 public struct SearchListFeature: Reducer {
     public init() { }
     
     public struct State: Equatable {
-        var searchResults: [String] = []
+        var searchResults: CoinSearchListEntities = []
         var isSearching: Bool = false
         // TODO: Search Result Detail State
     }
     
     @CasePathable
     public enum Action {
-        case searchResultFetched([String])
+        case searchResultFetched(CoinSearchListEntities)
         case searchCanceled
         // TODO: Search Result Detail Action
     }

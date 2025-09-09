@@ -32,7 +32,7 @@ struct SearchListView: View {
         >
     ) -> some View {
         List(viewStore.searchResults, id: \.self) { item in
-            SearchListCell(item)
+            SearchListCell(item.name)
         }
         .listStyle(.plain)
     }

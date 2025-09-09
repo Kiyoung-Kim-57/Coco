@@ -52,13 +52,13 @@ public struct CoinSearchFeature: Reducer {
                     } else {
                         do {
                             let searchResults = try await fetchCoinSearchListUseCase.execute(text)
-                            await send(.searchList(.searchResultFetched(searchResults.map { $0.name })))
+                            await send(.searchList(.searchResultFetched(searchResults)))
                         } catch {
                             print("Error Occured: \(error)")
                         }
                     }
                 }
-                .debounce(id: ID.debounce, for: .seconds(0.3), scheduler: DispatchQueue.main)
+                .debounce(id: ID.debounce, for: .seconds(0.3), scheduler:  DispatchQueue.global(qos: .userInitiated))
             }
         }
         // MARK: Scope
