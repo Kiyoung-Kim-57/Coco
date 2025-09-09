@@ -9,7 +9,7 @@ import Foundation
 import CocoDomain
 import CocoNetwork
 
-public final class CoinSeachRepositoryImpl: CoinSearchRepository {
+public final class CoinSearchRepositoryImpl: CoinSearchRepository {
     private let upbitRemoteDataSource: any CocoRemoteDataSource
     private let geckoRemoteDataSource: any CocoRemoteDataSource
     
@@ -43,6 +43,16 @@ public final class CoinSeachRepositoryImpl: CoinSearchRepository {
         return try await combineCoinWithSparkLine(coinList: coinList, sparkLine: sparkLine)
     }
     
+    public func fetchSearchResults(_ query: String) async throws -> CoinSearchListEntities {
+        let response = try await geckoRemoteDataSource.readData(type: CoinSearchResponseDTO.self) { request in
+            request
+                .setURLPath(path: Gecko.searchPath())
+                .addQueryItem("query", query)
+        }
+        
+        return DTOMapper.CoinSearchList.map(response: response)
+    }
+    
     private func fetchSVGData(urls: [String]) async throws -> [Data] {
         var result: [Data] = []
         
@@ -60,8 +70,8 @@ public final class CoinSeachRepositoryImpl: CoinSearchRepository {
         return result
     }
     
-    private func combineCoinWithSparkLine(coinList: [CoinSearchResult], sparkLine: [Data]) async throws -> TrendingCoinListEntities {
-        return try DTOMapper.TrendCoin.map(
+    private func combineCoinWithSparkLine(coinList: [TrendingCoinSearchResult], sparkLine: [Data]) async throws -> TrendingCoinListEntities {
+        return try DTOMapper.TrendingCoin.map(
             coinList: coinList,
             sparkLine: sparkLine
         )

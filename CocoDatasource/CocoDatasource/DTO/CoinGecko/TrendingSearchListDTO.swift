@@ -9,17 +9,17 @@ import Foundation
 
 // MARK: - Main Response Model
 public struct TrendingSearchListDTO: Decodable {
-    public let coins: [CoinSearchResult]
+    public let coins: [TrendingCoinSearchResult]
     public let nfts: [NFTSearchResult]
     public let categories: [CategorySearchResult]
 }
 
 // MARK: - Coin Models
-public struct CoinSearchResult: Decodable {
-    public let item: CoinItem
+public struct TrendingCoinSearchResult: Decodable {
+    public let item: TrendingCoinItem
 }
 
-public struct CoinItem: Decodable {
+public struct TrendingCoinItem: Decodable {
     public let id: String
     public let coinId: Int
     public let name: String
@@ -27,7 +27,7 @@ public struct CoinItem: Decodable {
     public let marketCapRank: Int
     public let thumb: String
     public let score: Int
-    public let data: CoinData
+    public let data: TrendingCoinData
     
     enum CodingKeys: String, CodingKey {
         case id
@@ -41,7 +41,7 @@ public struct CoinItem: Decodable {
     }
 }
 
-public struct CoinData: Decodable {
+public struct TrendingCoinData: Decodable {
     public let price: Double
     public let priceBtc: String
     public let priceChangePercentage24h: PriceChangePercentage24h
@@ -50,7 +50,7 @@ public struct CoinData: Decodable {
     public let totalVolume: String
     public let totalVolumeBtc: String
     public let sparkline: String
-    public let content: CoinContent?
+    public let content: TrendingCoinContent?
     
     enum CodingKeys: String, CodingKey {
         case price
@@ -70,7 +70,7 @@ public struct PriceChangePercentage24h: Decodable {
     public let krw: Double
 }
 
-public struct CoinContent: Decodable {
+public struct TrendingCoinContent: Decodable {
     public let title: String
     public let description: String
 }

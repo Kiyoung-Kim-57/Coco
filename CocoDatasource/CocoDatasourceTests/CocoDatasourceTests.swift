@@ -21,12 +21,12 @@ struct CocoDatasourceTests {
         
         self.upbitRemoteDatasource = CocoRemoteDataSourceImpl(
             networkManager: self.networkManager,
-            baseHost: DataSourceBundle.upbitHost()
+            baseHost: Upbit.host()
         )
         
         self.coinGeckoRemoteDatasource = CocoRemoteDataSourceImpl(
             networkManager: self.networkManager,
-            baseHost: DataSourceBundle.geckoHost()
+            baseHost: Gecko.host()
         )
     }
     
@@ -76,6 +76,17 @@ struct CocoDatasourceTests {
         }
         #expect(data.coins.count > 0)
         print(data.coins[0])
+    }
+    
+    @Test("Gecko Search Coin Test")
+    func geckoSearchCoin() async throws {
+        let response = try await coinGeckoRemoteDatasource.readData(type: CoinSearchResponseDTO.self) { request in
+            request
+                .setURLPath(path: Gecko.searchPath())
+                .addQueryItem("query", "eth")
+        }
+        
+        #expect(response.coins.contains(where: { $0.id == "ethereum" }))
     }
 }
 

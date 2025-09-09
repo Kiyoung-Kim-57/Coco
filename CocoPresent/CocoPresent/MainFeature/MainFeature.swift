@@ -12,13 +12,13 @@ public struct MainFeature: Reducer {
     public struct State: Equatable {
         public init() { }
         var selectedTab: FlowType = .home
-        var trendingSearchState = TrendingSearchFeature.State()
+        var coinSearchState = CoinSearchFeature.State()
     }
     
     @CasePathable
     public enum Action {
         case tabSelected(FlowType)
-        case trendingSearchAction(TrendingSearchFeature.Action)
+        case coinSearch(CoinSearchFeature.Action)
     }
     
     public var body: some ReducerOf<Self> {
@@ -27,13 +27,13 @@ public struct MainFeature: Reducer {
             case .tabSelected(let tab):
                 state.selectedTab = tab
                 return .none
-            case .trendingSearchAction(let action):
+            case .coinSearch(let action):
                 return .none
             }
         }
         
-        Scope(state: \.trendingSearchState, action: \.trendingSearchAction) {
-            TrendingSearchFeature()
+        Scope(state: \.coinSearchState, action: \.coinSearch) {
+            CoinSearchFeature()
         }
     }
 }

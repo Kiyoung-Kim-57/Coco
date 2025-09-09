@@ -18,13 +18,13 @@ public struct StyleModifier: ViewModifier {
     public func body(content: Content) -> some View {
         content
             .scaledToFit()
-            .frame(width: 44, height: 44)
+            .frame(width: 42, height: 42)
             .clipShape(Circle())
             .overlay {
                 Circle()
                     .stroke(Color.gray.opacity(0.2), lineWidth: 1)
             }
-            .shadowType(.soft)
+            .shadow(.soft)
     }
 }
 

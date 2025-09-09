@@ -16,6 +16,7 @@ public struct TrendingCoinListCell: View {
     let changeRate: Double
     let thumbUrl: String?
     let sparkLine: Data
+    let rank: Int
     
     public init(_ entity: TrendingCoinListEntity) {
         self.code = entity.code
@@ -24,11 +25,13 @@ public struct TrendingCoinListCell: View {
         self.changeRate = entity.changeRate
         self.thumbUrl = entity.thumbUrl
         self.sparkLine = entity.sparkline
+        self.rank = entity.rank
     }
     
     public var body: some View {
         GeometryReader { geo in
             HStack {
+                rankLabel()
                 coinThumbnail()
                     .padding(.trailing, 5)
                 coinLabel()
@@ -41,10 +44,16 @@ public struct TrendingCoinListCell: View {
         }
     }
     
+    private func rankLabel() -> some View {
+        CocoLabel("\(rank + 1)",
+                  font: Font.system(size: RankFont.size),
+                  textColor: RankFont.color)
+    }
+    
     private func coinLabel() -> some View {
         VStack(alignment: .leading) {
             CocoLabel(code,
-                      font: Font.system(size: 20, weight: .bold))
+                      font: Font.system(size: PrimaryFont.size, weight: .bold))
             CocoLabel(
                 name,
                 font: Font.system(size: SecondaryFont.size),
@@ -62,7 +71,7 @@ public struct TrendingCoinListCell: View {
     
     private func priceLabel() -> some View {
         return CocoLabel("₩" + formatPrice(),
-                         font: Font.system(size: 16, weight: .bold))
+                         font: Font.system(size: PrimaryFont.size, weight: .bold))
     }
     
     private func formatPrice() -> String {
@@ -106,9 +115,19 @@ public struct TrendingCoinListCell: View {
 }
 
 extension TrendingCoinListCell {
+    enum PrimaryFont {
+        static let size: CGFloat = 16
+        static let color: Color = Color.black
+    }
+    
     enum SecondaryFont {
         static let size: CGFloat = 12
-        static let color: Color = Color.gray
+        static let color: Color = CocoColor.resource(.gray90)
+    }
+    
+    enum RankFont {
+        static let size: CGFloat = 24
+        static let color: Color = CocoColor.resource(.gray50)
     }
 }
 

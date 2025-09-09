@@ -10,4 +10,5 @@ public protocol CoinSearchRepository {
     func fetchCoinList() async throws -> CoinListEntities
     func fetchCoinThumbnail() async throws -> URL
     func fetchTrendingCoinList() async throws -> TrendingCoinListEntities
+    func fetchSearchResults(_ query: String) async throws -> CoinSearchListEntities
 }

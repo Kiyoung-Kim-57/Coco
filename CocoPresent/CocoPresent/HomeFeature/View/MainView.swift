@@ -10,7 +10,6 @@ import CocoDesign
 import ComposableArchitecture
 
 public struct MainView: View {
-    @EnvironmentObject var appRouter: CocoAppRouter
     public let store: StoreOf<MainFeature>
     public init(store: StoreOf<MainFeature>) {
         self.store = store
@@ -21,17 +20,17 @@ public struct MainView: View {
             TabView(
                 selection: viewStore.binding(
                     get: \.selectedTab,
-                    send: { tab in MainFeature.Action.tabSelected(tab)}
+                    send: { tab in .tabSelected(tab)}
                 )
             ) {
                 Text("Home")
                     .tabItem(systemName: "house.fill", title: "Home")
                     .tag(FlowType.home)
                 
-                TrendingCoinListView(
+                CoinSearchView(
                     store: store.scope(
-                        state: \.trendingSearchState,
-                        action: \.trendingSearchAction
+                        state: \.coinSearchState,
+                        action: \.coinSearch
                     )
                 )
                 .tabItem(systemName: "chart.line.uptrend.xyaxis", title: "Trending")

@@ -112,10 +112,10 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6F9C73B52E100FAE000878C6 /* Build configuration list for PBXNativeTarget "Coco" */;
 			buildPhases = (
-				6F9C73A42E100FAC000878C6 /* Sources */,
 				6F9C73A52E100FAC000878C6 /* Frameworks */,
-				6F9C73A62E100FAC000878C6 /* Resources */,
 				6F9F7E842E4CDE0E00F9D9E4 /* Embed Frameworks */,
+				6F9C73A42E100FAC000878C6 /* Sources */,
+				6F9C73A62E100FAC000878C6 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -317,6 +317,7 @@
 				DEVELOPMENT_TEAM = S68RW89WQA;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_MetalCaptureEnabled = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -350,6 +351,7 @@
 				DEVELOPMENT_TEAM = S68RW89WQA;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_MetalCaptureEnabled = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

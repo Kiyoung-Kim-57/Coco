@@ -8,8 +8,9 @@ import Foundation
 import CocoDomain
 
 public enum DTOMapper {
-    public enum TrendCoin {
-        public static func map(coinList: [CoinSearchResult], sparkLine: [Data] ) throws -> TrendingCoinListEntities {
+    // Trending Coin
+    public enum TrendingCoin {
+        public static func map(coinList: [TrendingCoinSearchResult], sparkLine: [Data] ) throws -> TrendingCoinListEntities {
             guard coinList.count == sparkLine.count else {
                 throw DataError.dataCountMismatch
             }
@@ -31,6 +32,19 @@ public enum DTOMapper {
             }
             
             return result
+        }
+    }
+    
+    // Coin Search
+    public enum CoinSearchList {
+        public static func map(response: CoinSearchResponseDTO) -> CoinSearchListEntities {
+            return response.coins.map { item in
+                CoinSearchListEntity(
+                    id: item.id,
+                    name: item.name,
+                    symbol: item.symbol
+                )
+            }
         }
     }
 }

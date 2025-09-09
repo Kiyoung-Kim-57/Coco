@@ -18,6 +18,7 @@ public struct TrendingSearchFeature: Reducer {
         
         var coinList: [TrendingCoinListEntity] = []
         var isLoading: Bool = false
+        var searchDate: String = DateFormatter.cocoFormatter(Date.now, .MMddHHmm)
     }
     
     public enum Action {
@@ -30,7 +31,7 @@ public struct TrendingSearchFeature: Reducer {
         Reduce { state, action in
             switch action {
             case .onAppear:
-                guard !state.isLoading else { return .none }
+                guard !state.isLoading && state.coinList.isEmpty else { return .none }
                 
                 state.isLoading = true
                 return .run { send in
@@ -44,6 +45,7 @@ public struct TrendingSearchFeature: Reducer {
                 }
             case .dataLoaded(let list):
                 state.coinList = list
+                state.searchDate = DateFormatter.cocoFormatter(Date.now, .MMddHHmm)
                 state.isLoading = false
                 return .none
             case .dataLoadFailed(let error):

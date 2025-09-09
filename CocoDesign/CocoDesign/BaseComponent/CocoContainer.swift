@@ -8,7 +8,8 @@
 import SwiftUI
 
 public struct CocoContainer<Content: View>: View {
-    private let contentSize: CGSize?
+    private let width: CGFloat?
+    private let height: CGFloat?
     private let backgroundColor: Color
     private let lineColor: Color
     private let cornerRadius: CGFloat
@@ -19,7 +20,8 @@ public struct CocoContainer<Content: View>: View {
     private let content: Content
     
     public init(
-        contentSize: CGSize? = nil,
+        width: CGFloat? = nil,
+        height: CGFloat? = nil,
         backgroundColor: Color = .white,
         lineColor: Color = .clear ,
         cornerRadius: CGFloat = 8,
@@ -34,7 +36,8 @@ public struct CocoContainer<Content: View>: View {
         ),
         @ViewBuilder content: () -> Content
     ) {
-        self.contentSize = contentSize
+        self.width = width
+        self.height = height
         self.backgroundColor = backgroundColor
         self.lineColor = lineColor
         self.cornerRadius = cornerRadius
@@ -46,35 +49,19 @@ public struct CocoContainer<Content: View>: View {
     }
     
     public var body: some View {
-        if let contentSize = contentSize {
             content
                 .padding(contentPadding)
                 .clipShape(RoundedRectangle(cornerRadius: cornerRadius))
                 .background(
                     RoundedRectangle(cornerRadius: cornerRadius)
                         .fill(backgroundColor)
-                        .shadowType(shadowType)
+                        .shadow(shadowType)
                 )
                 .overlay(
                     RoundedRectangle(cornerRadius: cornerRadius)
                         .inset(by: borderWidth / 2)
                         .stroke(borderColor, lineWidth: borderWidth)
                 )
-                .frame(width: contentSize.width, height: contentSize.height)
-        } else {
-            content
-                .padding(contentPadding)
-                .clipShape(RoundedRectangle(cornerRadius: cornerRadius))
-                .background(
-                    RoundedRectangle(cornerRadius: cornerRadius)
-                        .fill(backgroundColor)
-                        .shadowType(shadowType)
-                )
-                .overlay(
-                    RoundedRectangle(cornerRadius: cornerRadius)
-                        .inset(by: borderWidth / 2)
-                        .stroke(borderColor, lineWidth: borderWidth)
-                )
-        }
+                .frame(width: width, height: height)
     }
 }
