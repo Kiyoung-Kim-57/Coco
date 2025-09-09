@@ -20,7 +20,7 @@ public struct MainView: View {
             TabView(
                 selection: viewStore.binding(
                     get: \.selectedTab,
-                    send: { tab in MainFeature.Action.tabSelected(tab)}
+                    send: { tab in .tabSelected(tab)}
                 )
             ) {
                 Text("Home")
