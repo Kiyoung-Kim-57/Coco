@@ -36,6 +36,7 @@
 				DataError.swift,
 				DTO/CoinGecko/CoinPriceDTO.swift,
 				DTO/CoinGecko/CoinSearchResponseDTO.swift,
+				DTO/CoinGecko/PriceDTO.swift,
 				DTO/CoinGecko/TrendingSearchListDTO.swift,
 				DTO/Upbit/CautionDTO.swift,
 				DTO/Upbit/CoinGeneralInfoDTO.swift,
