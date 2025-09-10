@@ -88,6 +88,21 @@ struct CocoDatasourceTests {
         
         #expect(response.coins.contains(where: { $0.id == "ethereum" }))
     }
+    
+    @Test("Gecko Coin Chart Data")
+    func geckoCoinChartData() async throws {
+        let response = try await coinGeckoRemoteDatasource.readData(type: CoinChartDTO.self) { request in
+            request
+                .setURLPath(path: Gecko.marketChartPath("ethereum"))
+                .addQueryItems([
+                    "vs_currency" : "krw",
+                    "days" : "1",
+                    "interval" : "daily"
+                ])
+        }
+        
+        #expect(response.marketCaps.count == 2)
+    }
 }
 
 enum TestErrors: Error {
