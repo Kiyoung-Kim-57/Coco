@@ -47,4 +47,23 @@ public enum DTOMapper {
             }
         }
     }
+    
+    // Coin Chart Data
+    public enum CoinChartData {
+        public static func map(response: CoinChartDTO) -> CoinChartDataEntities {
+            var result: CoinChartDataEntities = []
+            for idx in 0..<response.prices.count {
+                var temp = CoinChartDataEntity(
+                    date: Date(milliseconds: response.prices[idx][0]),
+                    price: response.prices[idx][1],
+                    marketCap: response.marketCaps[idx][1],
+                    totalVolume: response.totalVolumes[idx][1]
+                )
+                
+                result.append(temp)
+            }
+            
+            return result
+        }
+    }
 }
