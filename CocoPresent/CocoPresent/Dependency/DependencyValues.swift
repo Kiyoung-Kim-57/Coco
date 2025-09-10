@@ -17,4 +17,9 @@ public extension DependencyValues {
         get { self[FetchCoinSearchListUseCaseKey.self] }
         set { self[FetchCoinSearchListUseCaseKey.self] = newValue }
     }
+    
+    var fetchCoinChartDataUseCase: FetchCoinChartDataUseCase {
+        get { self[FetchCoinChartDataUseCaseKey.self] }
+        set { self[FetchCoinChartDataUseCaseKey.self] = newValue }
+    }
 }
