@@ -34,6 +34,7 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				DataError.swift,
+				DTO/CoinGecko/CoinChartDTO.swift,
 				DTO/CoinGecko/CoinPriceDTO.swift,
 				DTO/CoinGecko/CoinSearchResponseDTO.swift,
 				DTO/CoinGecko/PriceDTO.swift,
