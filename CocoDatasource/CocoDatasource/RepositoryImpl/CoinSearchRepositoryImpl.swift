@@ -53,6 +53,20 @@ public final class CoinSearchRepositoryImpl: CoinSearchRepository {
         return DTOMapper.CoinSearchList.map(response: response)
     }
     
+    public func fetchCoinChartData(_ coin: String) async throws -> CoinChartDataEntities {
+        let response = try await geckoRemoteDataSource.readData(type: CoinChartDTO.self) { request in
+            request
+                .setURLPath(path: Gecko.marketChartPath(coin))
+                .addQueryItems([
+                    "vs_currency" : "krw",
+                    "days" : "6",
+                    "interval" : "daily"
+                ])
+        }
+        
+        return DTOMapper.CoinChartData.map(response: response)
+    }
+    
     private func fetchSVGData(urls: [String]) async throws -> [Data] {
         var result: [Data] = []
         
