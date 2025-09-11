@@ -7,11 +7,12 @@
 
 import Foundation
 
-public struct CoinChartDataEntity: Codable {
-    let date: Date
-    let price: Double
-    let marketCap: Double
-    let totalVolume: Double
+public struct CoinChartDataEntity: Codable, Identifiable {
+    public var id: UUID = UUID()
+    public let date: Date
+    public let price: Double
+    public let marketCap: Double
+    public let totalVolume: Double
     
     public init(date: Date, price: Double, marketCap: Double, totalVolume: Double) {
         self.date = date
