@@ -13,30 +13,26 @@ import CocoDomain
 struct CoinChartView: View {
     let chartData: CoinChartDataEntities
     let chartType: CoinChartType
-    var bottomValue: Double {
-        switch chartType {
-        case .price:
-            chartData.map { $0.price }.min() ?? 0
-        case .marketCap:
-            chartData.map { $0.marketCap }.min() ?? 0
-        case .totalVolume:
-            chartData.map { $0.totalVolume }.min() ?? 0
-        }
-    }
     
+    private func valueRange(_ fn: ([Double]) -> Double?) -> Double {
+        let values = chartData.map { $0[keyPath: chartType.keyPath] }
+        return fn(values) ?? 0
+    }
+
+    var bottomValue: Double {
+        valueRange { $0.min() }
+    }
+
     var topValue: Double {
-        switch chartType {
-        case .price:
-            chartData.map { $0.price }.max() ?? 0
-        case .marketCap:
-            chartData.map { $0.marketCap }.max() ?? 0
-        case .totalVolume:
-            chartData.map { $0.totalVolume }.max() ?? 0
-        }
+        valueRange { $0.max() }
     }
     
     var chartPadding: Double {
         (topValue - bottomValue) * 0.2
+    }
+    
+    var chartDomainRange: ClosedRange<Double> {
+        (bottomValue - chartPadding)...(topValue + chartPadding)
     }
     
     init(chartData: CoinChartDataEntities, chartType: CoinChartType) {
@@ -45,6 +41,13 @@ struct CoinChartView: View {
     }
     
     var body: some View {
+        modifiedChart {
+            chartView()
+        }
+    }
+    
+    // Chart Views
+    private func chartView() -> some View {
         Chart(chartData) { data in
             switch chartType {
             case .price:
@@ -55,24 +58,6 @@ struct CoinChartView: View {
                 barChart(data.date, data.totalVolume)
             }
         }
-        .foregroundStyle(
-            chartShapeStyle()
-        )
-        .chartXAxis {
-            AxisMarks(preset: .aligned, values: chartData.map { $0.date }) { value in
-                AxisValueLabel(format: .dateTime.month(.defaultDigits).day())
-            }
-        }
-        .chartYAxis {
-            AxisMarks{ value in
-                AxisValueLabel {
-                    if let doubleValue = value.as(Double.self) {
-                        Text("\(doubleValue.abbreviated)")
-                    }
-                }
-            }
-        }
-        .chartYScale(domain: (bottomValue - chartPadding)...(topValue + chartPadding))
     }
     
     private func areaChart(_ date: Date, _ value: Double) -> some ChartContent {
@@ -93,6 +78,7 @@ struct CoinChartView: View {
         )
     }
     
+    // Chart Shape Modifiers
     private func chartShapeStyle() -> some ShapeStyle {
         switch chartType {
         case .price, .marketCap:
@@ -109,6 +95,37 @@ struct CoinChartView: View {
             )
         }
     }
+    
+    private func modifiedChart(@ViewBuilder _ content: () -> (some View)) -> some View {
+        content()
+            .foregroundStyle(
+                chartShapeStyle()
+            )
+            .chartXAxis {
+                xAxisMarks()
+            }
+            .chartYAxis {
+                yAxisMarks()
+            }
+            .chartYScale(domain: chartDomainRange)
+    }
+    
+    // Axis Content
+    private func xAxisMarks() -> some AxisContent {
+        AxisMarks(preset: .aligned, values: chartData.map { $0.date }) { value in
+            AxisValueLabel(format: .dateTime.month(.defaultDigits).day())
+        }
+    }
+    
+    private func yAxisMarks() -> some AxisContent {
+        AxisMarks{ value in
+            AxisValueLabel {
+                if let doubleValue = value.as(Double.self) {
+                    Text("\(doubleValue.abbreviated)")
+                }
+            }
+        }
+    }
 }
 
 extension CoinChartView {
@@ -116,5 +133,13 @@ extension CoinChartView {
         case price
         case marketCap
         case totalVolume
+        
+        var keyPath: KeyPath<CoinChartDataEntity, Double> {
+            switch self {
+            case .price: return \.price
+            case .marketCap: return \.marketCap
+            case .totalVolume: return \.totalVolume
+            }
+        }
     }
 }
