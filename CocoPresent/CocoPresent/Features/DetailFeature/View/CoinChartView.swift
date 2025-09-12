@@ -11,27 +11,27 @@ import CocoDesign
 import CocoDomain
 
 struct CoinChartView: View {
-    let chartData: CoinChartDataEntities
-    let chartType: CoinChartType
+    private let chartData: CoinChartDataEntities
+    private let chartType: CoinChartType
     
     private func valueRange(_ fn: ([Double]) -> Double?) -> Double {
         let values = chartData.map { $0[keyPath: chartType.keyPath] }
         return fn(values) ?? 0
     }
 
-    var bottomValue: Double {
+    private var bottomValue: Double {
         valueRange { $0.min() }
     }
 
-    var topValue: Double {
+    private var topValue: Double {
         valueRange { $0.max() }
     }
     
-    var chartPadding: Double {
+    private var chartPadding: Double {
         (topValue - bottomValue) * 0.2
     }
     
-    var chartDomainRange: ClosedRange<Double> {
+    private var chartDomainRange: ClosedRange<Double> {
         (bottomValue - chartPadding)...(topValue + chartPadding)
     }
     
