@@ -79,23 +79,6 @@ struct CoinChartView: View {
     }
     
     // Chart Shape Modifiers
-    private func chartShapeStyle() -> some ShapeStyle {
-        switch chartType {
-        case .price, .marketCap:
-            LinearGradient(
-                gradient: Gradient(colors: [.blue, .clear]),
-                startPoint: .top,
-                endPoint: .bottom
-            )
-        case .totalVolume:
-            LinearGradient(
-                gradient: Gradient(colors: [.blue, .blue.opacity(0.9)]),
-                startPoint: .top,
-                endPoint: .bottom
-            )
-        }
-    }
-    
     private func modifiedChart(@ViewBuilder _ content: () -> (some View)) -> some View {
         content()
             .foregroundStyle(
@@ -108,6 +91,15 @@ struct CoinChartView: View {
                 yAxisMarks()
             }
             .chartYScale(domain: chartDomainRange)
+    }
+    
+    private func chartShapeStyle() -> some ShapeStyle {
+        switch chartType {
+        case .price, .marketCap:
+            CoinChartStyle.areaGradient
+        case .totalVolume:
+            CoinChartStyle.barGradient
+        }
     }
     
     // Axis Content
@@ -141,5 +133,19 @@ extension CoinChartView {
             case .totalVolume: return \.totalVolume
             }
         }
+    }
+    
+    enum CoinChartStyle {
+        static let areaGradient = LinearGradient(
+            gradient: Gradient(colors: [.blue, .clear]),
+            startPoint: .top,
+            endPoint: .bottom
+        )
+        
+        static let barGradient = LinearGradient(
+            gradient: Gradient(colors: [.blue, .blue.opacity(0.9)]),
+            startPoint: .top,
+            endPoint: .bottom
+        )
     }
 }
