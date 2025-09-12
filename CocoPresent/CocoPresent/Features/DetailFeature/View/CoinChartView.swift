@@ -74,7 +74,7 @@ struct CoinChartView: View {
             x: .value("Date", date),
             yStart: .value("Baseline", bottomValue - chartPadding),
             yEnd: .value("Price", value),
-            width: 20
+            width: Constants.barWidth
         )
     }
     
@@ -148,4 +148,34 @@ extension CoinChartView {
             endPoint: .bottom
         )
     }
+    
+    enum Constants {
+        static let barWidth: MarkDimension = 20
+    }
 }
+//
+//
+//#Preview("CoinChartView - Price") {
+//    CoinChartView(
+//        chartData: CoinChartDataEntities.previewData,
+//        chartType: .totalVolume
+//    )
+//    .frame(width: 300, height: 200)
+//    .padding()
+//}
+//
+//extension CoinChartDataEntities {
+//    static var previewData: CoinChartDataEntities {
+//        let now = Date()
+//        return (0..<7).map { offset in
+//            let date = Calendar.current.date(byAdding: .day, value: -offset, to: now)!
+//            return CoinChartDataEntity(
+//                date: date,
+//                price: Double.random(in: 20000...30000),
+//                marketCap: Double.random(in: 5_000_000_000...10_000_000_000),
+//                totalVolume: Double.random(in: 500_000_000...1_500_000_000)
+//            )
+//        }
+//        .sorted { $0.date < $1.date }
+//    }
+//}
