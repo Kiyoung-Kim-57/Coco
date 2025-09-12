@@ -70,12 +70,12 @@ public struct TrendingCoinListCell: View {
     }
     
     private func priceLabel() -> some View {
-        return CocoLabel("₩" + formatPrice(),
+        return CocoLabel(formatPrice(),
                          font: Font.system(size: PrimaryFont.size, weight: .bold))
     }
     
     private func formatPrice() -> String {
-        return String(format: "%.2f", price)
+        return NumberFormatter.currency(code: .krw, price: price)
     }
     
     private func rateLabel() -> some View {
@@ -134,7 +134,7 @@ extension TrendingCoinListCell {
 fileprivate let dummyData: TrendingCoinListEntity = TrendingCoinListEntity(
     code: "KYCoin",
     name: "Kiyoung",
-    price: 1235,
+    price: 1235000000,
     changeRate: -52.3,
     thumbUrl: "https://assets.coingecko.com/coins/images/28470/standard/MTLOGO.png?1696527464",
     rank: 0,
