@@ -22,4 +22,9 @@ public extension DependencyValues {
         get { self[FetchCoinChartDataUseCaseKey.self] }
         set { self[FetchCoinChartDataUseCaseKey.self] = newValue }
     }
+    
+    var fetchCoinDataByIDUseCase: FetchCoinDataByIDUseCase {
+        get { self[FetchCoinDataByIDUseCaseKey.self] }
+        set { self[FetchCoinDataByIDUseCaseKey.self] = newValue }
+    }
 }

@@ -26,7 +26,7 @@ public struct CoinDataDTO: Decodable {
     public let marketData: CoinMarketDataDTO
     public let statusUpdates: [String]
     public let lastUpdated: String
-    public let tickers: [Ticker]
+//    public let tickers: [Ticker]
     
     public enum CodingKeys: String, CodingKey {
         case id, symbol, name
@@ -50,7 +50,7 @@ public struct CoinDataDTO: Decodable {
         case marketData = "market_data"
         case statusUpdates = "status_updates"
         case lastUpdated = "last_updated"
-        case tickers
+//        case tickers
     }
 }
 
@@ -115,7 +115,7 @@ public struct Ticker: Decodable {
     public let lastFetchAt: String
     public let isAnomaly: Bool
     public let isStale: Bool
-    public let tradeUrl: String
+    public let tradeUrl: String?
     public let tokenInfoUrl: String?
     public let coinId: String
     public let targetCoinId: String?

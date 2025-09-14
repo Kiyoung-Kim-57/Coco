@@ -69,8 +69,8 @@ public enum DTOMapper {
     
     // Coin Data by ID
     public enum CoinData {
-        public static func map(response: CoinDataDTO) -> CoinDetailEntity {
-            CoinDetailEntity(
+        public static func map(response: CoinDataDTO) -> CoinDataByIDEntity {
+            CoinDataByIDEntity(
                 id: response.id,
                 symbol: response.symbol,
                 name: response.name,

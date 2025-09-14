@@ -67,7 +67,7 @@ public final class CoinSearchRepositoryImpl: CoinSearchRepository {
         return DTOMapper.CoinChartData.map(response: response)
     }
     
-    public func fetchCoinDataByID(_ id: String) async throws -> CoinDetailEntity {
+    public func fetchCoinDataByID(_ id: String) async throws -> CoinDataByIDEntity {
         let response = try await geckoRemoteDataSource.readData(type: CoinDataDTO.self) { request in
             request
                 .setURLPath(path: Gecko.coinDataPath(id))

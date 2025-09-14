@@ -155,6 +155,11 @@ extension DIContainer {
         DIContainer.shared.register(FetchCoinChartDataUseCase.self, instance: FetchCoinChartDataUseCaseImpl(coinSearchRepository: repository))
     }
     
+    static func registerFetchCoinDataByIDUseCase() {
+        let repository = DIContainer.shared.resolve(CoinSearchRepository.self)
+        DIContainer.shared.register(FetchCoinDataByIDUseCase.self, instance: FetchCoinDataByIDUseCaseImpl(coinSearchRepository: repository))
+    }
+    
     public static func registerObjects() {
         registerNetworkManager()
         registerUpbitRemoteDataSource()
@@ -164,6 +169,7 @@ extension DIContainer {
         registerFetchTrendingSearchUseCase()
         registerFetchCoinSearchListUseCase()
         registerFetchCoinChartDataUseCase()
+        registerFetchCoinDataByIDUseCase()
     }
 }
 
@@ -183,6 +189,10 @@ public extension DIContainer {
     
     static func resolveFetchCoinChartDataUseCase() -> FetchCoinChartDataUseCase {
         return DIContainer.shared.resolve(FetchCoinChartDataUseCase.self)
+    }
+    
+    static func resolveFetchCoinDataByIDUseCase() -> FetchCoinDataByIDUseCase {
+        return DIContainer.shared.resolve(FetchCoinDataByIDUseCase.self)
     }
 }
 

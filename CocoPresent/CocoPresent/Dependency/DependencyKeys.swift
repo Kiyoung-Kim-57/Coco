@@ -20,3 +20,7 @@ public enum FetchCoinSearchListUseCaseKey: DependencyKey {
 public enum FetchCoinChartDataUseCaseKey: DependencyKey {
     public static let liveValue = DIContainer.resolveFetchCoinChartDataUseCase()
 }
+
+public enum FetchCoinDataByIDUseCaseKey: DependencyKey {
+    public static let liveValue = DIContainer.resolveFetchCoinDataByIDUseCase()
+}

@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct CoinDetailEntity: Decodable {
+public struct CoinDataByIDEntity: Decodable {
     public let id: String
     public let symbol: String
     public let name: String
