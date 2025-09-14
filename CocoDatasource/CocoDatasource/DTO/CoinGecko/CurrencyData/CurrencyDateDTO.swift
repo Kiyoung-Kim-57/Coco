@@ -15,6 +15,6 @@ public struct CurrencyDateDTO: Decodable {
 
 public extension CurrencyDateDTO {
     func toEntity() -> CurrencyDate {
-        return CurrencyDate(krw: self.krw, usd: self.usd)
+        return CurrencyDate(krw: self.krw, usd: self.usd )
     }
 }

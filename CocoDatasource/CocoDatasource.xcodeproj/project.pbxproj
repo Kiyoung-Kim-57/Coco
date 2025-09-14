@@ -42,6 +42,7 @@
 				DTO/CoinGecko/CurrencyData/CurrencyDateDTO.swift,
 				DTO/CoinGecko/CurrencyData/CurrencyPercentageDTO.swift,
 				DTO/CoinGecko/CurrencyData/CurrencyPriceDTO.swift,
+				DTO/CoinGecko/LocalizationData/LocalizationData.swift,
 				DTO/Upbit/CautionDTO.swift,
 				DTO/Upbit/CoinGeneralInfoDTO.swift,
 				DTO/Upbit/MarketEvent.swift,

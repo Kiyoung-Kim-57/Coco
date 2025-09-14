@@ -14,7 +14,7 @@ public struct CoinDataDTO: Decodable {
     public let publicNotice: String?
     public let additionalNotices: [String]
     public let localization: LocalizationData
-    public let description: LocalizationData
+    public let coinDescription: LocalizationData
     public let links: CoinLinks
     public let image: CoinImage
     public let countryOrigin: String
@@ -38,7 +38,9 @@ public struct CoinDataDTO: Decodable {
         case previewListing = "preview_listing"
         case publicNotice = "public_notice"
         case additionalNotices = "additional_notices"
-        case localization, description, links, image
+        case localization
+        case coinDescription = "description"
+        case links, image
         case countryOrigin = "country_origin"
         case genesisDate = "genesis_date"
         case sentimentVotesUpPercentage = "sentiment_votes_up_percentage"
@@ -116,7 +118,7 @@ public struct Ticker: Decodable {
     public let tradeUrl: String
     public let tokenInfoUrl: String?
     public let coinId: String
-    public let targetCoinId: String
+    public let targetCoinId: String?
     
     public enum CodingKeys: String, CodingKey {
         case base, target, market, last, volume

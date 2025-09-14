@@ -53,7 +53,7 @@ public enum DTOMapper {
         public static func map(response: CoinChartDTO) -> CoinHistoricalChartDataEntities {
             var result: CoinHistoricalChartDataEntities = []
             for idx in 0..<response.prices.count {
-                var temp = CoinHistoricalChartDataEntity(
+                let temp = CoinHistoricalChartDataEntity(
                     date: Date(milliseconds: response.prices[idx][0]),
                     price: response.prices[idx][1],
                     marketCap: response.marketCaps[idx][1],
@@ -64,6 +64,27 @@ public enum DTOMapper {
             }
             
             return result
+        }
+    }
+    
+    // Coin Data by ID
+    public enum CoinData {
+        public static func map(response: CoinDataDTO) -> CoinDetailEntity {
+            CoinDetailEntity(
+                id: response.id,
+                symbol: response.symbol,
+                name: response.name,
+                categories: response.categories,
+                currentPrice: response.marketData.currentPrice.toEntity(),
+                ath: response.marketData.ath.toEntity(),
+                athChangePercentage: response.marketData.athChangePercentage.toEntity(),
+                athDate: response.marketData.athDate.toEntity(),
+                atl: response.marketData.atl.toEntity(),
+                atlChangePercentage: response.marketData.atlChangePercentage.toEntity(),
+                atlDate: response.marketData.atlDate.toEntity(),
+                sparkLine: response.marketData.sparkline7d.price,
+                lastUpdated: response.lastUpdated
+            )
         }
     }
 }
