@@ -50,10 +50,10 @@ public enum DTOMapper {
     
     // Coin Chart Data
     public enum CoinChartData {
-        public static func map(response: CoinChartDTO) -> CoinChartDataEntities {
-            var result: CoinChartDataEntities = []
+        public static func map(response: CoinChartDTO) -> CoinHistoricalChartDataEntities {
+            var result: CoinHistoricalChartDataEntities = []
             for idx in 0..<response.prices.count {
-                var temp = CoinChartDataEntity(
+                var temp = CoinHistoricalChartDataEntity(
                     date: Date(milliseconds: response.prices[idx][0]),
                     price: response.prices[idx][1],
                     marketCap: response.marketCaps[idx][1],

@@ -12,6 +12,8 @@ public enum Gecko {
     
     public static func trendingPath() -> String { "/api/v3/search/trending" }
     
+    public static func coinDataPath(_ id: String) -> String { "/api/v3/coins/\(id)" }
+    
     public static func marketChartPath(_ id: String) -> String { "/api/v3/coins/\(id)/market_chart" }
     
     public static func identifier() -> String { "Gecko" }

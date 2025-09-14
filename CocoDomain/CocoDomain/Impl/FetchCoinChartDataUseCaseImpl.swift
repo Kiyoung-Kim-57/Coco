@@ -6,7 +6,7 @@
 //
 
 public final class FetchCoinChartDataUseCaseImpl: FetchCoinChartDataUseCase {
-    public func execute(_ coin: String) async throws -> CoinChartDataEntities {
+    public func execute(_ coin: String) async throws -> CoinHistoricalChartDataEntities {
         try await coinSearchRepository.fetchCoinChartData(coin)
     }
     

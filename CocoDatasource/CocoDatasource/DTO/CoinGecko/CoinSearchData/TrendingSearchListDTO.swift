@@ -44,7 +44,7 @@ public struct TrendingCoinItem: Decodable {
 public struct TrendingCoinData: Decodable {
     public let price: Double
     public let priceBtc: String
-    public let priceChangePercentage24h: PriceDTO
+    public let priceChangePercentage24h: CurrencyPriceDTO
     public let marketCap: String
     public let marketCapBtc: String
     public let totalVolume: String

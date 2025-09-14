@@ -53,7 +53,7 @@ public final class CoinSearchRepositoryImpl: CoinSearchRepository {
         return DTOMapper.CoinSearchList.map(response: response)
     }
     
-    public func fetchCoinChartData(_ coin: String) async throws -> CoinChartDataEntities {
+    public func fetchCoinChartData(_ coin: String) async throws -> CoinHistoricalChartDataEntities {
         let response = try await geckoRemoteDataSource.readData(type: CoinChartDTO.self) { request in
             request
                 .setURLPath(path: Gecko.marketChartPath(coin))

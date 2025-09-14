@@ -8,7 +8,7 @@ import Foundation
 import CocoDomain
 
 public final class MockRepository: CoinSearchRepository {
-    public func fetchCoinChartData(_ coin: String) async throws -> CocoDomain.CoinChartDataEntities {
+    public func fetchCoinChartData(_ coin: String) async throws -> CocoDomain.CoinHistoricalChartDataEntities {
         []
     }
     

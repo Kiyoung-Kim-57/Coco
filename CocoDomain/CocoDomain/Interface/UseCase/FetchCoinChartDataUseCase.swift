@@ -6,5 +6,5 @@
 //
 
 public protocol FetchCoinChartDataUseCase {
-    func execute(_ coin: String) async throws -> CoinChartDataEntities
+    func execute(_ coin: String) async throws -> CoinHistoricalChartDataEntities
 }

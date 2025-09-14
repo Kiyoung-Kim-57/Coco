@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct CoinChartDataEntity: Codable, Identifiable {
+public struct CoinHistoricalChartDataEntity: Codable, Identifiable {
     public var id: UUID = UUID()
     public let date: Date
     public let price: Double
@@ -22,4 +22,4 @@ public struct CoinChartDataEntity: Codable, Identifiable {
     }
 }
 
-public typealias CoinChartDataEntities = [CoinChartDataEntity]
+public typealias CoinHistoricalChartDataEntities = [CoinHistoricalChartDataEntity]

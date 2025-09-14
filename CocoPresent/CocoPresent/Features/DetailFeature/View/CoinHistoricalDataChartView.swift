@@ -10,8 +10,8 @@ import Charts
 import CocoDesign
 import CocoDomain
 
-struct CoinChartView: View {
-    private let chartData: CoinChartDataEntities
+struct CoinHistoricalDataChartView: View {
+    private let chartData: CoinHistoricalChartDataEntities
     private let chartType: CoinChartType
     
     private func valueRange(_ fn: ([Double]) -> Double?) -> Double {
@@ -35,7 +35,7 @@ struct CoinChartView: View {
         (bottomValue - chartPadding)...(topValue + chartPadding)
     }
     
-    init(chartData: CoinChartDataEntities, chartType: CoinChartType) {
+    init(chartData: CoinHistoricalChartDataEntities, chartType: CoinChartType) {
         self.chartData = chartData
         self.chartType = chartType
     }
@@ -120,13 +120,13 @@ struct CoinChartView: View {
     }
 }
 
-extension CoinChartView {
+extension CoinHistoricalDataChartView {
     enum CoinChartType {
         case price
         case marketCap
         case totalVolume
         
-        var keyPath: KeyPath<CoinChartDataEntity, Double> {
+        var keyPath: KeyPath<CoinHistoricalChartDataEntity, Double> {
             switch self {
             case .price: return \.price
             case .marketCap: return \.marketCap
