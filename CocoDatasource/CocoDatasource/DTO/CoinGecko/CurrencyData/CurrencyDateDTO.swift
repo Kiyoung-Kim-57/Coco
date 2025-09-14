@@ -6,8 +6,15 @@
 //
 
 import Foundation
+import CocoDomain
 
 public struct CurrencyDateDTO: Decodable {
     public let krw: String
     public let usd: String
+}
+
+public extension CurrencyDateDTO {
+    func toEntity() -> CurrencyDate {
+        return CurrencyDate(krw: self.krw, usd: self.usd)
+    }
 }

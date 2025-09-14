@@ -67,6 +67,18 @@ public final class CoinSearchRepositoryImpl: CoinSearchRepository {
         return DTOMapper.CoinChartData.map(response: response)
     }
     
+    public func fetchCoinDataByID(_ id: String) async throws -> CoinDataDTO {
+        let response = try await geckoRemoteDataSource.readData(type: CoinDataDTO.self) { request in
+            request
+                .setURLPath(path: Gecko.coinDataPath(id))
+                .addQueryItems([
+                    "community_data" : "false",
+                    "developer_data" : "false",
+                    "sparkline" : "true"
+                ])
+        }
+    }
+    
     private func fetchSVGData(urls: [String]) async throws -> [Data] {
         var result: [Data] = []
         

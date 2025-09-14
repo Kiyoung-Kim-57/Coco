@@ -7,8 +7,15 @@
 //
 
 import Foundation
+import CocoDomain
 
 public struct CurrencyPercentageDTO: Decodable {
     public let usd: Double
     public let krw: Double
+}
+
+public extension CurrencyPercentageDTO {
+    func toEntity() -> CurrencyPercentage {
+        CurrencyPercentage(usd: usd, krw: krw)
+    }
 }

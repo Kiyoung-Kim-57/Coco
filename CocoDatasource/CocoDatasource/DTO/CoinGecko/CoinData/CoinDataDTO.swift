@@ -13,9 +13,9 @@ public struct CoinDataDTO: Decodable {
     public let previewListing: Bool
     public let publicNotice: String?
     public let additionalNotices: [String]
-    public let localization: [String: String]
-    public let description: [String: String]
-    public let links: Links
+    public let localization: LocalizationData
+    public let description: LocalizationData
+    public let links: CoinLinks
     public let image: CoinImage
     public let countryOrigin: String
     public let genesisDate: String
@@ -53,7 +53,7 @@ public struct CoinDataDTO: Decodable {
 }
 
 // MARK: - Links
-public struct Links: Decodable {
+public struct CoinLinks: Decodable {
     public let homepage: [String]
     public let whitepaper: String
     public let blockchainSite: [String]
