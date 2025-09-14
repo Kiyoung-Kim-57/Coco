@@ -103,6 +103,22 @@ struct CocoDatasourceTests {
         
         #expect(response.marketCaps.count == 2)
     }
+    
+    @Test("Gecko Coin ID Data")
+    func geckoCoinData() async throws {
+        let response = try await coinGeckoRemoteDatasource.readData(type: CoinDataDTO.self) { request in
+            request
+                .setURLPath(path: Gecko.coinDataPath("bitcoin"))
+                .addQueryItems([
+                    "community_data" : "false",
+                    "developer_data" : "false",
+                    "sparkline" : "true"
+                ])
+        }
+        
+        print(response)
+        #expect(response.id == "bitcoin")
+    }
 }
 
 enum TestErrors: Error {
