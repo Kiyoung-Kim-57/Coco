@@ -1,0 +1,107 @@
+//
+//  CoinChartView.swift
+//  CocoPresent
+//
+//  Created by 김기영 on 9/17/25.
+//
+
+import SwiftUI
+import Charts
+import CocoDesign
+import CocoDomain
+
+struct CoinIDChartView: View {
+    private let chartData: [Double]
+    
+    private func valueRange(_ fn: ([Double]) -> Double?) -> Double {
+        let values = chartData
+        return fn(values) ?? 0
+    }
+
+    private var bottomValue: Double {
+        valueRange { $0.min() }
+    }
+
+    private var topValue: Double {
+        valueRange { $0.max() }
+    }
+    
+    private var chartPadding: Double {
+        (topValue - bottomValue) * 0.2
+    }
+    
+    private var chartDomainRange: ClosedRange<Double> {
+        (bottomValue - chartPadding)...(topValue + chartPadding)
+    }
+    
+    init(chartData: [Double]) {
+        self.chartData = chartData
+    }
+    
+    var body: some View {
+        modifiedChart {
+            chartView()
+        }
+    }
+    
+    // Chart Views
+    private func chartView() -> some View {
+        Chart(chartData, id: \.self) { data in
+            areaChart(Date(), data)
+        }
+    }
+    
+    private func areaChart(_ date: Date, _ value: Double) -> some ChartContent {
+        AreaMark(
+            x: .value("Date", date),
+            yStart: .value("Baseline", bottomValue - chartPadding),
+            yEnd: .value("Price", value)
+        )
+        .interpolationMethod(.catmullRom)
+    }
+    // Chart Shape Modifiers
+    private func modifiedChart(@ViewBuilder _ content: () -> (some View)) -> some View {
+        content()
+            .foregroundStyle(
+                CoinChartStyle.areaGradient
+            )
+            .chartXAxis {
+                xAxisMarks()
+            }
+            .chartYAxis {
+                yAxisMarks()
+            }
+            .chartYScale(domain: chartDomainRange)
+    }
+    
+    // Axis Content
+    private func xAxisMarks() -> some AxisContent {
+        AxisMarks(preset: .aligned, values: chartData.enumerated().map { $0.offset }) { value in
+            AxisValueLabel(format: .dateTime.month(.defaultDigits).day())
+        }
+    }
+    
+    private func yAxisMarks() -> some AxisContent {
+        AxisMarks{ value in
+            AxisValueLabel {
+                if let doubleValue = value.as(Double.self) {
+                    Text("\(doubleValue.abbreviated)")
+                }
+            }
+        }
+    }
+}
+
+extension CoinIDChartView {
+    enum CoinChartStyle {
+        static let areaGradient = LinearGradient(
+            gradient: Gradient(colors: [.blue, .clear]),
+            startPoint: .top,
+            endPoint: .bottom
+        )
+    }
+    
+    enum Constants {
+        static let barWidth: MarkDimension = 20
+    }
+}
