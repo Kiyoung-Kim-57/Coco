@@ -46,14 +46,14 @@ struct CoinIDChartView: View {
     
     // Chart Views
     private func chartView() -> some View {
-        Chart(chartData, id: \.self) { data in
-            areaChart(Date(), data)
+        Chart(chartData.enumerated().map { $0 }, id: \.offset) { item in
+            areaChart(item.offset, item.element)
         }
     }
     
-    private func areaChart(_ date: Date, _ value: Double) -> some ChartContent {
+    private func areaChart(_ index: Int, _ value: Double) -> some ChartContent {
         AreaMark(
-            x: .value("Date", date),
+            x: .value("Index", index),
             yStart: .value("Baseline", bottomValue - chartPadding),
             yEnd: .value("Price", value)
         )
@@ -77,7 +77,7 @@ struct CoinIDChartView: View {
     // Axis Content
     private func xAxisMarks() -> some AxisContent {
         AxisMarks(preset: .aligned, values: chartData.enumerated().map { $0.offset }) { value in
-            AxisValueLabel(format: .dateTime.month(.defaultDigits).day())
+            AxisValueLabel()
         }
     }
     
