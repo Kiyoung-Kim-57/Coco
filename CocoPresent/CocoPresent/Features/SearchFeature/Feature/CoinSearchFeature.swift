@@ -46,7 +46,6 @@ public struct CoinSearchFeature: Reducer {
                 
                 state.searchText = text
                 return .run { send in
-                    // TODO: Search Task Needed
                     if text.isEmpty {
                         await send(.searchList(.searchCanceled))
                     } else {

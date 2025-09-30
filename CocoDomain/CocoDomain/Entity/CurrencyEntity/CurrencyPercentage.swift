@@ -5,7 +5,7 @@
 //  Created by 김기영 on 9/14/25.
 //
 
-public struct CurrencyPercentage: Decodable {
+public struct CurrencyPercentage: Decodable, Equatable {
     public let usd: Double
     public let krw: Double
     

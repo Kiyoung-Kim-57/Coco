@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct CurrencyPrice: Decodable {
+public struct CurrencyPrice: Decodable, Equatable {
     public let usd: Double
     public let krw: Double
     

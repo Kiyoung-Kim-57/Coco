@@ -6,7 +6,7 @@
 //
 
 
-public struct CurrencyDate: Decodable {
+public struct CurrencyDate: Decodable, Equatable {
     public let krw: String
     public let usd: String
     
