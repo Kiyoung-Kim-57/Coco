@@ -14,6 +14,7 @@ public struct CocoLabel: View {
     private let backgroundColor: Color
     private let textPadding: CGFloat
     private let cornerRadius: CGFloat
+    private let textAlignment: TextAlignment
     
     public init(
         _ text: String,
@@ -21,7 +22,8 @@ public struct CocoLabel: View {
         textColor: Color = .black,
         backgroundColor: Color = .clear,
         textPadding: CGFloat = 0,
-        cornerRadius: CGFloat = 0
+        cornerRadius: CGFloat = 0,
+        textAlignment: TextAlignment = .center
     ) {
         self.text = text
         self.font = font
@@ -29,6 +31,7 @@ public struct CocoLabel: View {
         self.backgroundColor = backgroundColor
         self.textPadding = textPadding
         self.cornerRadius = cornerRadius
+        self.textAlignment = textAlignment
     }
     
     public var body: some View {
@@ -39,6 +42,7 @@ public struct CocoLabel: View {
             .background(backgroundColor)
             .clipShape(RoundedRectangle(cornerRadius: cornerRadius))
             .minimumScaleFactor(0.5)
+            .multilineTextAlignment(textAlignment)
     }
 }
 
