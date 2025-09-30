@@ -22,6 +22,8 @@ public enum CocoColor {
         case .gray90: return Color(.gray90)
         case .green: return Color(.cocoGreen)
         case .yellow: return Color(.cocoYellow)
+        case .blue: return Color(.cocoBlue)
+        case .red: return Color(.cocoRed)
         case .primaryPurple: return Color(.primaryPurple)
         }
     }
@@ -40,5 +42,7 @@ public enum Colors {
     case gray90
     case green
     case yellow
+    case blue
+    case red
     case primaryPurple
 }
