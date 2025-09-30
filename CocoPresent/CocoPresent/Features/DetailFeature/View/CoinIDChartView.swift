@@ -12,6 +12,7 @@ import CocoDomain
 
 struct CoinIDChartView: View {
     private let chartData: [Double]
+    private let isIncreasing: Bool
     
     private func valueRange(_ fn: ([Double]) -> Double?) -> Double {
         let values = chartData
@@ -34,8 +35,9 @@ struct CoinIDChartView: View {
         (bottomValue - chartPadding)...(topValue + chartPadding)
     }
     
-    init(chartData: [Double]) {
+    init(chartData: [Double], isIncreasing: Bool) {
         self.chartData = chartData
+        self.isIncreasing = isIncreasing
     }
     
     var body: some View {
@@ -57,20 +59,18 @@ struct CoinIDChartView: View {
             yStart: .value("Baseline", bottomValue - chartPadding),
             yEnd: .value("Price", value)
         )
-        .interpolationMethod(.catmullRom)
+        .interpolationMethod(.cardinal)
     }
     // Chart Shape Modifiers
     private func modifiedChart(@ViewBuilder _ content: () -> (some View)) -> some View {
         content()
             .foregroundStyle(
-                CoinChartStyle.areaGradient
+                isIncreasing ?
+                CoinChartStyle.areaIncreasingGradient :
+                CoinChartStyle.areaDecreasingGradient
             )
-            .chartXAxis {
-                xAxisMarks()
-            }
-            .chartYAxis {
-                yAxisMarks()
-            }
+            .chartXAxis(.hidden)
+            .chartYAxis(.hidden)
             .chartYScale(domain: chartDomainRange)
     }
     
@@ -94,8 +94,14 @@ struct CoinIDChartView: View {
 
 extension CoinIDChartView {
     enum CoinChartStyle {
-        static let areaGradient = LinearGradient(
-            gradient: Gradient(colors: [.blue, .clear]),
+        static let areaDecreasingGradient = LinearGradient(
+            gradient: Gradient(colors: [CocoColor.resource(.blue), .clear]),
+            startPoint: .top,
+            endPoint: .bottom
+        )
+        
+        static let areaIncreasingGradient = LinearGradient(
+            gradient: Gradient(colors: [CocoColor.resource(.red), .clear]),
             startPoint: .top,
             endPoint: .bottom
         )

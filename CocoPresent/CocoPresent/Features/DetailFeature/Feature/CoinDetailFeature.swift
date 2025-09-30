@@ -17,18 +17,20 @@ public struct CoinDetailFeature: Reducer {
     public struct State: Equatable {
         var coinID: String = ""
         var coinDetails: CoinDataByIDEntity? = nil
+        var isIncreasing: Bool = true
     }
     
     public enum Action {
-        case viewDidAppear(String)
+        case onAppear(String)
         case loadData
         case dataLoaded(CoinDataByIDEntity)
+        case dataLoadFailed(Error)
     }
     
     public var body: some ReducerOf<Self> {
         Reduce { state, action in
             switch action {
-            case .viewDidAppear(let id):
+            case .onAppear(let id):
                 state.coinID = id
                 
                 return .run { send in
@@ -39,13 +41,28 @@ public struct CoinDetailFeature: Reducer {
                 let id = state.coinID
                 
                 return .run { send in
-                    let coinDetails = try await fetchCoinDataByIDUseCase.execute(id)
-                    
-                    await send(.dataLoaded(coinDetails))
+                    do {
+                        let coinDetails = try await fetchCoinDataByIDUseCase.execute(id)
+                        
+                        await send(.dataLoaded(coinDetails))
+                    } catch {
+                        await send(.dataLoadFailed(error))
+                    }
                 }
                 
             case .dataLoaded(let data):
                 state.coinDetails = data
+                
+                if let details = state.coinDetails,
+                   details.sparkLine.count > 1 {
+                    let count = details.sparkLine.count
+                    state.isIncreasing = details.sparkLine[count - 1] > details.sparkLine[count - 2]
+                }
+                
+                return .none
+                
+            case .dataLoadFailed(let error):
+                // TODO: Error Handling
                 return .none
             }
         }
